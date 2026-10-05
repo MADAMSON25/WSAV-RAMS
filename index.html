@@ -250,6 +250,13 @@ details.std > button{width:auto}
 .pprow .t{font-weight:700;color:var(--wsav-gold);min-width:64px}
 .pprow .grow{flex:1;min-width:0}
 .pprow .r{color:var(--wsav-text-muted);font-size:11px;white-space:nowrap}
+.switch{position:relative;display:inline-block;width:38px;height:22px;cursor:pointer}
+.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--wsav-dark2);border:1px solid var(--wsav-border-light);border-radius:99px;transition:background .15s}
+.switch span::before{content:"";position:absolute;width:16px;height:16px;left:2px;top:2px;border-radius:50%;background:var(--wsav-text-muted);transition:transform .15s}
+.switch input:checked + span{background:rgba(46,204,113,0.25);border-color:rgba(46,204,113,0.5)}
+.switch input:checked + span::before{transform:translateX(16px);background:#6ee68b}
+.switch input:focus-visible + span{outline:2px solid var(--wsav-gold);outline-offset:2px}
 @media (max-width:900px){
   .header{padding:0 1rem;height:60px}.header-logo{height:32px}.header-date,.header-divider{display:none}.header-title{font-size:14px}
   .body{padding:1rem}.navrow{padding:10px 1rem}
@@ -324,7 +331,7 @@ details.std > button{width:auto}
 /* ═══════════════════════════════════════════════════
    CONFIGURATION
    ═══════════════════════════════════════════════════ */
-const AZURE_CLIENT_ID  = 'cbf09fd6-ec7f-459f-8f19-9770b0732c5f';      // Application (client) ID of the RAMS Builder app registration
+const AZURE_CLIENT_ID  = 'PASTE-RAMS-BUILDER-CLIENT-ID-HERE';      // Application (client) ID of the RAMS Builder app registration
 const AZURE_TENANT_ID  = 'PASTE-DIRECTORY-TENANT-ID-HERE';         // Directory (tenant) ID — required for a single-tenant app
 const SP_SITE          = 'https://workspaceav1.sharepoint.com/sites/Engineering';
 const SP_SITE_PATH     = '/sites/Engineering';
@@ -343,7 +350,7 @@ const LISTS = {
 const SINGLE_LIST      = 'RAMS';
 const ITEM_TYPE        = {rams:'RAMS',sigs:'Signature',people:'Person',hospitals:'Hospital'};
 if(SINGLE_LIST){ LISTS.rams=LISTS.sigs=LISTS.people=LISTS.hospitals=SINGLE_LIST; }
-const DASHBOARD_URL    = 'https://madamson25.github.io/';      // Project Status Dashboard
+const DASHBOARD_URL    = 'https://madamson25.github.io/WSAV-ProjectDashboard/';      // Project Status Dashboard
 const RAMS_LEAD_WORKING_DAYS = 5;   // RAMS due this many working days before the start date
 const DASHBOARD_RAMS_TASK = 'RAMS Complete';
 
@@ -641,10 +648,10 @@ function normalize(d){
 }
 async function loadProjects(){
   const opt=["Client","SiteAddress","MainContractor","StartDate"].filter(f=>S.projFields.has(f));
-  const sel=["Id","Title","ProjectNumber","Status","DueDate","PM","Archived","Notes",...opt].join(",");
+  const sel=["Id","Title","ProjectNumber","Status","DueDate","PM","Archived","Notes","PhasesJSON",...opt].join(",");
   const items=await spGetAll(`${L(LISTS.projects)}/items?$select=${sel}&$top=500`);
   S.projects.clear();
-  items.forEach(i=>S.projects.set(i.Id,{spId:i.Id,name:i.Title||"",num:i.ProjectNumber||"",status:i.Status||"",due:i.DueDate?i.DueDate.split("T")[0]:"",pm:i.PM||"",archived:!!i.Archived,
+  items.forEach(i=>S.projects.set(i.Id,{spId:i.Id,ramsDone:ramsTaskDone(i.PhasesJSON),name:i.Title||"",num:i.ProjectNumber||"",status:i.Status||"",due:i.DueDate?i.DueDate.split("T")[0]:"",pm:i.PM||"",archived:!!i.Archived,
     client:i.Client||"",site:i.SiteAddress||"",mainContractor:i.MainContractor||"",startDate:i.StartDate?String(i.StartDate).split("T")[0]:""}));
 }
 async function loadRams(){
@@ -824,6 +831,7 @@ async function syncDashboardTask(d){
     if(!found){const sch=phases.find(p=>p.name==="Scheduled")||phases[0];if(sch){sch.tasks=sch.tasks||[];sch.tasks.push({text:DASHBOARD_RAMS_TASK,done:true,risk:false});changed=true;}}
     if(changed) await spMerge(`${L(LISTS.projects)}/items(${d.projectSpId})`,{PhasesJSON:JSON.stringify(phases),LastModifiedBy:meName(),LastModifiedAt:new Date().toISOString()});
     d.dashTask={rev:d.revision,at:Date.now()}; await persist(d);
+    const pp=S.projects.get(d.projectSpId); if(pp) pp.ramsDone=true;
     if(changed) toast("“RAMS Complete” ticked on the Project Dashboard");
   }catch(e){console.warn("Dashboard write-back failed",e);}
 }
@@ -924,46 +932,59 @@ function delDoc(id){const d=S.docs.get(id);confirmBox(`Delete “${esc(d.title||
    PROJECTS (from the Project Dashboard)
    Active projects only by default; complete and archived on request.
    ═══════════════════════════════════════════════════ */
-const ACTIVE_STATUSES=["Planning","Scheduled","In Progress","Snagging","Handover"];
+const ACTIVE_STATUSES=["Planning","Scheduled","In Progress","Snagging"];   // Handover sits with Complete
 const STATUS_ORDER=["Scheduled","Planning","In Progress","Snagging","Handover","Complete"];
+function ramsTaskDone(json){try{return (JSON.parse(json||"[]")||[]).some(ph=>(ph.tasks||[]).some(t=>(t.text||"").trim().toLowerCase()===DASHBOARD_RAMS_TASK.toLowerCase()&&t.done));}catch(e){return false;}}
+/* Tick or untick the dashboard's "RAMS Complete" task – for RAMS done outside the builder */
+async function setRamsDone(spId,done){
+  const p=S.projects.get(spId); if(!p) return;
+  try{
+    const it=await spGet(`${L(LISTS.projects)}/items(${spId})?$select=Id,PhasesJSON`);
+    const phases=it.PhasesJSON?JSON.parse(it.PhasesJSON):[]; let found=false;
+    phases.forEach(ph=>(ph.tasks||[]).forEach(t=>{if((t.text||"").trim().toLowerCase()===DASHBOARD_RAMS_TASK.toLowerCase()){found=true;t.done=done;}}));
+    if(!found&&done){let sch=phases.find(x=>x.name==="Scheduled");if(!sch){sch={name:"Scheduled",tasks:[]};phases.push(sch);}sch.tasks=sch.tasks||[];sch.tasks.push({text:DASHBOARD_RAMS_TASK,done:true,risk:false});}
+    await spMerge(`${L(LISTS.projects)}/items(${spId})`,{PhasesJSON:JSON.stringify(phases),LastModifiedBy:meName(),LastModifiedAt:new Date().toISOString()});
+    p.ramsDone=done; toast(done?`${p.num}: RAMS marked complete on the dashboard`:`${p.num}: RAMS Complete unticked`);
+  }catch(e){banner("Couldn't update the dashboard: "+e.message,true);}
+  rerender();
+}
 S.pf={q:"",show:"active"};
 function ramsFor(p){return [...S.docs.values()].filter(d=>d.projectSpId===p.spId&&d.status!=="Superseded");}
 function filterProjects(q,show){
   q=(q||"").trim().toLowerCase();
   return [...S.projects.values()].filter(p=>{
     if(show==="active"&&(p.archived||!ACTIVE_STATUSES.includes(p.status))) return false;
-    if(show==="needs"&&(p.archived||!ACTIVE_STATUSES.includes(p.status)||ramsFor(p).length)) return false;
-    if(show==="complete"&&(p.archived||p.status!=="Complete")) return false;
+    if(show==="complete"&&(p.archived||!["Handover","Complete"].includes(p.status))) return false;
     if(show==="archived"&&!p.archived) return false;
     if(ACTIVE_STATUSES.includes(show)&&(p.archived||p.status!==show)) return false;
     return !q||[p.num,p.name,p.pm,p.client].join(" ").toLowerCase().includes(q);
   }).sort((a,b)=>(STATUS_ORDER.indexOf(a.status)-STATUS_ORDER.indexOf(b.status))||String(b.num).localeCompare(String(a.num),undefined,{numeric:true}));
 }
-const PF_CHIPS=[["active","Active"],["needs","Needs RAMS"],["Scheduled","Scheduled"],["Planning","Planning"],["In Progress","In Progress"],["complete","Complete"],["archived","Archived"],["all","All"]];
+const PF_CHIPS=[["active","Active"],["Scheduled","Scheduled"],["Planning","Planning"],["In Progress","In Progress"],["Snagging","Snagging"],["complete","Handover & Complete"],["archived","Archived"],["all","All"]];
 function viewProjects(){
   const list=filterProjects(S.pf.q,S.pf.show); const shown=list.slice(0,S.pf.limit||50);
   const counts={}; PF_CHIPS.forEach(([k])=>counts[k]=filterProjects("",k).length);
   return `<div class="bar"><h1 class="grow">Projects</h1><a class="btn gold" href="${DASHBOARD_URL}" target="_blank" rel="noopener">Open Project Dashboard</a></div>
   <div class="bar" style="margin-top:-6px"><input type="search" id="pfq" placeholder="Search by job number, name or PM…" style="max-width:340px" value="${esc(S.pf.q)}" oninput="S.pf.q=this.value;S.pf.limit=50;const p=this.selectionStart;render();const i=$('#pfq');i.focus();i.setSelectionRange(p,p)"></div>
   <div class="tagrow">${PF_CHIPS.map(([k,n])=>`<button type="button" class="tag" aria-pressed="${S.pf.show===k}" onclick="S.pf.show='${k}';S.pf.limit=50;render()">${n} <span style="opacity:.7">${counts[k]}</span></button>`).join("")}</div>
-  ${shown.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Job</th><th>Project</th><th>Status</th><th>PM</th><th>Due</th><th>RAMS</th><th></th></tr></thead><tbody>${shown.map(p=>{
-    const rs=ramsFor(p); const needs=!rs.length&&p.status==="Scheduled"&&!p.archived;
+  ${shown.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Job</th><th>Project</th><th>Status</th><th>PM</th><th>Due</th><th title="Ticks the dashboard's RAMS Complete task – use it for RAMS done outside the builder">RAMS complete</th><th></th></tr></thead><tbody>${shown.map(p=>{
+    const rs=ramsFor(p);
     return `<tr><td class="t">${esc(p.num)}</td><td>${esc(p.name)}</td><td class="r">${p.archived?"Archived":esc(p.status)}</td><td>${esc(p.pm)}</td><td>${fmtDate(p.due)}</td>
-    <td>${rs.length?rs.map(d=>`<a href="#" onclick="go('edit','${d.id}','project');return false"><span class="pill st-${d.status.split(" ")[0]}">${esc(d.ref||"RAMS")} · ${esc(d.status)}</span></a>`).join(" "):needs?'<span class="pill st-Overdue">Needed</span>':'<span class="r">None</span>'}</td>
-    <td><button type="button" class="btn sm ${needs?"primary":""}" onclick="openNew(${p.spId})">Create RAMS</button></td></tr>`}).join("")}</tbody></table></div>
+    <td><label class="switch" title="${p.ramsDone?"Untick":"Mark RAMS complete (e.g. done manually)"}"><input type="checkbox" ${p.ramsDone?"checked":""} onchange="setRamsDone(${p.spId},this.checked)"><span></span></label></td>
+    <td style="text-align:right;white-space:nowrap">${rs.map(d=>`<a href="#" onclick="go('edit','${d.id}','project');return false" style="margin-right:6px"><span class="pill st-${d.status.split(" ")[0]}">${esc(d.ref||"RAMS")} · ${esc(d.status)}</span></a>`).join("")}<button type="button" class="btn sm" onclick="openNew(${p.spId})">${rs.length?"New RAMS":"Create RAMS"}</button></td></tr>`}).join("")}</tbody></table></div>
     ${list.length>shown.length?`<div style="text-align:center;margin-top:12px"><button type="button" class="btn" onclick="S.pf.limit=(S.pf.limit||50)+50;rerender()">Show more (${list.length-shown.length} more)</button></div>`:""}`
-  :`<div class="empty"><p>No projects match. ${S.pf.show==="active"?"Complete and archived projects are hidden – use the Complete or Archived filter to find them.":""}</p></div>`}`;
+  :`<div class="empty"><p>No projects match. ${S.pf.show==="active"?"Handover, complete and archived projects are hidden – use the filters above to find them.":""}</p></div>`}`;
 }
 /* Searchable project picker used by New RAMS and Link Project */
 function projectPicker(selected){
   S.pp=S.pp||{q:"",all:false};
   return `<input type="search" id="ppq" placeholder="Type a job number or name…" value="${esc(S.pp.q)}" oninput="S.pp.q=this.value;paintPicker()">
-  <label class="check" style="margin:8px 0;padding:6px 10px"><input type="checkbox" ${S.pp.all?"checked":""} onchange="S.pp.all=this.checked;paintPicker()">Include complete and archived projects</label>
+  <label class="check" style="margin:8px 0;padding:6px 10px"><input type="checkbox" ${S.pp.all?"checked":""} onchange="S.pp.all=this.checked;paintPicker()">Include handover, complete and archived projects</label>
   <div id="ppList" class="pplist">${pickerRows(selected)}</div>`;
 }
 function pickerRows(selected){
   const list=filterProjects(S.pp.q,S.pp.all?"all":"active").slice(0,30);
-  if(!list.length) return `<p class="meta" style="padding:8px">No matching projects${S.pp.all?"":" – tick the box above to include complete and archived ones"}.</p>`;
+  if(!list.length) return `<p class="meta" style="padding:8px">No matching projects${S.pp.all?"":" – tick the box above to include handover, complete and archived ones"}.</p>`;
   return list.map(p=>`<button type="button" class="pprow ${String(selected)===String(p.spId)?"on":""}" onclick="S.newProj='${p.spId}';paintPicker()"><span class="t">${esc(p.num)}</span><span class="grow">${esc(p.name)}</span><span class="r">${p.archived?"Archived":esc(p.status)}${ramsFor(p).length?" · has RAMS":""}</span></button>`).join("");
 }
 function paintPicker(){const el=$("#ppList");if(el)el.innerHTML=pickerRows(S.newProj);const b=$("#ppUse");if(b)b.disabled=!S.newProj;}
