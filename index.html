@@ -1735,47 +1735,47 @@ function model(d){
   const steps=[];let n=0;d.sequence.forEach(s=>{if(s.type==="h")steps.push({h:s.text});else steps.push({n:++n,t:s.text});});
   const J=a=>a.length?a.join(", "):"";
   return {ms:[
-    ["1.0","Project name",d.title],["","Project no.",d.jobNo],["1.1","Company","Workspace Audio Visual"],["","Site",d.site],
-    ["1.2","Title",d.activity],["","Rev no.",d.revision],["1.3","Date of issue",fmtDate(d.issueDate)],["","Workspace contract",d.contract],
-    ["","Client",d.client],["","Principal contractor",d.mainContractor],
-    ["2.0","Proposed start date",fmtDate(d.startDate)],["","Proposed start time",d.startTime],["2.1","Expected duration",d.duration],["2.2","Exact location(s)",d.locations],
-    ["2.3","Document prepared by",d.preparedBy],["","Issued for signature",isIssued(d)?`${d.issued.by}, ${fmtDT(d.issued.at)}`:"Not yet issued"],
-    ["2.4","Pre-start site briefing (toolbox talk)",d.briefing],["2.5","Scope / sequence of works",{scope:d.scope,steps}],
-    ["3.0","No. of personnel / job titles",[d.team.length?`${d.team.length} assigned:`:"",...d.team.map(t=>[t.name,t.role,t.mobile,t.reg&&"Vehicle "+t.reg].filter(Boolean).join(" – ")),d.personnel].filter(Boolean).join("\n")],
-    ["3.1","Supervisor",[d.supName,d.supMobile].filter(Boolean).join(" · ")],["","AV systems engineer",[d.engName,d.engMobile].filter(Boolean).join(" · ")],
-    ["3.2","Plant / equipment / tools",d.plant.join("\n")+(d.plantNotes?"\n\n"+d.plantNotes:"")+"\n\n* certification required before works commence. PAT: current PAT test required. Plant and equipment checked pre- and post-use on the day."],
-    ["3.3","Materials",d.materials],["3.4","Technical information",d.technical],["3.5","Waste removal",d.waste],["3.6","Housekeeping",d.housekeeping],
-    ["4.0","Risk assessments attached",d.hazards.map((h,i)=>`${i+1}. ${h.hazard}`).join("\n")],["4.1","COSHH",d.coshh.map(c=>c.substance).join("\n")||"None identified"],
-    ["4.2","Manual handling",`${d.mhActivities}\n\nCan manual handling be avoided? ${d.mhAvoid}\nAre the operatives trained in manual handling? ${d.mhTrained}\nAre the manual handling risk assessments attached? ${d.mhRA}`],
-    ["4.3","Noise / dust / vibration",`${d.noise}\n\nAre risk assessments attached? ${d.noiseRA}`],
-    ["4.4","Access / egress",[d.access,d.team.some(t=>t.reg)?"Vehicles attending site:\n"+d.team.filter(t=>t.reg).map(t=>`${t.reg} – ${t.name} (${t.role})`).join("\n"):""].filter(Boolean).join("\n\n")],
-    ["5.0","Permits required",J(d.permits)||"None"],["5.1","Permit type",d.permitType],["5.2","Issued by",d.permitIssuedBy],["5.3","Security arrangements",d.security],
-    ["5.4","Special training",d.trainingText+(d.training.length?"\n\nRequired: "+J(d.training):"")],["6.0","Mandatory site PPE",J(d.ppe)],["6.1","Task-specific PPE",d.taskPPE],
-    ["7.0","Emergency arrangements",d.emergency.arrangements],
+    ["1.0","Project Name",d.title],["","Project No.",d.jobNo],["1.1","Company","Workspace Audio Visual"],["","Site",d.site],
+    ["1.2","Title",d.activity],["","Rev No.",d.revision],["1.3","Date of Issue",fmtDate(d.issueDate)],["","Workspace Contract",d.contract],
+    ["","Client",d.client],["","Principal Contractor",d.mainContractor],
+    ["2.0","Proposed Start Date",fmtDate(d.startDate)],["","Proposed Start Time",d.startTime],["2.1","Expected Duration",d.duration],["2.2","Exact Location(s)",d.locations],
+    ["2.3","Document Prepared By",d.preparedBy],["","Issued for Signature",isIssued(d)?`${d.issued.by}, ${fmtDT(d.issued.at)}`:"Not yet issued"],
+    ["2.4","Pre-Start Site Briefing (Toolbox Talk)",d.briefing],["2.5","Scope / Sequence of Works",{scope:d.scope,steps}],
+    ["3.0","No. of Personnel / Job Titles",[d.team.length?`${d.team.length} assigned:`:"",...d.team.map(t=>[t.name,t.role,t.mobile,t.reg&&"Vehicle "+t.reg].filter(Boolean).join(" – ")),d.personnel].filter(Boolean).join("\n")],
+    ["3.1","Supervisor",[d.supName,d.supMobile].filter(Boolean).join(" · ")],["","AV Systems Engineer",[d.engName,d.engMobile].filter(Boolean).join(" · ")],
+    ["3.2","Plant / Equipment / Tools",d.plant.join("\n")+(d.plantNotes?"\n\n"+d.plantNotes:"")+"\n\n* certification required before works commence. PAT: current PAT test required. Plant and equipment checked pre- and post-use on the day."],
+    ["3.3","Materials",d.materials],["3.4","Technical Information",d.technical],["3.5","Waste Removal",d.waste],["3.6","Housekeeping",d.housekeeping],
+    ["4.0","Risk Assessments Attached",d.hazards.map((h,i)=>`${i+1}. ${h.hazard}`).join("\n")],["4.1","COSHH",d.coshh.map(c=>c.substance).join("\n")||"None identified"],
+    ["4.2","Manual Handling",`${d.mhActivities}\n\nCan manual handling be avoided? ${d.mhAvoid}\nAre the operatives trained in manual handling? ${d.mhTrained}\nAre the manual handling risk assessments attached? ${d.mhRA}`],
+    ["4.3","Noise / Dust / Vibration",`${d.noise}\n\nAre risk assessments attached? ${d.noiseRA}`],
+    ["4.4","Access / Egress",[d.access,d.team.some(t=>t.reg)?"Vehicles attending site:\n"+d.team.filter(t=>t.reg).map(t=>`${t.reg} – ${t.name} (${t.role})`).join("\n"):""].filter(Boolean).join("\n\n")],
+    ["5.0","Permits Required",J(d.permits)||"None"],["5.1","Permit Type",d.permitType],["5.2","Issued By",d.permitIssuedBy],["5.3","Security Arrangements",d.security],
+    ["5.4","Special Training",d.trainingText+(d.training.length?"\n\nRequired: "+J(d.training):"")],["6.0","Mandatory Site PPE",J(d.ppe)],["6.1","Task-Specific PPE",d.taskPPE],
+    ["7.0","Emergency Arrangements",d.emergency.arrangements],
     ["7.1","Rescue",[d.emergency.hospital&&"Hospital (nearest A&E):\n"+d.emergency.hospital,d.emergency.rescue,d.emergency.evacuation&&"Evacuation: "+d.emergency.evacuation].filter(Boolean).join("\n\n")],
-    ["7.2","First aid (qualified person)",[d.emergency.firstAidName,d.emergency.firstAidMobile].filter(Boolean).join(" · ")],
-    ["8.0","Pedestrian / traffic rerouting",d.pedestrian],["8.1","Details",d.pedDetails],["8.2","Fire safety arrangements",d.fire],["8.3","Task lighting",d.lighting],
-    ["9.0","Communicated to / how",d.communicated+" See briefing register."],
-    ["10.0","Persons responsible for monitoring",[d.monOff&&"Offsite: "+d.monOff,d.monOn&&"Onsite: "+d.monOn,d.monWork&&"Workface: "+d.monWork].filter(Boolean).join("\n")],
-    ["10.1","Review date / schedule",d.review],["10.2","Amendments authorised by",d.amendAuth],["10.3","Amendments communicated to",d.amendComm]
+    ["7.2","First Aid (Qualified Person)",[d.emergency.firstAidName,d.emergency.firstAidMobile].filter(Boolean).join(" · ")],
+    ["8.0","Pedestrian / Traffic Rerouting",d.pedestrian],["8.1","Details",d.pedDetails],["8.2","Fire Safety Arrangements",d.fire],["8.3","Task Lighting",d.lighting],
+    ["9.0","Communicated To / How",d.communicated+" See briefing register."],
+    ["10.0","Persons Responsible for Monitoring",[d.monOff&&"Offsite: "+d.monOff,d.monOn&&"Onsite: "+d.monOn,d.monWork&&"Workface: "+d.monWork].filter(Boolean).join("\n")],
+    ["10.1","Review Date / Schedule",d.review],["10.2","Amendments Authorised By",d.amendAuth],["10.3","Amendments Communicated To",d.amendComm]
   ],sigs,paper:d.signoff,amendments:d.amendments};
 }
 function docHTML(d){
   const m=model(d);
   const rows=m.ms.map(([no,lb,v])=>{let val;if(v&&typeof v==="object"){val=`${esc(v.scope)}${v.steps.length?`<div style="margin-top:8px">${v.steps.map(s=>s.h?`<h3>${esc(s.h)}</h3>`:`<div>${s.n}. ${esc(s.t)}</div>`).join("")}</div>`:""}`;}else val=esc(v||"");if(no==="2.2")val+=imagesHTML(d,"locations");if(no==="2.5")val+=imagesHTML(d,"scope");return `<tr><td class="no">${no}</td><td class="lb">${esc(lb)}</td><td>${val}</td></tr>`;}).join("");
-  return `<div class="doc"><div class="cover" style="position:relative">${showQR(d)?`<div style="position:absolute;right:32px;top:28px;text-align:center"><canvas class="qr" data-qr="${esc(qrTarget(d))}" width="92" height="92" style="background:#fff;border-radius:4px;padding:4px"></canvas><div style="font-size:10px;color:#DDB357;margin-top:4px;max-width:110px">Scan to check this is current and sign</div></div>`:""}<img src="${LOGO}" alt="Workspace Audio Visual"><div class="kind">Risk assessment and method statement · IMS L1 G020</div><h1>${esc(d.title||"Untitled")}</h1>
+  return `<div class="doc"><div class="cover" style="position:relative">${showQR(d)?`<div style="position:absolute;right:32px;top:28px;text-align:center"><canvas class="qr" data-qr="${esc(qrTarget(d))}" width="92" height="92" style="background:#fff;border-radius:4px;padding:4px"></canvas><div style="font-size:10px;color:#DDB357;margin-top:4px;max-width:110px">Scan to check this is current and sign</div></div>`:""}<img src="${LOGO}" alt="Workspace Audio Visual"><div class="kind">Risk Assessment and Method Statement · IMS L1 G020</div><h1>${esc(d.title||"Untitled")}</h1>
   <div style="color:#cfe0de;font-size:13px">${esc([d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join(" · "))}</div></div>
-  <section><h2>Method statement</h2><table class="g020">${rows}</table></section>
-  <section><h2>Risk assessment</h2><table class="kv"><tr><td>Project</td><td>${esc(d.title)}</td></tr><tr><td>Activity</td><td>${esc(d.activity)}</td></tr><tr><td>Completed by / date</td><td>${esc(d.preparedBy)} ${fmtDate(d.issueDate)}</td></tr><tr><td>Project no.</td><td>${esc(d.jobNo)}</td></tr><tr><td>People affected</td><td>${esc(d.raPeople)}</td></tr></table>
+  <section><h2>Method Statement</h2><table class="g020">${rows}</table></section>
+  <section><h2>Risk Assessment</h2><table class="kv"><tr><td>Project</td><td>${esc(d.title)}</td></tr><tr><td>Activity</td><td>${esc(d.activity)}</td></tr><tr><td>Completed By / Date</td><td>${esc(d.preparedBy)} ${fmtDate(d.issueDate)}</td></tr><tr><td>Project No.</td><td>${esc(d.jobNo)}</td></tr><tr><td>People Affected</td><td>${esc(d.raPeople)}</td></tr></table>
   <p class="muted" style="font-size:12px;margin:10px 0">Rating = likelihood (1–5) × severity (1–5). Low 1–4, medium 5–12, high 15–25.</p>
-  <table><thead><tr><th style="width:4%">No</th><th style="width:16%">Hazard</th><th style="width:18%">Possible effects / harm</th><th style="width:8%">Pre-control</th><th>Required controls</th><th style="width:8%">Post-control</th></tr></thead><tbody>
+  <table><thead><tr><th style="width:4%">No</th><th style="width:16%">Hazard</th><th style="width:18%">Possible Effects / Harm</th><th style="width:8%">Pre-Control</th><th>Required Controls</th><th style="width:8%">Post-Control</th></tr></thead><tbody>
   ${d.hazards.map((h,i)=>{const a=h.l*h.s,b=h.rl*h.rs;return `<tr><td>${i+1}</td><td><strong>${esc(h.hazard)}</strong>${h.who?`<div class="muted">${esc(h.who)}</div>`:""}</td><td>${esc(h.risk)}</td><td class="sc ${lvl(a)}">${LVNAME[lvl(a)]}<br>${a}</td><td class="pre">${esc(h.controls)}</td><td class="sc ${lvl(b)}">${LVNAME[lvl(b)]}<br>${b}</td></tr>`}).join("")}</tbody></table></section>
-  ${d.coshh.length?`<section><h2>COSHH assessments</h2><table><thead><tr><th>Substance</th><th>Use</th><th>Hazards</th><th>Route</th><th>Controls</th><th>PPE</th><th>First aid</th></tr></thead><tbody>${d.coshh.map(c=>`<tr><td><strong>${esc(c.substance)}</strong></td><td>${esc(c.use)}</td><td>${esc(c.hazards)}</td><td>${esc(c.route)}</td><td>${esc(c.controls)}</td><td>${esc(c.ppe)}</td><td>${esc(c.firstAid)}</td></tr>`).join("")}</tbody></table></section>`:""}
-  <section><h2>9.0 Briefing register</h2><p style="font-size:13px;margin-bottom:8px">By signing I confirm I have been briefed on this RAMS (Rev ${esc(d.revision)}), understand it and will work to it.</p>
-  <table><thead><tr><th>Name</th><th>Company</th><th>Card no.</th><th>Date</th><th style="width:26%">Signature</th><th style="width:16%">Verified</th></tr></thead><tbody>
+  ${d.coshh.length?`<section><h2>COSHH Assessments</h2><table><thead><tr><th>Substance</th><th>Use</th><th>Hazards</th><th>Route</th><th>Controls</th><th>PPE</th><th>First Aid</th></tr></thead><tbody>${d.coshh.map(c=>`<tr><td><strong>${esc(c.substance)}</strong></td><td>${esc(c.use)}</td><td>${esc(c.hazards)}</td><td>${esc(c.route)}</td><td>${esc(c.controls)}</td><td>${esc(c.ppe)}</td><td>${esc(c.firstAid)}</td></tr>`).join("")}</tbody></table></section>`:""}
+  <section><h2>9.0 Briefing Register</h2><p style="font-size:13px;margin-bottom:8px">By signing I confirm I have been briefed on this RAMS (Rev ${esc(d.revision)}), understand it and will work to it.</p>
+  <table><thead><tr><th>Name</th><th>Company</th><th>Card No.</th><th>Date</th><th style="width:26%">Signature</th><th style="width:16%">Verified</th></tr></thead><tbody>
   ${m.sigs.map(s=>`<tr><td>${esc(s.name)}</td><td>${esc(s.company)}</td><td>${esc(s.card)}</td><td>${fmtDT(s.signedAt)}</td><td>${s.sig?`<img class="sig" alt="Signature" src="${esc(s.sig)}">`:""}</td><td class="muted" style="font-size:11px">${s.witnessed?"In person, witnessed by "+esc(s.witness):"Own Microsoft 365 account"}</td></tr>`).join("")}
   ${[...m.paper,...Array(Math.max(0,6-m.paper.length-m.sigs.length)).fill({})].map(s=>`<tr style="height:34px"><td>${esc(s.name)}</td><td>${esc(s.company)}</td><td></td><td>${fmtDate(s.date)}</td><td></td><td></td></tr>`).join("")}</tbody></table></section>
-  <section><h2>10.3 Amendment log</h2><table><thead><tr><th style="width:12%">#</th><th style="width:18%">Date</th><th style="width:22%">Name</th><th>Change</th></tr></thead><tbody>
+  <section><h2>10.3 Amendment Log</h2><table><thead><tr><th style="width:12%">#</th><th style="width:18%">Date</th><th style="width:22%">Name</th><th>Change</th></tr></thead><tbody>
   ${(m.amendments.length?m.amendments:[{},{},{}]).map((a,i)=>`<tr style="height:28px"><td>${a.date?i+1:""}</td><td>${fmtDate(a.date)}</td><td>${esc(a.name)}</td><td>${esc(a.desc)}</td></tr>`).join("")}</tbody></table></section>
   <div class="foot">Workspace AV · Workspace Audio Visual Ltd<br>Registered office: 167–169 Great Portland Street, London, W1W 5PF · Operations HQ: Unit 5 Frobisher Industrial Centre, Budds Lane, Romsey, SO51 0EZ<br>0203 151 2120 · info@workspaceav.com · workspaceav.com · Company No. 13312342 · VAT GB 380641989</div></div>`;
 }
@@ -1825,9 +1825,9 @@ async function buildPdfBlob(d){
     const ims=no==="2.2"?pdfImgs("locations"):no==="2.5"?pdfImgs("scope"):[];
     if(ims.length) cell={stack:[cell,...ims]};
     return [{text:no,bold:true,color:MG,fillColor:PAPER,alignment:"center"},{text:lb.toUpperCase(),bold:true,color:MG,fillColor:"#FBFAF7",fontSize:8},cell];});
-  const raBody=[[H("No"),H("Hazard"),H("Possible effects / harm"),H("Pre"),H("Required controls"),H("Post")],...d.hazards.map((h,i)=>{const a=h.l*h.s,b=h.rl*h.rs,la=lvl(a),lb=lvl(b);
+  const raBody=[[H("No"),H("Hazard"),H("Possible Effects / Harm"),H("Pre"),H("Required Controls"),H("Post")],...d.hazards.map((h,i)=>{const a=h.l*h.s,b=h.rl*h.rs,la=lvl(a),lb=lvl(b);
     return [String(i+1),{stack:[{text:h.hazard,bold:true},h.who?{text:h.who,color:"#4d5f5f",fontSize:7.5,margin:[0,2,0,0]}:""]},h.risk,{text:LVNAME[la]+"\n"+a,alignment:"center",bold:true,fillColor:LVFILL[la],color:LVTXT[la]},h.controls,{text:LVNAME[lb]+"\n"+b,alignment:"center",bold:true,fillColor:LVFILL[lb],color:LVTXT[lb]}];})];
-  const sigRows=[[H("Name"),H("Company"),H("Card no."),H("Date"),H("Signature"),H("Verified")],...m.sigs.map(s=>[s.name||"",s.company||"",s.card||"",fmtDT(s.signedAt),s.sig?{image:s.sig,fit:[120,30]}:"",{text:s.witnessed?"In person, witnessed by "+s.witness:"Own M365 account",fontSize:7,color:"#4d5f5f"}]),
+  const sigRows=[[H("Name"),H("Company"),H("Card No."),H("Date"),H("Signature"),H("Verified")],...m.sigs.map(s=>[s.name||"",s.company||"",s.card||"",fmtDT(s.signedAt),s.sig?{image:s.sig,fit:[120,30]}:"",{text:s.witnessed?"In person, witnessed by "+s.witness:"Own M365 account",fontSize:7,color:"#4d5f5f"}]),
     ...[...m.paper,...Array(Math.max(0,8-m.paper.length-m.sigs.length)).fill({})].map(s=>[{text:s.name||" ",margin:[0,7,0,7]},s.company||"","",fmtDate(s.date),"",""])];
   const amRows=[[H("Amendment #"),H("Date"),H("Name"),H("Change")],...(m.amendments.length?m.amendments:[{},{},{},{}]).map((a,i)=>[a.date?String(i+1):" ",fmtDate(a.date),a.name||"",{text:a.desc||"",margin:[0,4,0,4]}])];
   const dd={pageSize:"A4",pageMargins:[36,40,36,36],info:{title:`RAMS – ${d.title} – Rev ${d.revision}`,author:"Workspace Audio Visual"},
@@ -1835,20 +1835,20 @@ async function buildPdfBlob(d){
     header:cp=>cp===1?null:({margin:[36,16,36,0],columns:[{text:`${d.title||""} ${d.jobNo?"("+d.jobNo+")":""}`,fontSize:7.5,color:MG,bold:true},{text:`RAMS ${d.ref||""} · Rev ${d.revision} · ${d.status}`,alignment:"right",fontSize:7.5,color:MG}]}),
     footer:(cp,pc)=>({margin:[36,6,36,0],columns:[{text:"Workspace Audio Visual Ltd · Company No. 13312342 · 167–169 Great Portland Street, London, W1W 5PF",fontSize:6.5,color:"#4d5f5f"},{text:`WSAV IMS L1 G020 · Page ${cp} of ${pc}`,alignment:"right",fontSize:7,color:"#4d5f5f",width:150}]}),
     content:[
-      {table:{widths:["*"],body:[[{fillColor:MG,margin:[18,18,18,18],stack:[{columns:[{image:LOGO,width:140},{width:"*",text:""},showQR(d)?{width:80,stack:[{qr:qrTarget(d),fit:72,foreground:MG,background:"#FFFFFF"},{text:"Scan to check this is current and sign",fontSize:6.5,color:GOLD,alignment:"center",margin:[0,3,0,0]}]}:{width:0,text:""}]},{text:"Risk assessment and method statement",color:GOLD,margin:[0,10,0,2]},{text:d.title||"Untitled",fontSize:20,color:"#FFFFFF"},{text:[d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join("  ·  "),color:"#cfe0de",margin:[0,4,0,0]},
+      {table:{widths:["*"],body:[[{fillColor:MG,margin:[18,18,18,18],stack:[{columns:[{image:LOGO,width:140},{width:"*",text:""},showQR(d)?{width:80,stack:[{qr:qrTarget(d),fit:72,foreground:MG,background:"#FFFFFF"},{text:"Scan to check this is current and sign",fontSize:6.5,color:GOLD,alignment:"center",margin:[0,3,0,0]}]}:{width:0,text:""}]},{text:"Risk Assessment and Method Statement",color:GOLD,margin:[0,10,0,2]},{text:d.title||"Untitled",fontSize:20,color:"#FFFFFF"},{text:[d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join("  ·  "),color:"#cfe0de",margin:[0,4,0,0]},
         isIssued(d)?{text:`Issued for signature by ${d.issued.by} · ${fmtDT(d.issued.at)}`,color:"#cfe0de",margin:[0,2,0,0]}:""]}]]},layout:"noBorders"},
-      {text:"Method statement",style:"h2"},{table:{widths:[28,110,"*"],body:msBody},layout:tl},
-      {text:"Risk assessment",style:"h2",pageBreak:"before"},
+      {text:"Method Statement",style:"h2"},{table:{widths:[28,110,"*"],body:msBody},layout:tl},
+      {text:"Risk Assessment",style:"h2",pageBreak:"before"},
       {table:{widths:[90,"*",90,"*"],body:[[LB("PROJECT"),d.title||"",LB("PROJECT NO"),d.jobNo||""],[LB("ACTIVITY"),d.activity||"",LB("COMPLETED BY / DATE"),`${d.preparedBy||""} ${fmtDate(d.issueDate)}`],[LB("PEOPLE AFFECTED"),{text:d.raPeople||"",colSpan:3},"",""]]},layout:tl},
       {text:"Rating = likelihood (1–5) × severity (1–5). Low 1–4, medium 5–12, high 15–25.",fontSize:7.5,color:"#4d5f5f",margin:[0,6,0,6]},
       {table:{headerRows:1,widths:[16,80,90,38,"*",38],body:raBody,dontBreakRows:true},layout:tl},
       {text:"Risk assessments must be reviewed regularly.",fontSize:7.5,color:"#4d5f5f",margin:[0,6,0,0]},
-      ...(d.coshh.length?[{text:"COSHH assessments",style:"h2"},{table:{headerRows:1,widths:[70,55,70,45,"*",55,70],dontBreakRows:true,body:[[H("Substance"),H("Use"),H("Hazards"),H("Route"),H("Controls"),H("PPE"),H("First aid")],...d.coshh.map(c=>[{text:c.substance,bold:true},c.use,c.hazards,c.route,c.controls,c.ppe,c.firstAid])]},layout:tl,fontSize:7.5}]:[]),
-      {text:"9.0 Briefing register",style:"h2",pageBreak:"before"},
+      ...(d.coshh.length?[{text:"COSHH Assessments",style:"h2"},{table:{headerRows:1,widths:[70,55,70,45,"*",55,70],dontBreakRows:true,body:[[H("Substance"),H("Use"),H("Hazards"),H("Route"),H("Controls"),H("PPE"),H("First Aid")],...d.coshh.map(c=>[{text:c.substance,bold:true},c.use,c.hazards,c.route,c.controls,c.ppe,c.firstAid])]},layout:tl,fontSize:7.5}]:[]),
+      {text:"9.0 Briefing Register",style:"h2",pageBreak:"before"},
       {text:`By signing I confirm I have been briefed on this RAMS (Rev ${d.revision}), understand it and will work to it. I will stop work and report if conditions change.`,margin:[0,0,0,8]},
       {table:{headerRows:1,widths:["*",80,60,62,128,70],body:sigRows,dontBreakRows:true},layout:tl},
       ...(m.sigs.length?[{text:"Digital signatures were captured in the Workspace AV RAMS Builder, either against the signer's own Microsoft 365 account or in person, witnessed by the named Workspace AV supervisor.",fontSize:7,color:"#4d5f5f",margin:[0,4,0,0]}]:[]),
-      {text:"10.3 Amendment log",style:"h2"},{table:{headerRows:1,widths:[60,80,110,"*"],body:amRows},layout:tl}]};
+      {text:"10.3 Amendment Log",style:"h2"},{table:{headerRows:1,widths:[60,80,110,"*"],body:amRows},layout:tl}]};
   return new Promise(res=>pdfMake.createPdf(dd).getBlob(res));
 }
 async function filePdf(d,kind){
