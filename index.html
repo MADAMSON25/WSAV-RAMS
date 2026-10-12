@@ -331,7 +331,7 @@ details.std > button{width:auto}
 /* ═══════════════════════════════════════════════════
    CONFIGURATION
    ═══════════════════════════════════════════════════ */
-const AZURE_CLIENT_ID  = 'cbf09fd6-ec7f-459f-8f19-9770b0732c5f';      // Application (client) ID of the RAMS Builder app registration
+const AZURE_CLIENT_ID  = 'PASTE-RAMS-BUILDER-CLIENT-ID-HERE';      // Application (client) ID of the RAMS Builder app registration
 const AZURE_TENANT_ID  = 'PASTE-DIRECTORY-TENANT-ID-HERE';         // Directory (tenant) ID — required for a single-tenant app
 const SP_SITE          = 'https://workspaceav1.sharepoint.com/sites/Engineering';
 const SP_SITE_PATH     = '/sites/Engineering';
@@ -881,19 +881,16 @@ function viewList(){
   const q=S.filter.toLowerCase();
   const docs=[...S.docs.values()].filter(d=>!q||[d.title,d.ref,d.client,d.site,d.jobNo].join(" ").toLowerCase().includes(q)).sort((a,b)=>String(a.startDate||"9").localeCompare(String(b.startDate||"9")));
   const aw=awaitingMe();
-  const over=docs.filter(d=>dueInfo(d)?.overdue);
   return `${aw.length?`<div class="await"><div class="grow"><h2 style="color:var(--wsav-gold)">${aw.length===1?"A RAMS is":aw.length+" RAMS are"} waiting for your signature</h2><p class="meta" style="margin-top:4px">Read the document, then sign to confirm you've been briefed and understand it.</p></div>${aw.map(d=>`<button type="button" class="btn primary" onclick="go('sign','${d.id}')">Sign ${esc(d.jobNo||d.title)}</button>`).join("")}</div>`:""}
-  ${over.length?`<div class="banner red"><span class="grow">${over.length} RAMS ${over.length===1?"is":"are"} past the ${RAMS_LEAD_WORKING_DAYS}-working-day deadline before start.</span></div>`:""}
   <div class="bar"><h1 class="grow">RAMS</h1>
     <input type="search" placeholder="Search title, job, client or site…" style="max-width:300px" value="${esc(S.filter)}" oninput="S.filter=this.value;const p=this.selectionStart;render();const i=document.querySelector('input[type=search]');i.focus();i.setSelectionRange(p,p)">
     <button type="button" class="btn primary" onclick="openNew()">+ New RAMS</button></div>
   ${!S.docs.size?`<div class="empty"><h2>No RAMS yet</h2><p>Start from a project on the Project Dashboard, or from the WSAV G020 template.</p><button type="button" class="btn primary" onclick="go('projects')">Choose a project</button></div>`:
   !docs.length?`<div class="empty"><p>Nothing matches “${esc(S.filter)}”.</p></div>`:
-  `<div class="tablewrap"><table class="docs"><thead><tr><th>Project</th><th>Job</th><th>Start</th><th>RAMS due</th><th>Signatures</th><th>Residual</th><th>Status</th><th></th></tr></thead><tbody>${docs.map(d=>{
-    const mx=Math.max(0,...d.hazards.map(h=>h.rl*h.rs));const l=mx?lvl(mx):"";const di=dueInfo(d);
+  `<div class="tablewrap"><table class="docs"><thead><tr><th>Project</th><th>Job</th><th>Start</th><th>Signatures</th><th>Residual</th><th>Status</th><th></th></tr></thead><tbody>${docs.map(d=>{
+    const mx=Math.max(0,...d.hazards.map(h=>h.rl*h.rs));const l=mx?lvl(mx):"";
     return `<tr class="click" onclick="go('edit','${d.id}','project')"><td><div class="t">${esc(d.title||"Untitled")}</div><div class="r">${esc(d.ref||"No reference")} · Rev ${esc(d.revision)}${d.lastBy?" · "+esc(d.lastBy):""}</div></td>
     <td>${esc(d.jobNo)}</td><td>${fmtDate(d.startDate)}</td>
-    <td>${di?`<span class="pill ${di.overdue?"st-Overdue":di.soon?"st-Awaiting":"st-Draft"}">${fmtDate(di.due)}</span>`:'<span class="r">–</span>'}</td>
     <td class="r">${d.requests.length?d.requests.length+" requested":"–"}${d.dashTask&&d.dashTask.rev===d.revision?' · <span class="ok">complete</span>':""}</td>
     <td>${mx?`<span class="chip lv-${l}" style="height:24px">${LVNAME[l]} ${mx}</span>`:'<span class="r">–</span>'}</td>
     <td><span class="pill st-${d.status.split(" ")[0]}">${esc(d.status)}</span></td>
