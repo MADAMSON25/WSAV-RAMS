@@ -283,7 +283,7 @@ details.std > button{width:auto}
     <div class="signin-error" id="signin-error"></div>
     <button type="button" class="signin-btn" id="signin-btn">
       <svg width="18" height="18" viewBox="0 0 24 24"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="13" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="13" width="10" height="10" fill="#00A4EF"/><rect x="13" y="13" width="10" height="10" fill="#FFB900"/></svg>
-      Sign In With Microsoft
+      Sign In with Microsoft
     </button>
   </div>
 </div>
@@ -291,7 +291,7 @@ details.std > button{width:auto}
 <!-- LOADING OVERLAY -->
 <div class="loading-overlay hidden" id="loading-overlay">
   <div class="loading-spinner"></div>
-  <div class="loading-title">Syncing With SharePoint</div>
+  <div class="loading-title">Syncing with SharePoint</div>
   <div class="loading-sub" id="loading-sub">Connecting…</div>
 </div>
 
@@ -357,10 +357,10 @@ const DASHBOARD_RAMS_TASK = 'RAMS Complete';
 /* ═══════════════════════════════════════════════════
    LIBRARY (G020 wording, hazards, COSHH, templates)
    ═══════════════════════════════════════════════════ */
-const PPE = ["Safety boots","Hi-vis vest","Safety gloves","Light eye protection","Hard hat","Hearing protection","FFP3 dust mask","Cut-resistant gloves","Knee pads","Full-body harness / inertia reel","High-impact goggles","Disposable coveralls"];
-const PERMITS = ["Principal contractor permit to work","Hot works permit","Ceiling void access permit","Electrical isolation / LOTO","MEWP permit","Out-of-hours working","Roof / riser access","Raised access floor permit","Builder's work request (fire compartmentation)"];
-const TRAINING = ["CSCS / ECS card","IPAF (3a/3b)","PASMA","Asbestos awareness (Cat A)","Manual handling","Working at height","First aid at work","SSSTS / SMSTS","Site induction completed","Manufacturer training (Crestron, Q-SYS, etc.)"];
-const PLANT = ["Podium steps","Stepladders (EN131 professional)","Mobile access tower *","Scissor lift / MEWP *","110V SDS drill with extraction (PAT)","Cordless drill/driver","M-class dust extractor (PAT)","Genie / material lift *","Display lifting trolley","Chain hoist (LOLER) *","Cable pulling rods","Cable tester","Laptop & commissioning tools (PAT)","Soldering station (PAT)","Hand tools (electric & non-electric)"];
+const PPE = ["Safety Boots","Hi-Vis Vest","Safety Gloves","Light Eye Protection","Hard Hat","Hearing Protection","FFP3 Dust Mask","Cut-Resistant Gloves","Knee Pads","Full-Body Harness / Inertia Reel","High-Impact Goggles","Disposable Coveralls"];
+const PERMITS = ["Principal Contractor Permit to Work","Hot Works Permit","Ceiling Void Access Permit","Electrical Isolation / LOTO","MEWP Permit","Out-of-Hours Working","Roof / Riser Access","Raised Access Floor Permit","Builder's Work Request (Fire Compartmentation)"];
+const TRAINING = ["CSCS / ECS Card","IPAF (3a/3b)","PASMA","Asbestos Awareness (Cat A)","Manual Handling","Working at Height","First Aid at Work","SSSTS / SMSTS","Site Induction Completed","Manufacturer Training (Crestron, Q-SYS, etc.)"];
+const PLANT = ["Podium Steps","Stepladders (EN131 Professional)","Mobile Access Tower *","Scissor Lift / MEWP *","110V SDS Drill with Extraction (PAT)","Cordless Drill/Driver","M-Class Dust Extractor (PAT)","Genie / Material Lift *","Display Lifting Trolley","Chain Hoist (LOLER) *","Cable Pulling Rods","Cable Tester","Laptop & Commissioning Tools (PAT)","Soldering Station (PAT)","Hand Tools (Electric & Non-Electric)"];
 
 const DEF = {
  briefing:`Site induction
@@ -414,54 +414,54 @@ If waste management is available on site:
  raPeople:"All operatives and third parties working near the vicinity of the works."
 };
 const G020_STEPS = [
- ["h","Preparation and planning"],["s","Obtain the AV drawings and specifications."],["s","Identify the cable routes and locations of the AV equipment."],["s","Conduct a site walk-around to review the works."],["s","Familiarise yourself with the site layout and emergency procedures."],["s","Plan the sequence of work."],
- ["h","Safety measures"],["s","All personnel to wear the required PPE, including safety boots, hard hat, gloves and eye protection where applicable."],["s","Ensure the work area is safe and segregated before starting."],
- ["h","Installation procedures"],["s","Install the AV equipment in the designated areas as per the site plans."],["s","Fit all AV equipment, microphones, displays and interconnect cabling."],["s","Fix equipment securely to avoid hazards or damage to the building structure."],["s","Install in line with the equipment manufacturer's instructions."],["s","Take photos during the install and on completion."],["s","Label all cabling as per the system schematics."],
- ["h","Quality control and testing"],["s","Visually inspect for damage to cables or equipment."],["s","Test all equipment for functionality."],["s","Test all audio and video signal routing, including divisible functions and presentation."],["s","Where applicable, conduct test calls with the office to confirm far-end quality and functionality."],["s","Hand over to the client after successful testing and provide operating training."],
+ ["h","Preparation and Planning"],["s","Obtain the AV drawings and specifications."],["s","Identify the cable routes and locations of the AV equipment."],["s","Conduct a site walk-around to review the works."],["s","Familiarise yourself with the site layout and emergency procedures."],["s","Plan the sequence of work."],
+ ["h","Safety Measures"],["s","All personnel to wear the required PPE, including safety boots, hard hat, gloves and eye protection where applicable."],["s","Ensure the work area is safe and segregated before starting."],
+ ["h","Installation Procedures"],["s","Install the AV equipment in the designated areas as per the site plans."],["s","Fit all AV equipment, microphones, displays and interconnect cabling."],["s","Fix equipment securely to avoid hazards or damage to the building structure."],["s","Install in line with the equipment manufacturer's instructions."],["s","Take photos during the install and on completion."],["s","Label all cabling as per the system schematics."],
+ ["h","Quality Control and Testing"],["s","Visually inspect for damage to cables or equipment."],["s","Test all equipment for functionality."],["s","Test all audio and video signal routing, including divisible functions and presentation."],["s","Where applicable, conduct test calls with the office to confirm far-end quality and functionality."],["s","Hand over to the client after successful testing and provide operating training."],
  ["h","Completion"],["s","Clean up the area and remove all tools, equipment and waste from site."]
 ];
 
 /* Hazards: WSAV standard set (from G020) + AV library */
 const HAZ = [
- {cat:"WSAV standard",hazard:"Third party interface",risk:"Injury caused to other trades and/or the public.",who:"Other trades, public",l:3,s:3,rl:1,rs:3,controls:"An exclusion zone is to be formed around the works area before any works commence.\nSignage warning of the exclusion zone and the works is to be posted on the barriers.\nShould any unauthorised personnel breach the exclusion zone, works are to cease immediately until the person is removed."},
- {cat:"WSAV standard",hazard:"Manual handling",risk:"Injury caused by poor manual handling technique when moving tools and equipment or manoeuvring trolleys.",who:"Operatives",l:3,s:3,rl:2,rs:2,controls:"Manual handling is to be avoided wherever possible. Where not possible, mechanical aids are provided; where aids cannot be used, employees are given information on safe manual handling technique.\nTeam lifting is used.\nToolboxes have wheels to reduce effort.\nToolbox talks on manual handling are completed regularly."},
- {cat:"WSAV standard",hazard:"Slips, trips and falls",risk:"Injury caused by slips, trips and falls due to poor housekeeping.",who:"Operatives, others",l:3,s:3,rl:2,rs:2,controls:"A Take 5 is completed at the start of each shift and each section of work.\nGood housekeeping maintained at all times, with tools, equipment and trip hazards kept clear of traffic routes.\nTrailing cables across traffic routes suspended on skyhooks or protected by a cable cover or hazard tape.\nWaste placed in the appropriate site skip. Housekeeping checked in the Supervisor's weekly hazard spotting and the Project Manager's monthly site inspection, with records kept in the safety file.\nUneven surfaces identified and signed by the principal contractor and subcontractor where applicable."},
- {cat:"WSAV standard",hazard:"Use of power tools",risk:"Injury caused by misuse of tools or use of faulty tools.",who:"Operatives",l:3,s:3,rl:1,rs:3,controls:"Power tools inspected for faults before use.\nAll power tools PAT tested.\nOperatives suitably skilled in the use of the tool.\nThe appropriate tool selected for the work and approved by the site supervisor."},
- {cat:"WSAV standard",hazard:"Working at height – collapse of access equipment",risk:"Injury caused by collapse of access equipment.",who:"Operatives",l:3,s:4,rl:1,rs:4,controls:"Stepladders placed on firm, level surfaces, with steps horizontal and at right angles to the work.\nUsers face the ladder at all times when climbing or dismounting.\nLegs spread as far as the retaining hinges allow, with all four legs firmly and squarely on the ground.\nDamaged or defective stepladders removed from use.\nTop tread not used as a working platform unless designed with a secure handhold.\nOnly one person on a stepladder at a time. No overreaching.\nStepladders checked by the user before use and inspected regularly. Only industrial-duty (EN131 professional) ladders used."},
- {cat:"WSAV standard",hazard:"Working at height – falling objects",risk:"Injury caused by objects falling from height onto persons below.",who:"Operatives, others",l:3,s:4,rl:1,rs:4,controls:"An exclusion zone formed around the access equipment before work from it, using barriers and signage warning of the works and access restrictions.\nOperatives in adjacent areas notified of the works.\nEntry to the exclusion zone only with approval of the works supervisor and the Workspace AV Construction Manager.\nTools and materials not carried up ladders or thrown.\nDebris bagged and removed from the platform as work progresses, with the platform cleaned at the end of each shift.\nNo walking or standing under access equipment while in use. Weekly inspections of equipment."},
- {cat:"WSAV standard",hazard:"Electrocution",risk:"Injury, electrocution or burns caused by misuse of electrical equipment and hand tools.",who:"Operatives",l:2,s:4,rl:1,rs:4,controls:"Employees and contractors only use tools and equipment they have been trained on.\nElectrical tools checked before use and PAT tested every 6 months.\nRCDs used with electrical equipment.\nCondition of electrical tools checked weekly by the supervisor during site inspection."},
- {cat:"WSAV standard",hazard:"Hazardous substances",risk:"Ill health caused by the use of hazardous substances.",who:"Operatives",l:3,s:3,rl:1,rs:3,controls:"All hazardous substances used in accordance with the specific COSHH assessments (eye protection, gloves, overalls etc).\nEmployees and contractors informed of control measures; COSHH assessments and safety data sheets kept in the safety file.\nOn contact, refer to the COSHH sheet and SDS for treatment."},
- {cat:"WSAV standard",hazard:"Asbestos",risk:"Ill health caused by coming into contact with asbestos.",who:"Operatives, others",l:2,s:5,rl:1,rs:4,controls:"Operatives only work in areas previously cleared of asbestos or where asbestos is safely contained, with access via a cleared safe path.\nAll operatives hold asbestos awareness training.\nOn any potential discovery, the area is made safe and barriered off and reported immediately to the supervisor and the Workspace AV Construction Manager."},
- {cat:"WSAV standard",hazard:"Moving vehicles and delivery activities",risk:"Injury caused through contact with vehicles, lifting equipment, trolleys etc.",who:"Operatives, drivers, pedestrians",l:2,s:4,rl:1,rs:4,controls:"Deliveries booked through the site delivery booking service 48 hours in advance.\nAppropriate delivery vehicle selected (tail lift, HIAB, flat deck).\nAppropriate materials handling equipment selected (board trolley, pallet truck, dolly).\nTrained resources available for materials handling."},
- {cat:"WSAV standard",hazard:"Dust and fumes",risk:"Inhalation of dust and/or fumes by operatives or third parties nearby.",who:"Operatives, others",l:3,s:3,rl:2,rs:2,controls:"Works causing excessive dust or fumes completed out of hours or, where not feasible, in screened exclusion zones and/or in short bursts.\nOn-tool extraction used when drilling masonry.\nSuitable eye protection, dust masks and/or RPE worn in the immediate vicinity."},
- {cat:"WSAV standard",hazard:"Cuts and abrasions",risk:"Injury to operatives' skin and limbs.",who:"Operatives",l:3,s:2,rl:2,rs:2,controls:"Site minimum PPE standards adhered to at all times.\nTask-specific PPE worn when required (e.g. gauntlets when carrying glass, riggers gloves for rough materials).\nEquipment selected to reduce cut risk, e.g. retractable blades or sheathed fixed blades."},
- {cat:"WSAV standard",hazard:"Unsuitable access equipment",risk:"Injury from falling from, or toppling of, unsuitably selected or installed access equipment.",who:"Operatives",l:3,s:4,rl:1,rs:4,controls:"Site supervisors select access equipment suitable for the task; manufacturer suitability alone is not sufficient.\nSelected equipment reviewed for suitability with the Workspace AV Construction Manager or Health and Safety Manager before use."},
- {cat:"Access",hazard:"Mobile access tower",risk:"Tower overturning or collapse; falls through open platform.",who:"Installers, others nearby",l:2,s:5,rl:1,rs:5,controls:"Erected by PASMA-trained operatives to the manufacturer's instructions. Outriggers fitted, castors locked, inspected before use and after alteration, tag completed. Never moved while occupied. Guardrails and toe boards on the working lift."},
- {cat:"Access",hazard:"MEWP / scissor lift operation",risk:"Entrapment, overturning, falls from basket, collision with pedestrians.",who:"Operators, site personnel",l:2,s:5,rl:1,rs:5,controls:"IPAF-trained operators only. Rescue plan in place with a trained ground person present. Floor loading and route confirmed with the principal contractor. Exclusion zone around the base. Daily pre-use checks recorded."},
- {cat:"Install",hazard:"Handling large displays and LED cabinets",risk:"Musculoskeletal injury; crush injury from dropped equipment; screen breakage and lacerations.",who:"Installers",l:4,s:3,rl:2,rs:3,controls:"Two-person lift minimum for displays over 55\" or 25 kg; team lift plan for LED cabinets. Display trolleys and lift assists used. Route surveyed and cleared first. Displays kept in packaging until at the mounting point. Cut-resistant gloves and safety boots worn."},
- {cat:"Install",hazard:"Wall mounting displays and brackets",risk:"Fixing failure causing a display to fall.",who:"Installers, occupants",l:3,s:4,rl:1,rs:4,controls:"Substrate confirmed before drilling. Fixings specified for substrate and load; pattresses confirmed with the dry-lining contractor. Bracket rated above display weight. Safety locks fitted. Final fixing checked by a second installer."},
- {cat:"Install",hazard:"Suspended equipment (projectors, speakers, flown LED)",risk:"Falling objects; structural overload.",who:"Installers, occupants",l:2,s:5,rl:1,rs:5,controls:"Fixings only to approved structure, loads confirmed with the structural engineer or principal contractor where required. Secondary safety bonds on all suspended items. Lifting equipment LOLER certified. Exclusion zone below during lifting."},
- {cat:"Install",hazard:"Drilling – hidden services",risk:"Electric shock, water ingress or gas strike.",who:"Installers, occupants",l:3,s:4,rl:1,rs:4,controls:"Review drawings and service routes with the principal contractor. Cable and pipe detector used before drilling. Avoid cable safe zones. Depth stops set."},
- {cat:"Install",hazard:"Ceiling voids",risk:"Cuts, eye injury from falling debris, strain from awkward posture.",who:"Installers, others below",l:3,s:3,rl:2,rs:2,controls:"Ceiling void permit where required. Safety glasses and gloves worn. Tiles removed and stored flat, never stood on. Area below barriered. Cables supported on containment, not the grid."},
- {cat:"Install",hazard:"Noise and vibration from power tools",risk:"Noise-induced hearing loss; HAVS.",who:"Installers, occupants",l:3,s:3,rl:2,rs:2,controls:"Noisy works scheduled with the client. Hearing protection worn during drilling. Low-vibration tools; trigger time monitored against exposure action values."},
- {cat:"Install",hazard:"Working in occupied premises",risk:"Injury to client staff and visitors; disruption.",who:"Client staff, visitors",l:3,s:3,rl:1,rs:3,controls:"Work areas agreed and segregated. Disruptive work out of hours. Tools never left unattended. Sign in and out with building security."},
- {cat:"Install",hazard:"Lone and out-of-hours working",risk:"Delayed response to injury or illness.",who:"Installers",l:2,s:4,rl:1,rs:4,controls:"No lone working for high-risk tasks. Check-in schedule with the project manager. Building security aware of presence. Phone charged with signal confirmed."},
- {cat:"Install",hazard:"Commissioning – LED brightness and audio levels",risk:"Eye discomfort; hearing damage from test tones.",who:"Engineers, occupants",l:2,s:3,rl:1,rs:2,controls:"LED brightness limited during commissioning. Audio levels ramped gradually with DSP limiters set before handover. Occupants warned before test tones."}
+ {cat:"WSAV Standard",hazard:"Third Party Interface",risk:"Injury caused to other trades and/or the public.",who:"Other trades, public",l:3,s:3,rl:1,rs:3,controls:"An exclusion zone is to be formed around the works area before any works commence.\nSignage warning of the exclusion zone and the works is to be posted on the barriers.\nShould any unauthorised personnel breach the exclusion zone, works are to cease immediately until the person is removed."},
+ {cat:"WSAV Standard",hazard:"Manual Handling",risk:"Injury caused by poor manual handling technique when moving tools and equipment or manoeuvring trolleys.",who:"Operatives",l:3,s:3,rl:2,rs:2,controls:"Manual handling is to be avoided wherever possible. Where not possible, mechanical aids are provided; where aids cannot be used, employees are given information on safe manual handling technique.\nTeam lifting is used.\nToolboxes have wheels to reduce effort.\nToolbox talks on manual handling are completed regularly."},
+ {cat:"WSAV Standard",hazard:"Slips, Trips and Falls",risk:"Injury caused by slips, trips and falls due to poor housekeeping.",who:"Operatives, others",l:3,s:3,rl:2,rs:2,controls:"A Take 5 is completed at the start of each shift and each section of work.\nGood housekeeping maintained at all times, with tools, equipment and trip hazards kept clear of traffic routes.\nTrailing cables across traffic routes suspended on skyhooks or protected by a cable cover or hazard tape.\nWaste placed in the appropriate site skip. Housekeeping checked in the Supervisor's weekly hazard spotting and the Project Manager's monthly site inspection, with records kept in the safety file.\nUneven surfaces identified and signed by the principal contractor and subcontractor where applicable."},
+ {cat:"WSAV Standard",hazard:"Use of Power Tools",risk:"Injury caused by misuse of tools or use of faulty tools.",who:"Operatives",l:3,s:3,rl:1,rs:3,controls:"Power tools inspected for faults before use.\nAll power tools PAT tested.\nOperatives suitably skilled in the use of the tool.\nThe appropriate tool selected for the work and approved by the site supervisor."},
+ {cat:"WSAV Standard",hazard:"Working at Height – Collapse of Access Equipment",risk:"Injury caused by collapse of access equipment.",who:"Operatives",l:3,s:4,rl:1,rs:4,controls:"Stepladders placed on firm, level surfaces, with steps horizontal and at right angles to the work.\nUsers face the ladder at all times when climbing or dismounting.\nLegs spread as far as the retaining hinges allow, with all four legs firmly and squarely on the ground.\nDamaged or defective stepladders removed from use.\nTop tread not used as a working platform unless designed with a secure handhold.\nOnly one person on a stepladder at a time. No overreaching.\nStepladders checked by the user before use and inspected regularly. Only industrial-duty (EN131 professional) ladders used."},
+ {cat:"WSAV Standard",hazard:"Working at Height – Falling Objects",risk:"Injury caused by objects falling from height onto persons below.",who:"Operatives, others",l:3,s:4,rl:1,rs:4,controls:"An exclusion zone formed around the access equipment before work from it, using barriers and signage warning of the works and access restrictions.\nOperatives in adjacent areas notified of the works.\nEntry to the exclusion zone only with approval of the works supervisor and the Workspace AV Construction Manager.\nTools and materials not carried up ladders or thrown.\nDebris bagged and removed from the platform as work progresses, with the platform cleaned at the end of each shift.\nNo walking or standing under access equipment while in use. Weekly inspections of equipment."},
+ {cat:"WSAV Standard",hazard:"Electrocution",risk:"Injury, electrocution or burns caused by misuse of electrical equipment and hand tools.",who:"Operatives",l:2,s:4,rl:1,rs:4,controls:"Employees and contractors only use tools and equipment they have been trained on.\nElectrical tools checked before use and PAT tested every 6 months.\nRCDs used with electrical equipment.\nCondition of electrical tools checked weekly by the supervisor during site inspection."},
+ {cat:"WSAV Standard",hazard:"Hazardous Substances",risk:"Ill health caused by the use of hazardous substances.",who:"Operatives",l:3,s:3,rl:1,rs:3,controls:"All hazardous substances used in accordance with the specific COSHH assessments (eye protection, gloves, overalls etc).\nEmployees and contractors informed of control measures; COSHH assessments and safety data sheets kept in the safety file.\nOn contact, refer to the COSHH sheet and SDS for treatment."},
+ {cat:"WSAV Standard",hazard:"Asbestos",risk:"Ill health caused by coming into contact with asbestos.",who:"Operatives, others",l:2,s:5,rl:1,rs:4,controls:"Operatives only work in areas previously cleared of asbestos or where asbestos is safely contained, with access via a cleared safe path.\nAll operatives hold asbestos awareness training.\nOn any potential discovery, the area is made safe and barriered off and reported immediately to the supervisor and the Workspace AV Construction Manager."},
+ {cat:"WSAV Standard",hazard:"Moving Vehicles and Delivery Activities",risk:"Injury caused through contact with vehicles, lifting equipment, trolleys etc.",who:"Operatives, drivers, pedestrians",l:2,s:4,rl:1,rs:4,controls:"Deliveries booked through the site delivery booking service 48 hours in advance.\nAppropriate delivery vehicle selected (tail lift, HIAB, flat deck).\nAppropriate materials handling equipment selected (board trolley, pallet truck, dolly).\nTrained resources available for materials handling."},
+ {cat:"WSAV Standard",hazard:"Dust and Fumes",risk:"Inhalation of dust and/or fumes by operatives or third parties nearby.",who:"Operatives, others",l:3,s:3,rl:2,rs:2,controls:"Works causing excessive dust or fumes completed out of hours or, where not feasible, in screened exclusion zones and/or in short bursts.\nOn-tool extraction used when drilling masonry.\nSuitable eye protection, dust masks and/or RPE worn in the immediate vicinity."},
+ {cat:"WSAV Standard",hazard:"Cuts and Abrasions",risk:"Injury to operatives' skin and limbs.",who:"Operatives",l:3,s:2,rl:2,rs:2,controls:"Site minimum PPE standards adhered to at all times.\nTask-specific PPE worn when required (e.g. gauntlets when carrying glass, riggers gloves for rough materials).\nEquipment selected to reduce cut risk, e.g. retractable blades or sheathed fixed blades."},
+ {cat:"WSAV Standard",hazard:"Unsuitable Access Equipment",risk:"Injury from falling from, or toppling of, unsuitably selected or installed access equipment.",who:"Operatives",l:3,s:4,rl:1,rs:4,controls:"Site supervisors select access equipment suitable for the task; manufacturer suitability alone is not sufficient.\nSelected equipment reviewed for suitability with the Workspace AV Construction Manager or Health and Safety Manager before use."},
+ {cat:"Access",hazard:"Mobile Access Tower",risk:"Tower overturning or collapse; falls through open platform.",who:"Installers, others nearby",l:2,s:5,rl:1,rs:5,controls:"Erected by PASMA-trained operatives to the manufacturer's instructions. Outriggers fitted, castors locked, inspected before use and after alteration, tag completed. Never moved while occupied. Guardrails and toe boards on the working lift."},
+ {cat:"Access",hazard:"MEWP / Scissor Lift Operation",risk:"Entrapment, overturning, falls from basket, collision with pedestrians.",who:"Operators, site personnel",l:2,s:5,rl:1,rs:5,controls:"IPAF-trained operators only. Rescue plan in place with a trained ground person present. Floor loading and route confirmed with the principal contractor. Exclusion zone around the base. Daily pre-use checks recorded."},
+ {cat:"Install",hazard:"Handling Large Displays and LED Cabinets",risk:"Musculoskeletal injury; crush injury from dropped equipment; screen breakage and lacerations.",who:"Installers",l:4,s:3,rl:2,rs:3,controls:"Two-person lift minimum for displays over 55\" or 25 kg; team lift plan for LED cabinets. Display trolleys and lift assists used. Route surveyed and cleared first. Displays kept in packaging until at the mounting point. Cut-resistant gloves and safety boots worn."},
+ {cat:"Install",hazard:"Wall Mounting Displays and Brackets",risk:"Fixing failure causing a display to fall.",who:"Installers, occupants",l:3,s:4,rl:1,rs:4,controls:"Substrate confirmed before drilling. Fixings specified for substrate and load; pattresses confirmed with the dry-lining contractor. Bracket rated above display weight. Safety locks fitted. Final fixing checked by a second installer."},
+ {cat:"Install",hazard:"Suspended Equipment (Projectors, Speakers, Flown LED)",risk:"Falling objects; structural overload.",who:"Installers, occupants",l:2,s:5,rl:1,rs:5,controls:"Fixings only to approved structure, loads confirmed with the structural engineer or principal contractor where required. Secondary safety bonds on all suspended items. Lifting equipment LOLER certified. Exclusion zone below during lifting."},
+ {cat:"Install",hazard:"Drilling – Hidden Services",risk:"Electric shock, water ingress or gas strike.",who:"Installers, occupants",l:3,s:4,rl:1,rs:4,controls:"Review drawings and service routes with the principal contractor. Cable and pipe detector used before drilling. Avoid cable safe zones. Depth stops set."},
+ {cat:"Install",hazard:"Ceiling Voids",risk:"Cuts, eye injury from falling debris, strain from awkward posture.",who:"Installers, others below",l:3,s:3,rl:2,rs:2,controls:"Ceiling void permit where required. Safety glasses and gloves worn. Tiles removed and stored flat, never stood on. Area below barriered. Cables supported on containment, not the grid."},
+ {cat:"Install",hazard:"Noise and Vibration from Power Tools",risk:"Noise-induced hearing loss; HAVS.",who:"Installers, occupants",l:3,s:3,rl:2,rs:2,controls:"Noisy works scheduled with the client. Hearing protection worn during drilling. Low-vibration tools; trigger time monitored against exposure action values."},
+ {cat:"Install",hazard:"Working in Occupied Premises",risk:"Injury to client staff and visitors; disruption.",who:"Client staff, visitors",l:3,s:3,rl:1,rs:3,controls:"Work areas agreed and segregated. Disruptive work out of hours. Tools never left unattended. Sign in and out with building security."},
+ {cat:"Install",hazard:"Lone and Out-of-Hours Working",risk:"Delayed response to injury or illness.",who:"Installers",l:2,s:4,rl:1,rs:4,controls:"No lone working for high-risk tasks. Check-in schedule with the project manager. Building security aware of presence. Phone charged with signal confirmed."},
+ {cat:"Install",hazard:"Commissioning – LED Brightness and Audio Levels",risk:"Eye discomfort; hearing damage from test tones.",who:"Engineers, occupants",l:2,s:3,rl:1,rs:2,controls:"LED brightness limited during commissioning. Audio levels ramped gradually with DSP limiters set before handover. Occupants warned before test tones."}
 ].map((h,i)=>({...h,libId:"h"+i}));
 
 const COSHH = [
- {substance:"Isopropyl alcohol (IPA) wipes / cleaner",use:"Cleaning screens and contacts",hazards:"Highly flammable; eye irritant; vapour may cause drowsiness",route:"Inhalation, eye contact",controls:"Use in ventilated areas away from ignition sources. Keep container closed. Minimal quantities on site.",ppe:"Nitrile gloves, safety glasses",firstAid:"Eyes: rinse with water for 15 min. Inhalation: fresh air. Seek medical advice if symptoms persist."},
- {substance:"Contact cleaner spray",use:"Cleaning connectors",hazards:"Extremely flammable aerosol; skin and eye irritant",route:"Inhalation, skin, eyes",controls:"Use in ventilated areas; equipment isolated first. No ignition sources.",ppe:"Nitrile gloves, safety glasses",firstAid:"Skin: wash with soap and water. Eyes: rinse. Inhalation: fresh air."},
- {substance:"Cable pulling lubricant",use:"Cable pulls in containment",hazards:"Mild skin and eye irritant",route:"Skin, eyes",controls:"Apply sparingly; wipe up spills.",ppe:"Gloves",firstAid:"Wash skin; rinse eyes."},
- {substance:"Construction dust (respirable crystalline silica)",use:"Drilling concrete, block and brick",hazards:"Causes silicosis and COPD (WEL 0.1 mg/m³ 8-hr TWA)",route:"Inhalation",controls:"On-tool M-class extraction. Vacuum or wet clean, no dry sweeping.",ppe:"FFP3 mask (face-fit tested), safety glasses",firstAid:"Fresh air; seek medical attention for breathing difficulty."},
- {substance:"Chemical anchor resin",use:"Heavy fixings into masonry",hazards:"Skin sensitiser; eye irritant",route:"Skin, eyes",controls:"Follow the SDS; use dispensing gun; dispose of cartridges correctly.",ppe:"Nitrile gloves, safety glasses",firstAid:"Wash skin immediately. Eyes: rinse 15 min and seek advice."},
- {substance:"Solder and flux fumes",use:"Terminating connectors",hazards:"Rosin flux fumes are respiratory sensitisers",route:"Inhalation, skin",controls:"Lead-free solder. Local fume extraction. Wash hands after use.",ppe:"Safety glasses",firstAid:"Fresh air. Seek advice for wheezing."}
+ {substance:"Isopropyl Alcohol (IPA) Wipes / Cleaner",use:"Cleaning screens and contacts",hazards:"Highly flammable; eye irritant; vapour may cause drowsiness",route:"Inhalation, eye contact",controls:"Use in ventilated areas away from ignition sources. Keep container closed. Minimal quantities on site.",ppe:"Nitrile gloves, safety glasses",firstAid:"Eyes: rinse with water for 15 min. Inhalation: fresh air. Seek medical advice if symptoms persist."},
+ {substance:"Contact Cleaner Spray",use:"Cleaning connectors",hazards:"Extremely flammable aerosol; skin and eye irritant",route:"Inhalation, skin, eyes",controls:"Use in ventilated areas; equipment isolated first. No ignition sources.",ppe:"Nitrile gloves, safety glasses",firstAid:"Skin: wash with soap and water. Eyes: rinse. Inhalation: fresh air."},
+ {substance:"Cable Pulling Lubricant",use:"Cable pulls in containment",hazards:"Mild skin and eye irritant",route:"Skin, eyes",controls:"Apply sparingly; wipe up spills.",ppe:"Gloves",firstAid:"Wash skin; rinse eyes."},
+ {substance:"Construction Dust (Respirable Crystalline Silica)",use:"Drilling concrete, block and brick",hazards:"Causes silicosis and COPD (WEL 0.1 mg/m³ 8-hr TWA)",route:"Inhalation",controls:"On-tool M-class extraction. Vacuum or wet clean, no dry sweeping.",ppe:"FFP3 mask (face-fit tested), safety glasses",firstAid:"Fresh air; seek medical attention for breathing difficulty."},
+ {substance:"Chemical Anchor Resin",use:"Heavy fixings into masonry",hazards:"Skin sensitiser; eye irritant",route:"Skin, eyes",controls:"Follow the SDS; use dispensing gun; dispose of cartridges correctly.",ppe:"Nitrile gloves, safety glasses",firstAid:"Wash skin immediately. Eyes: rinse 15 min and seek advice."},
+ {substance:"Solder and Flux Fumes",use:"Terminating connectors",hazards:"Rosin flux fumes are respiratory sensitisers",route:"Inhalation, skin",controls:"Lead-free solder. Local fume extraction. Wash hands after use.",ppe:"Safety glasses",firstAid:"Fresh air. Seek advice for wheezing."}
 ];
 
 const TEMPLATES = [
- {name:"WSAV standard AV install (G020)",desc:"Your standard G020 method, sequence and 13 standard hazards.",steps:G020_STEPS,hazards:HAZ.filter(h=>h.cat==="WSAV standard").map(h=>h.libId),coshh:[0,3],ppe:[0,1,2,3],plant:[0,1,5,14]},
- {name:"LED wall installation",desc:"Sub-frame, cabinets, processor and commissioning.",steps:[["s","Confirm structural sign-off for the wall and floor loading."],["s","Set out the exclusion zone and check wall flatness against the structural drawings."],["s","Install the sub-frame and brackets to the approved fixing design; torque and verify."],["s","Move LED cabinets to position on trolleys via the planned route."],["s","Hang cabinets from the bottom row upwards using team lifts; access by podium, tower or MEWP."],["s","Install power and data looms; electrician provides and tests the final supply."],["s","Commission and calibrate the processor with brightness limited during testing."],["s","Fit trims, clean down, clear packaging and complete client acceptance."]],hazards:["h0","h1","h2","h5","h6","h10","h13","h14","h15","h17","h23"],coshh:[0,3],ppe:[0,1,2,3,4,5,6],plant:[2,3,4,5,6,7,9]},
- {name:"Service / maintenance visit",desc:"PPM and reactive fault finding.",steps:[["s","Sign in with building security and confirm room availability with the client."],["s","Review the fault log and previous service reports."],["s","Inspect equipment, connections and cabling; clean screens and filters."],["s","Update firmware and test all system functions."],["s","Report findings, leave the room tidy and sign out."]],hazards:["h1","h3","h6","h21","h22"],coshh:[0,1],ppe:[0,1,3],plant:[0,5,12]}
+ {name:"WSAV Standard AV Install (G020)",desc:"Your standard G020 method, sequence and 13 standard hazards.",steps:G020_STEPS,hazards:HAZ.filter(h=>h.cat==="WSAV Standard").map(h=>h.libId),coshh:[0,3],ppe:[0,1,2,3],plant:[0,1,5,14]},
+ {name:"LED Wall Installation",desc:"Sub-frame, cabinets, processor and commissioning.",steps:[["s","Confirm structural sign-off for the wall and floor loading."],["s","Set out the exclusion zone and check wall flatness against the structural drawings."],["s","Install the sub-frame and brackets to the approved fixing design; torque and verify."],["s","Move LED cabinets to position on trolleys via the planned route."],["s","Hang cabinets from the bottom row upwards using team lifts; access by podium, tower or MEWP."],["s","Install power and data looms; electrician provides and tests the final supply."],["s","Commission and calibrate the processor with brightness limited during testing."],["s","Fit trims, clean down, clear packaging and complete client acceptance."]],hazards:["h0","h1","h2","h5","h6","h10","h13","h14","h15","h17","h23"],coshh:[0,3],ppe:[0,1,2,3,4,5,6],plant:[2,3,4,5,6,7,9]},
+ {name:"Service / Maintenance Visit",desc:"PPM and reactive fault finding.",steps:[["s","Sign in with building security and confirm room availability with the client."],["s","Review the fault log and previous service reports."],["s","Inspect equipment, connections and cabling; clean screens and filters."],["s","Update firmware and test all system functions."],["s","Report findings, leave the room tidy and sign out."]],hazards:["h1","h3","h6","h21","h22"],coshh:[0,1],ppe:[0,1,3],plant:[0,5,12]}
 ];
 
 
@@ -470,11 +470,11 @@ const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACDUAAAMhCAYAAADyihgl
 /* No approval step. Draft = being written · Issued = the PM has issued it for signature (one click)
    Complete = everyone requested has signed (matches the dashboard's "RAMS Complete" task) · Superseded = replaced */
 const STATUSES = ["Draft","Issued","Complete","Superseded"];
-const LIKE = ["","Rare","Unlikely","Possible","Likely","Almost certain"];
-const SEV  = ["","Negligible","Minor","Moderate","Major","Fatal / life-changing"];
+const LIKE = ["","Rare","Unlikely","Possible","Likely","Almost Certain"];
+const SEV  = ["","Negligible","Minor","Moderate","Major","Fatal / Life-Changing"];
 const lvl = s => s>=15?"H":s>=5?"M":"L";
 const LVNAME = {L:"Low",M:"Medium",H:"High"};
-const ROLES=["AV engineer","Supervisor","Delivery driver","Project manager","Subcontractor"];
+const ROLES=["AV Engineer","Commissioning Engineer","Programmer","Supervisor","Delivery Driver","Project Manager","Subcontractor"];
 
 /* ═══════════════════════════════════════════════════
    STATE + HELPERS
@@ -655,24 +655,41 @@ const permitList=d=>PERMITS.map(p=>adaptText(d,p));
 function setRamsType(t){const d=cur();if(!d||d.ramsType===t)return;d.ramsType=t;if(t==="standard")adaptDoc(d);touch();rerender();toast(t==="pc"?"Principal Contractor site – complete the extra section":"Standard RAMS");}
 const NA=v=>{const t=String(v??"").trim();return t?t:"N/A";};
 function blank(){
-  return {id:uid(),spId:null,title:"",activity:"AV equipment install",ref:"",revision:"01",status:"Draft",jobNo:"",projectSpId:null,client:"",site:"",mainContractor:"",pm:meName(),pmPhone:myMobile(),ramsType:"standard",
+  return {id:uid(),spId:null,title:"",activity:"AV Equipment Install",ref:"",revision:"01",status:"Draft",jobNo:"",projectSpId:null,client:"",site:"",mainContractor:"",pm:meName(),pmPhone:myMobile(),ramsType:"standard",
     pc:{siteManager:"",siteManagerMobile:"",hsContact:"",cppRef:"",f10:"",induction:"",permitSystem:"",logistics:"",welfare:"",submittedOn:"",acceptedBy:"",acceptedOn:"",comments:""},
     issueDate:today(),startDate:"",startTime:"08:00",duration:"",locations:"",preparedBy:meName(),
     briefing:DEF.briefing,scope:DEF.scope,sequence:[],
     team:[],personnel:"",supName:"",supMobile:"",engName:"",engMobile:"",plant:[],plantNotes:"",materials:"",technical:"",waste:DEF.waste,housekeeping:DEF.housekeeping,
     raPeople:DEF.raPeople,hazards:[],coshh:[],mhActivities:"Moving AV equipment, displays, racks and tools to and around the work area.",mhAvoid:"No",mhTrained:"Yes",mhRA:"Yes",noise:"Drilling into walls and ceilings for fixings and containment.",noiseRA:"Yes",access:"",
-    permits:[],permitType:"",permitIssuedBy:"",security:"",trainingText:DEF.training,training:[],ppe:["Safety boots","Hi-vis vest","Safety gloves","Light eye protection"],taskPPE:DEF.taskPPE,
+    permits:[],permitType:"",permitIssuedBy:"",security:"",trainingText:DEF.training,training:[],ppe:["Safety Boots","Hi-Vis Vest","Safety Gloves","Light Eye Protection"],taskPPE:DEF.taskPPE,
     emergency:{arrangements:DEF.emergency,hospital:"",hospitalConfirmed:null,rescue:"",evacuation:DEF.evacuation,firstAidName:"",firstAidMobile:""},
     pedestrian:"N/A",pedDetails:DEF.pedDetails,fire:DEF.fire,lighting:DEF.lighting,
     scopeSource:"",scopeFile:null,communicated:DEF.communicated,signoff:[],requests:[],signedRev:null,issued:null,images:{locations:[],scope:[]},dashTask:null,
     monOff:"",monOn:"",monWork:"",review:DEF.review,amendAuth:"",amendComm:DEF.amendComm,amendments:[],
     createdAt:Date.now(),updatedAt:Date.now()};
 }
+/* Older RAMS and People records were saved with sentence-case names (e.g. "AV engineer", "Hi-vis vest").
+   Map anything that matches a current list item, ignoring case, to the current spelling. */
+const canonOf=(list,v)=>{if(typeof v!=="string")return v;const l=v.trim().toLowerCase();const hit=list.find(x=>x.toLowerCase()===l);return hit||v;};
+const SEQ_HEADINGS=[...G020_STEPS.filter(x=>x[0]==="h").map(x=>x[1]),"Strip Out","First Fix","Second Fix – Installation","Commissioning and Testing","Completion and Handover"];
+const canonRole=r=>canonOf(ROLES,r);
+const canonCards=list=>(Array.isArray(list)?list:[]).map(c=>c&&typeof c==="object"?{...c,type:canonOf(CARD_TYPES,c.type)}:c);
+function canonDoc(o){
+  const permitNames=[...PERMITS,...PERMITS.map(stdWord)];
+  o.ppe=o.ppe.map(v=>canonOf(PPE,v)); o.plant=o.plant.map(v=>canonOf(PLANT,v));
+  o.permits=o.permits.map(v=>canonOf(permitNames,v)); o.training=o.training.map(v=>canonOf(TRAINING,v));
+  o.team=o.team.map(t=>t&&typeof t==="object"?{...t,role:canonRole(t.role),cardList:canonCards(t.cardList)}:t);
+  const hz=HAZ.map(h=>h.hazard), hzStd=hz.map(stdWord);
+  o.hazards=o.hazards.map(h=>h&&typeof h==="object"?{...h,hazard:canonOf([...hz,...hzStd],h.hazard),...(h.cat?{cat:canonOf(HAZ.map(x=>x.cat),h.cat)}:{})}:h);
+  o.coshh=o.coshh.map(c=>c&&typeof c==="object"?{...c,substance:canonOf(COSHH.map(x=>x.substance),c.substance)}:c);
+  o.sequence=o.sequence.map(x=>x.type==="h"?{...x,text:canonOf(SEQ_HEADINGS,x.text)}:x);
+  return o;
+}
 function normalize(d){
   const b=blank();const o={...b,...d};o.pc={...b.pc,...(d.pc||{})};if(!d.ramsType)o.ramsType=d.mainContractor?"pc":"standard";if(d.pm===undefined)o.pm="";if(d.pmPhone===undefined)o.pmPhone="";if(["In review","Ready","Approved"].includes(o.status))o.status="Draft";if(o.status==="Signed")o.status="Complete";delete o.approval;o.images={locations:[],scope:[],...(d.images||{})};o.emergency={...b.emergency,...(d.emergency||{})};
   ["team","sequence","hazards","coshh","plant","permits","training","ppe","signoff","requests","amendments"].forEach(k=>{if(!Array.isArray(o[k]))o[k]=b[k];});
   o.sequence=o.sequence.map(s=>({id:s.id||uid(),type:s.type||"s",text:s.text||""}));
-  return o;
+  return canonDoc(o);
 }
 async function loadProjects(){
   const opt=["Client","SiteAddress","MainContractor","StartDate"].filter(f=>S.projFields.has(f));
@@ -700,7 +717,7 @@ async function loadPeople(){
   const extra=cardsReady()?",CardsJSON":"";
   const items=await spGetAll(`${L(LISTS.people)}/items?$select=Id,Title,Role,Company,Mobile,VehicleReg,Email,Cards,Notes${extra}${FF('people')}&$top=500`);
   S.people.clear(); items.forEach(i=>{let cl=[];try{cl=JSON.parse(i.CardsJSON||"[]");}catch(e){}
-    S.people.set(i.Id,{spId:i.Id,name:i.Title||"",role:i.Role||"AV engineer",company:i.Company||"",mobile:i.Mobile||"",reg:i.VehicleReg||"",email:(i.Email||"").trim(),cards:i.Cards||"",cardList:Array.isArray(cl)?cl:[],notes:i.Notes||""});});
+    S.people.set(i.Id,{spId:i.Id,name:i.Title||"",role:canonRole(i.Role||"AV Engineer"),company:i.Company||"",mobile:i.Mobile||"",reg:i.VehicleReg||"",email:(i.Email||"").trim(),cards:i.Cards||"",cardList:canonCards(cl),notes:i.Notes||""});});
 }
 async function loadHospitals(){
   try{S.hospitals=await spGetAll(`${L(LISTS.hospitals)}/items?$select=Id,SitePostcode,HospitalName,Address,Phone,Lat,Lon,ConfirmedBy,ConfirmedAt${FF('hospitals')}&$top=1000`);}catch(e){S.hospitals=[];}
@@ -712,7 +729,7 @@ async function syncAll(first){
   try{
     if(first){
       const missing=await checkSchema();
-      if(missing.some(m=>!m.optional)){ov.classList.add("hidden");setSync("error","Setup needed");go("setup");return;}
+      if(missing.some(m=>!m.optional)){ov.classList.add("hidden");setSync("error","Setup Needed");go("setup");return;}
       if(missing.length) banner("The RAMS list is missing some optional columns ("+missing.map(m=>m.field).join(", ")+"). Signing for someone else and card expiry dates are switched off until they're added.",false);
       $("#loading-sub").textContent="Loading projects and RAMS…";
     }
@@ -905,11 +922,11 @@ function viewList(){
   <div class="bar"><h1 class="grow">RAMS</h1>
     <input type="search" placeholder="Search title, job, client or site…" style="max-width:300px" value="${esc(S.filter)}" oninput="S.filter=this.value;const p=this.selectionStart;render();const i=document.querySelector('input[type=search]');i.focus();i.setSelectionRange(p,p)">
     <button type="button" class="btn primary" onclick="openNew()">+ New RAMS</button></div>
-  ${!S.docs.size?`<div class="empty"><h2>No RAMS yet</h2><p>Start from a project on the Project Dashboard, or from the WSAV G020 template.</p><button type="button" class="btn primary" onclick="go('projects')">Choose a project</button></div>`:
+  ${!S.docs.size?`<div class="empty"><h2>No RAMS Yet</h2><p>Start from a project on the Project Dashboard, or from the WSAV G020 template.</p><button type="button" class="btn primary" onclick="go('projects')">Choose a Project</button></div>`:
   !docs.length?`<div class="empty"><p>Nothing matches “${esc(S.filter)}”.</p></div>`:
   `<div class="tablewrap"><table class="docs"><thead><tr><th>Project</th><th>Job</th><th>Start</th><th>Signatures</th><th>Residual</th><th>Status</th><th></th></tr></thead><tbody>${docs.map(d=>{
     const mx=Math.max(0,...d.hazards.map(h=>h.rl*h.rs));const l=mx?lvl(mx):"";
-    return `<tr class="click" onclick="go('edit','${d.id}','project')"><td><div class="t">${esc(d.title||"Untitled")}</div><div class="r">${esc(d.ref||"No reference")} · Rev ${esc(d.revision)}${isPC(d)?" · Principal Contractor":""}${d.lastBy?" · "+esc(d.lastBy):""}</div></td>
+    return `<tr class="click" onclick="go('edit','${d.id}','project')"><td><div class="t">${esc(d.title||"Untitled")}</div><div class="r">${esc(d.ref||"No Reference")} · Rev ${esc(d.revision)}${isPC(d)?" · Principal Contractor":""}${d.lastBy?" · "+esc(d.lastBy):""}</div></td>
     <td>${esc(d.jobNo)}</td><td>${fmtDate(d.startDate)}</td>
     <td class="r">${d.requests.length?d.requests.length+" requested":"–"}${d.dashTask&&d.dashTask.rev===d.revision?' · <span class="ok">complete</span>':""}</td>
     <td>${mx?`<span class="chip lv-${l}" style="height:24px">${LVNAME[l]} ${mx}</span>`:'<span class="r">–</span>'}</td>
@@ -938,7 +955,7 @@ function newDoc(tpl){
     d.hazards=t.hazards.map(id=>fromLib(HAZ.find(h=>h.libId===id)));
     d.coshh=t.coshh.map(i=>({id:uid(),...COSHH[i]})); d.ppe=[...new Set([...d.ppe,...t.ppe.map(i=>PPE[i])])]; d.plant=t.plant.map(i=>PLANT[i]);
     d.training=[TRAINING[0],TRAINING[3],TRAINING[4],TRAINING[8]];
-    d.activity=tpl===0?"AV equipment install":t.name;
+    d.activity=tpl===0?"AV Equipment Install":t.name;
   }
   d.ramsType=S.newType||"standard";
   applyProject(d,S.projects.get(+S.newProj)); S.newProj="";
@@ -997,24 +1014,24 @@ function viewProjects(){
   return `<div class="bar"><h1 class="grow">Projects</h1><a class="btn gold" href="${DASHBOARD_URL}" target="_blank" rel="noopener">Open Project Dashboard</a></div>
   <div class="bar" style="margin-top:-6px"><input type="search" id="pfq" placeholder="Search by job number, name or PM…" style="max-width:340px" value="${esc(S.pf.q)}" oninput="S.pf.q=this.value;S.pf.limit=50;const p=this.selectionStart;render();const i=$('#pfq');i.focus();i.setSelectionRange(p,p)"></div>
   <div class="tagrow">${PF_CHIPS.map(([k,n])=>`<button type="button" class="tag" aria-pressed="${S.pf.show===k}" onclick="S.pf.show='${k}';S.pf.limit=50;render()">${n} <span style="opacity:.7">${counts[k]}</span></button>`).join("")}</div>
-  ${shown.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Job</th><th>Project</th><th>Status</th><th>PM</th><th>Due</th><th title="Ticks the dashboard's RAMS Complete task – use it for RAMS done outside the builder">RAMS complete</th><th></th></tr></thead><tbody>${shown.map(p=>{
+  ${shown.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Job</th><th>Project</th><th>Status</th><th>PM</th><th>Due</th><th title="Ticks the dashboard's RAMS Complete task – use it for RAMS done outside the builder">RAMS Complete</th><th></th></tr></thead><tbody>${shown.map(p=>{
     const rs=ramsFor(p);
     return `<tr><td class="t">${esc(p.num)}</td><td>${esc(p.name)}</td><td class="r">${p.archived?"Archived":esc(p.status)}</td><td>${esc(p.pm)}</td><td>${fmtDate(p.due)}</td>
     <td><label class="switch" title="${p.ramsDone?"Untick":"Mark RAMS complete (e.g. done manually)"}"><input type="checkbox" ${p.ramsDone?"checked":""} onchange="setRamsDone(${p.spId},this.checked)"><span></span></label></td>
     <td style="text-align:right;white-space:nowrap">${rs.map(d=>`<a href="#" onclick="go('edit','${d.id}','project');return false" style="margin-right:6px"><span class="pill st-${d.status.split(" ")[0]}">${esc(d.ref||"RAMS")} · ${esc(d.status)}</span></a>`).join("")}<button type="button" class="btn sm" onclick="openNew(${p.spId})">${rs.length?"New RAMS":"Create RAMS"}</button></td></tr>`}).join("")}</tbody></table></div>
-    ${list.length>shown.length?`<div style="text-align:center;margin-top:12px"><button type="button" class="btn" onclick="S.pf.limit=(S.pf.limit||50)+50;rerender()">Show more (${list.length-shown.length} more)</button></div>`:""}`
+    ${list.length>shown.length?`<div style="text-align:center;margin-top:12px"><button type="button" class="btn" onclick="S.pf.limit=(S.pf.limit||50)+50;rerender()">Show More (${list.length-shown.length} more)</button></div>`:""}`
   :`<div class="empty"><p>No projects match. ${S.pf.show==="active"?"Handover, complete and archived projects are hidden – use the filters above to find them.":""}</p></div>`}`;
 }
 /* Searchable project picker used by New RAMS and Link Project */
 function projectPicker(selected){
   S.pp=S.pp||{q:"",all:false};
   return `<input type="search" id="ppq" placeholder="Type a job number or name…" value="${esc(S.pp.q)}" oninput="S.pp.q=this.value;paintPicker()">
-  <label class="check" style="margin:8px 0;padding:6px 10px"><input type="checkbox" ${S.pp.all?"checked":""} onchange="S.pp.all=this.checked;paintPicker()">Include handover, complete and archived projects</label>
+  <label class="check" style="margin:8px 0;padding:6px 10px"><input type="checkbox" ${S.pp.all?"checked":""} onchange="S.pp.all=this.checked;paintPicker()">Include Handover, Complete and Archived Projects</label>
   <div id="ppList" class="pplist">${pickerRows(selected)}</div>`;
 }
 function pickerRows(selected){
   const list=filterProjects(S.pp.q,S.pp.all?"all":"active").slice(0,30);
-  if(!list.length) return `<p class="meta" style="padding:8px">No matching projects${S.pp.all?"":" – tick the box above to include handover, complete and archived ones"}.</p>`;
+  if(!list.length) return `<p class="meta" style="padding:8px">No Matching Projects${S.pp.all?"":" – tick the box above to include handover, complete and archived ones"}.</p>`;
   return list.map(p=>`<button type="button" class="pprow ${String(selected)===String(p.spId)?"on":""}" onclick="S.newProj='${p.spId}';paintPicker()"><span class="t">${esc(p.num)}</span><span class="grow">${esc(p.name)}</span><span class="r">${p.archived?"Archived":esc(p.status)}${ramsFor(p).length?" · has RAMS":""}</span></button>`).join("");
 }
 function paintPicker(){const el=$("#ppList");if(el)el.innerHTML=pickerRows(S.newProj);const b=$("#ppUse");if(b)b.disabled=!S.newProj;}
@@ -1024,18 +1041,18 @@ function openNew(projectSpId){
   layer(`<h2>New RAMS</h2>
   <div class="stepno" style="margin-top:14px"><b>1</b>Which project?</div>
   ${projectPicker(S.newProj)}
-  <div class="stepno" style="margin-top:16px"><b>2</b>RAMS type</div>
+  <div class="stepno" style="margin-top:16px"><b>2</b>RAMS Type</div>
   <div class="checks" id="typePick">${Object.entries(RAMS_TYPES).map(([k,n])=>`<label class="check" style="align-items:flex-start"><input type="radio" name="ramsType" value="${k}" ${S.newType===k?"checked":""} onchange="S.newType=this.value" style="margin-top:3px"><span><strong>${n}</strong><br><span class="meta">${k==="pc"?"For sites run by a principal contractor. Adds their contacts, site rules and RAMS acceptance.":"For our own works. No principal contractor wording."}</span></span></label>`).join("")}</div>
-  <div class="stepno" style="margin-top:16px"><b>3</b>Start from</div>
+  <div class="stepno" style="margin-top:16px"><b>3</b>Start From</div>
   ${TEMPLATES.map((t,i)=>`<div class="lib-item"><div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p></div><button type="button" class="btn ${i?"":"primary"} sm" onclick="newDoc(${i})">Use</button></div>`).join("")}
-  <div class="lib-item"><div><h3>Copy the last RAMS for this project</h3><p>Starts a fresh Rev 01 with the same content.</p></div><button type="button" class="btn sm" onclick="copyFromProject()">Copy</button></div>
+  <div class="lib-item"><div><h3>Copy the Last RAMS for This Project</h3><p>Starts a fresh Rev 01 with the same content.</p></div><button type="button" class="btn sm" onclick="copyFromProject()">Copy</button></div>
   <div class="lib-item"><div><h3>Blank G020</h3><p>Standard wording only – no sequence or hazards.</p></div><button type="button" class="btn sm" onclick="newDoc()">Use</button></div>
   <p class="meta" style="margin-top:8px">Tip: upload the scope of works on the Method tab and the builder drafts the sequence for you.</p>
   <div style="text-align:right;margin-top:12px"><button type="button" class="btn" onclick="closeLayer()">Cancel</button></div>`);
 }
 function pickProjectForDoc(){
   S.newProj=cur().projectSpId?String(cur().projectSpId):""; S.pp={q:"",all:false};
-  layer(`<h2>Link to a dashboard project</h2><p class="meta" style="margin:0 0 10px">Fills the project name and number (plus client, site, contractor and start date where the dashboard has them). “${DASHBOARD_RAMS_TASK}” is ticked on the dashboard when everyone has signed.</p>
+  layer(`<h2>Link to a Dashboard Project</h2><p class="meta" style="margin:0 0 10px">Fills the project name and number (plus client, site, contractor and start date where the dashboard has them). “${DASHBOARD_RAMS_TASK}” is ticked on the dashboard when everyone has signed.</p>
   ${projectPicker(S.newProj)}
   <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px"><button type="button" class="btn" onclick="closeLayer()">Cancel</button><button type="button" class="btn primary" id="ppUse" ${S.newProj?"":"disabled"} onclick="applyProject(cur(),S.projects.get(+S.newProj));touch();closeLayer();rerender();toast('Linked to project')">Link Project</button></div>`);
 }
@@ -1043,7 +1060,7 @@ function pickProjectForDoc(){
 /* ═══════════════════════════════════════════════════
    CARDS / COMPETENCE EXPIRY
    ═══════════════════════════════════════════════════ */
-const CARD_TYPES=["CSCS","ECS","IPAF","PASMA","SSSTS","SMSTS","First aid at work","Asbestos awareness","Other"];
+const CARD_TYPES=["CSCS","ECS","IPAF","PASMA","SSSTS","SMSTS","First Aid at Work","Asbestos Awareness","Other"];
 const CARD_WARN_DAYS=30;
 function cardsReady(){return !S.missing.some(m=>m.list===LISTS.people&&m.field==="CardsJSON");}
 const fmtMY=d=>d?new Date(d+"T12:00:00").toLocaleDateString("en-GB",{month:"short",year:"numeric"}):"";
@@ -1064,7 +1081,7 @@ function cardIssues(list,startDate){
 function teamCardWarnings(d){
   const w=[];
   d.team.forEach(t=>{const p=S.people.get(t.pid);const list=p?p.cardList:t.cardList;
-    if(!(list||[]).length){ if(/engineer|supervisor|subcontract/i.test(t.role)) w.push({name:t.name,level:"M",text:"no cards recorded"}); return; }
+    if(!(list||[]).length){ if(/engineer|programmer|supervisor|subcontract/i.test(t.role)) w.push({name:t.name,level:"M",text:"no cards recorded"}); return; }
     cardIssues(list,d.startDate).forEach(i=>w.push({name:t.name,...i}));});
   return w;
 }
@@ -1073,8 +1090,8 @@ function cardBadge(list,startDate){const iss=cardIssues(list,startDate);if(!iss.
 function cardRowsHTML(list){
   return (list.length?list:[{type:"ECS",number:"",expiry:""}]).map((c,i)=>`<div class="grid g3" data-card-row style="grid-template-columns:150px 1fr 160px auto;align-items:end;margin-bottom:8px">
    <select data-c="type">${CARD_TYPES.map(t=>`<option ${t===c.type?"selected":""}>${t}</option>`).join("")}</select>
-   <input type="text" data-c="number" placeholder="Card number" value="${esc(c.number)}"><input type="date" data-c="expiry" value="${esc(c.expiry)}" aria-label="Expiry date">
-   <button type="button" class="icon" aria-label="Remove card" onclick="this.closest('[data-card-row]').remove()">${ICON.del}</button></div>`).join("");
+   <input type="text" data-c="number" placeholder="Card Number" value="${esc(c.number)}"><input type="date" data-c="expiry" value="${esc(c.expiry)}" aria-label="Expiry Date">
+   <button type="button" class="icon" aria-label="Remove Card" onclick="this.closest('[data-card-row]').remove()">${ICON.del}</button></div>`).join("");
 }
 function readCardRows(){return [...document.querySelectorAll("[data-card-row]")].map(r=>({type:r.querySelector('[data-c=type]').value,number:r.querySelector('[data-c=number]').value.trim(),expiry:r.querySelector('[data-c=expiry]').value})).filter(c=>c.number||c.expiry);}
 
@@ -1085,30 +1102,30 @@ function viewPeople(){
   const ppl=[...S.people.values()].sort((a,b)=>(ROLES.indexOf(a.role)+a.name).localeCompare(ROLES.indexOf(b.role)+b.name));
   return `<div class="bar"><h1 class="grow">People</h1><button type="button" class="btn primary" onclick="editPerson()">+ Add Person</button></div>
   <p class="hint" style="margin-top:-8px">Stored in the “${LISTS.people}” list. Add a Workspace AV email for anyone who needs to sign RAMS — that's how they're matched when they sign in.</p>
-  ${ppl.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Name</th><th>Role</th><th>Company</th><th>Mobile</th><th>Vehicle reg</th><th>Email</th><th>Cards</th><th></th></tr></thead><tbody>
+  ${ppl.length?`<div class="tablewrap"><table class="docs"><thead><tr><th>Name</th><th>Role</th><th>Company</th><th>Mobile</th><th>Vehicle Reg</th><th>Email</th><th>Cards</th><th></th></tr></thead><tbody>
   ${ppl.map(p=>`<tr class="click" onclick="editPerson(${p.spId})"><td class="t">${esc(p.name)}</td><td>${esc(p.role)}</td><td>${esc(p.company)}</td><td>${esc(p.mobile)}</td><td>${esc(p.reg)}</td><td class="r">${p.email?esc(p.email):'<span style="color:#ff8a80">Missing</span>'}</td><td class="r">${esc(p.cards)}${cardBadge(p.cardList,"")}</td>
   <td onclick="event.stopPropagation()"><button type="button" class="icon" aria-label="Delete" onclick="delPerson(${p.spId})">${ICON.del}</button></td></tr>`).join("")}</tbody></table></div>`
-  :`<div class="empty"><p>No people yet. Add your engineers and drivers once, then tick them onto each RAMS.</p><button type="button" class="btn primary" onclick="editPerson()">Add person</button></div>`}`;
+  :`<div class="empty"><p>No people yet. Add your engineers and drivers once, then tick them onto each RAMS.</p><button type="button" class="btn primary" onclick="editPerson()">Add Person</button></div>`}`;
 }
 function editPerson(id){
   if(id) S.addToDoc=false;
-  const p=S.people.get(id)||{spId:null,name:"",role:"AV engineer",company:"Workspace AV",mobile:"",reg:"",email:"",cards:"",cardList:[],notes:""};
+  const p=S.people.get(id)||{spId:null,name:"",role:"AV Engineer",company:"Workspace AV",mobile:"",reg:"",email:"",cards:"",cardList:[],notes:""};
   S.editP=p;
-  layer(`<h2>${id?"Edit person":"Add person"}</h2>
+  layer(`<h2>${id?"Edit Person":"Add Person"}</h2>
   <div class="grid g2" style="margin-top:14px">
-   <label class="f"><span>Full name</span><input type="text" id="pName" value="${esc(p.name)}"></label>
+   <label class="f"><span>Full Name</span><input type="text" id="pName" value="${esc(p.name)}"></label>
    <label class="f"><span>Role</span><select id="pRole">${[...new Set([...ROLES,p.role])].map(r=>`<option ${r===p.role?"selected":""}>${esc(r)}</option>`).join("")}</select></label>
    <label class="f"><span>Company</span><input type="text" id="pCo" value="${esc(p.company)}"></label>
    <label class="f"><span>Mobile</span><input type="text" id="pMob" value="${esc(p.mobile)}"></label>
-   <label class="f"><span>Vehicle reg</span><input type="text" id="pReg" value="${esc(p.reg)}"></label>
-   <label class="f"><span>Work email (for signing)</span><input type="email" id="pEmail" value="${esc(p.email)}" placeholder="name@workspaceav.com"></label>
+   <label class="f"><span>Vehicle Reg</span><input type="text" id="pReg" value="${esc(p.reg)}"></label>
+   <label class="f"><span>Work Email (for signing)</span><input type="email" id="pEmail" value="${esc(p.email)}" placeholder="name@workspaceav.com"></label>
   </div>
-  ${cardsReady()?`<div class="sub-h">Cards and competence</div><div id="pCardRows">${cardRowsHTML(p.cardList||[])}</div>
+  ${cardsReady()?`<div class="sub-h">Cards and Competence</div><div id="pCardRows">${cardRowsHTML(p.cardList||[])}</div>
   <button type="button" class="btn sm" onclick="document.getElementById('pCardRows').insertAdjacentHTML('beforeend',cardRowsHTML([{type:'IPAF',number:'',expiry:''}]))">+ Add Card</button>
   <p class="meta" style="margin-top:6px">Expiry dates drive the warnings on each RAMS. Anything expired or due within ${CARD_WARN_DAYS} days of the start date is flagged.</p>`
-  :`<label class="f" style="margin-top:12px"><span>Cards / competence</span><input type="text" id="pCards" value="${esc(p.cards)}" placeholder="e.g. ECS (exp 03/2028), IPAF 3a/3b, PASMA"></label><p class="meta" style="margin-top:6px">Run SharePoint Setup to record card expiry dates.</p>`}
+  :`<label class="f" style="margin-top:12px"><span>Cards / Competence</span><input type="text" id="pCards" value="${esc(p.cards)}" placeholder="e.g. ECS (exp 03/2028), IPAF 3a/3b, PASMA"></label><p class="meta" style="margin-top:6px">Run SharePoint Setup to record card expiry dates.</p>`}
   <label class="f" style="margin-top:12px"><span>Notes</span><textarea id="pNotes" rows="2">${esc(p.notes)}</textarea></label>
-  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px"><button type="button" class="btn" onclick="S.addToDoc=false;closeLayer()">Cancel</button><button type="button" class="btn primary" id="pSave" onclick="savePerson()">${S.addToDoc?"Save And Add To RAMS":"Save"}</button></div>`);
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px"><button type="button" class="btn" onclick="S.addToDoc=false;closeLayer()">Cancel</button><button type="button" class="btn primary" id="pSave" onclick="savePerson()">${S.addToDoc?"Save and Add to RAMS":"Save"}</button></div>`);
 }
 async function savePerson(){
   const name=$("#pName").value.trim(); if(!name){toast("Enter a name");return;}
@@ -1161,7 +1178,7 @@ async function findHospitals(){
     const seen=new Set();
     found=(j.elements||[]).map(e=>{const t=e.tags||{};const la=e.lat??e.center?.lat,lo=e.lon??e.center?.lon;
       const addr=[[t["addr:housenumber"],t["addr:street"]].filter(Boolean).join(" "),t["addr:city"]||t["addr:town"],t["addr:postcode"]].filter(Boolean).join(", ");
-      return {name:t.name||"Unnamed hospital",address:addr,phone:t.phone||t["contact:phone"]||"",lat:la,lon:lo,km:haversine(loc.lat,loc.lon,la,lo)};})
+      return {name:t.name||"Unnamed Hospital",address:addr,phone:t.phone||t["contact:phone"]||"",lat:la,lon:lo,km:haversine(loc.lat,loc.lon,la,lo)};})
       .filter(h=>h.lat&&!seen.has(h.name)&&seen.add(h.name)).sort((a,b)=>a.km-b.km).slice(0,3);
   }catch(e){}
   S.hospOpts=[...known.map(h=>({name:h.HospitalName,address:h.Address,phone:h.Phone,lat:+h.Lat,lon:+h.Lon,km:h.Lat?haversine(loc.lat,loc.lon,+h.Lat,+h.Lon):null,confirmedBy:h.ConfirmedBy,confirmedAt:h.ConfirmedAt})),...found.filter(f=>!known.some(k=>k.HospitalName===f.name))];
@@ -1169,7 +1186,7 @@ async function findHospitals(){
   if(!S.hospOpts.length){out.innerHTML=`<p class="meta">No A&E departments found within 40 km in OpenStreetMap. Enter the hospital manually and check it on the NHS website.</p>`;return;}
   out.innerHTML=S.hospOpts.map((h,i)=>`<div class="hosp"><div><h3>${esc(h.name)}${h.confirmedBy?` <span class="ok" style="font-size:11px">· confirmed by ${esc(h.confirmedBy)}</span>`:""}</h3>
     <p>${esc(h.address||"Address not listed – add it before confirming")}${h.phone?" · "+esc(h.phone):""}${h.km!=null?` · ${h.km.toFixed(1)} km away (straight line)`:""}</p>
-    <p><a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(loc.pc||loc.lat+","+loc.lon)}&destination=${h.lat},${h.lon}" target="_blank" rel="noopener">Directions from site</a></p></div>
+    <p><a href="https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(loc.pc||loc.lat+","+loc.lon)}&destination=${h.lat},${h.lon}" target="_blank" rel="noopener">Directions from Site</a></p></div>
     <button type="button" class="btn primary sm" onclick="useHospital(${i})">Use</button></div>`).join("")+`<p class="meta" style="margin-top:6px">Open data can list urgent treatment centres or minor injuries units as A&E. Check the department takes major injuries before confirming.</p>`;
 }
 function useHospital(i){
@@ -1198,53 +1215,53 @@ async function confirmHospital(){
    are below so they can be extended without touching the UI.
    ═══════════════════════════════════════════════════ */
 const SCOPE_ITEMS=[
- {key:"strip",label:"Strip out / decommission",re:/\b(strip[- ]?out|decommission\w*|remove (the )?existing|de-?install\w*|removal of existing)\b/i,
+ {key:"strip",label:"Strip Out / Decommission",re:/\b(strip[- ]?out|decommission\w*|remove (the )?existing|de-?install\w*|removal of existing)\b/i,
   strip:["Confirm with the client which existing equipment is to be removed, retained or returned.","Isolate and disconnect existing AV equipment; remove, pack and label for return or WEEE disposal."],hz:["h1","h6","h11"]},
- {key:"cabling",label:"Cabling and containment",re:/\b(cabl(e|es|ing)|cat ?6a?|cat ?5e|fibre|hdmi|hdbaset|dante|containment|trunking|cable basket|conduit|tie ?lines?)\b/i,
+ {key:"cabling",label:"Cabling and Containment",re:/\b(cabl(e|es|ing)|cat ?6a?|cat ?5e|fibre|hdmi|hdbaset|dante|containment|trunking|cable basket|conduit|tie ?lines?)\b/i,
   first:["Confirm containment routes for AV cabling with the principal contractor; do not use other trades' containment without agreement.","Pull AV cabling along the agreed routes, keeping segregation from mains, and label both ends to the system schematics."],
   comm:["Test and certify data and AV tie lines and record the results."],hz:["h19","h2"],plant:[10,11]},
- {key:"floor",label:"Floor boxes / raised floor",re:/\b(floor ?box(es)?|raised (access )?floor|\braf\b|floor grommets?)\b/i,
-  first:["Lift raised floor tiles only within the permitted area; barrier open voids at all times and reinstate tiles at the end of each shift.","Install floor boxes and route cabling to the furniture positions."],hz:["h2"],permits:["Raised access floor permit"]},
- {key:"rack",label:"Equipment rack",re:/\b(racks?|comms room|comms cabinet|equipment cabinet|ups|pdus?)\b/i,
+ {key:"floor",label:"Floor Boxes / Raised Floor",re:/\b(floor ?box(es)?|raised (access )?floor|\braf\b|floor grommets?)\b/i,
+  first:["Lift raised floor tiles only within the permitted area; barrier open voids at all times and reinstate tiles at the end of each shift.","Install floor boxes and route cabling to the furniture positions."],hz:["h2"],permits:["Raised Access Floor Permit"]},
+ {key:"rack",label:"Equipment Rack",re:/\b(racks?|comms room|comms cabinet|equipment cabinet|ups|pdus?)\b/i,
   second:["Build and dress the equipment rack; connect PDUs only to outlets installed and tested by the electrician."],hz:["h1","h6"]},
- {key:"led",label:"LED wall",re:/\b(led wall|dv-?led|direct[- ]view|led video wall|led cabinets?|led tiles?)\b/i,
+ {key:"led",label:"LED Wall",re:/\b(led wall|dv-?led|direct[- ]view|led video wall|led cabinets?|led tiles?)\b/i,
   first:["Confirm structural sign-off for the LED wall fixings and floor loading before starting."],
   second:["Install the LED sub-frame to the approved fixing design; torque and verify all fixings.","Hang LED cabinets from the bottom row upwards using team lifts or lift assists.","Connect LED power and data looms; the electrician provides and tests the final supply."],
   comm:["Commission and calibrate the LED processor with brightness limited during testing."],hz:["h13","h15","h17","h23"],plant:[2,9]},
  {key:"display",label:"Displays",re:/\b(displays?|monitors?|tvs?|lcds?|\d{2,3}\s?(?:"|”|-?inch|in\b))/i,
   second:["Confirm wall substrate and pattress positions against the elevation drawings before marking out brackets.","Fix display brackets to the confirmed substrate using fixings rated for the load.","Hang displays with a two-person lift (team lift for 75\" and above); fit safety locks and check level."],
   hz:["h15","h16","h18"],plant:[8,4]},
- {key:"proj",label:"Projector and screen",re:/\b(projectors?|projection screens?|motori[sz]ed screens?|electric screens?)\b/i,
+ {key:"proj",label:"Projector and Screen",re:/\b(projectors?|projection screens?|motori[sz]ed screens?|electric screens?)\b/i,
   second:["Fix the projector mount and screen to the soffit or approved structure; fit secondary safety bonds.","Align and focus the projector and set the screen limits."],hz:["h17","h5"]},
- {key:"spk",label:"Ceiling / wall speakers",re:/\b(ceiling speakers?|pendant speakers?|loudspeakers?|speakers?|subwoofers?)\b/i,
+ {key:"spk",label:"Ceiling / Wall Speakers",re:/\b(ceiling speakers?|pendant speakers?|loudspeakers?|speakers?|subwoofers?)\b/i,
   second:["Cut ceiling tile apertures to template; fit tile bridges and a secondary safety bond to each speaker."],hz:["h19","h5"]},
  {key:"mic",label:"Microphones",re:/\b(ceiling mic(rophone)?s?|microphones?|mics?|mxa\d*|tcc ?2|beamforming|ceiling arrays?)\b/i,
   second:["Install ceiling microphones with the manufacturer's mount kit and a secondary safety bond, positioned to the acoustic layout."],hz:["h19","h5"]},
- {key:"vc",label:"Video conferencing",re:/\b(teams rooms?|zoom rooms?|video ?conferenc\w*|vc|neat (bar|board|pad)|neat|poly (studio|x\d+|g7500)|logitech|rally (bar|plus)?|meetup|video bars?|codecs?|ptz|cameras?)\b/i,
+ {key:"vc",label:"Video Conferencing",re:/\b(teams rooms?|zoom rooms?|video ?conferenc\w*|vc|neat (bar|board|pad)|neat|poly (studio|x\d+|g7500)|logitech|rally (bar|plus)?|meetup|video bars?|codecs?|ptz|cameras?)\b/i,
   second:["Mount the video bar or camera at the specified height and centre line, and install the touch controller."],
   comm:["Provision the room account, sign in the VC device and apply the client's configuration.","Carry out test calls with the office to confirm far-end audio and video quality."],hz:["h23"]},
  {key:"ctl",label:"Control and DSP",re:/\b(crestron|extron|amx|control processors?|cp4|touch ?panels?|tsw-?\d*|q-?sys|biamp|tesira|dsp|amplifiers?|amps?|matrix switch\w*|switchers?)\b/i,
   second:["Install the control processor, DSP and amplifiers; mount touch panels in the specified positions."],
   comm:["Load control and DSP programming; set gain structure and limiters before raising system levels."],hz:["h23"]},
- {key:"book",label:"Room booking panels",re:/\b(room booking|booking panels?|scheduling panels?|room panels?)\b/i,
+ {key:"book",label:"Room Booking Panels",re:/\b(room booking|booking panels?|scheduling panels?|room panels?)\b/i,
   second:["Install room booking panels outside each room at the agreed height and connect PoE."]},
- {key:"wps",label:"Wireless presentation",re:/\b(clickshare|airmedia|solstice|wireless present\w*|byod)\b/i,
+ {key:"wps",label:"Wireless Presentation",re:/\b(clickshare|airmedia|solstice|wireless present\w*|byod)\b/i,
   second:["Install the wireless presentation base units and pair the buttons."]},
- {key:"sign",label:"Digital signage",re:/\b(digital signage|signage|brightsign|media players?)\b/i,
+ {key:"sign",label:"Digital Signage",re:/\b(digital signage|signage|brightsign|media players?)\b/i,
   second:["Install signage displays and media players, then load test content."],hz:["h15","h16"]},
- {key:"loop",label:"Hearing loop",re:/\b(hearing loops?|induction loops?|assistive listening)\b/i,
+ {key:"loop",label:"Hearing Loop",re:/\b(hearing loops?|induction loops?|assistive listening)\b/i,
   first:["Lay the induction loop cable to the designer's layout before floor finishes go down."],comm:["Test the hearing loop to BS EN IEC 60118-4 and record the results."]}
 ];
 const SCOPE_CONDS=[
- {label:"Out of hours",re:/\b(out[- ]of[- ]hours|evenings?|weekends?|nights?|overnight)\b/i,pre:["Confirm out-of-hours access, security arrangements and lone-working check-ins before starting."],hz:["h22"],permits:["Out-of-hours working"]},
- {label:"Occupied building",re:/\b(occupied|live (office|environment|building|site)|staff (present|working)|operational|business as usual)\b/i,pre:["Agree segregated work areas and noisy-work times with the client; protect furniture and finishes."],hz:["h21","h20"]},
- {label:"Work at high level",re:/\b(mewps?|scissor ?lifts?|cherry ?pickers?|boom lifts?|high level|double[- ]height|atrium)\b/i,pre:["Confirm the MEWP route and floor loading with the principal contractor; IPAF operator and rescue plan in place."],hz:["h14"],plant:[3],permits:["MEWP permit"]},
- {label:"Access tower",re:/\b(towers?|scaffold\w*)\b/i,hz:["h13"],plant:[2]},
- {label:"Drilling masonry",re:/\b(core ?drill\w*|concrete|soffits?|masonry|block ?work|brick ?work)\b/i,hz:["h10","h20"],plant:[4,6]},
- {label:"Ceiling works",re:/\b(ceilings?|ceiling voids?|tiles?)\b/i,hz:["h19"],permits:["Ceiling void access permit"]},
- {label:"Hot works",re:/\b(solder\w*|hot works)\b/i,permits:["Hot works permit"],plant:[13]},
+ {label:"Out of Hours",re:/\b(out[- ]of[- ]hours|evenings?|weekends?|nights?|overnight)\b/i,pre:["Confirm out-of-hours access, security arrangements and lone-working check-ins before starting."],hz:["h22"],permits:["Out-of-Hours Working"]},
+ {label:"Occupied Building",re:/\b(occupied|live (office|environment|building|site)|staff (present|working)|operational|business as usual)\b/i,pre:["Agree segregated work areas and noisy-work times with the client; protect furniture and finishes."],hz:["h21","h20"]},
+ {label:"Work at High Level",re:/\b(mewps?|scissor ?lifts?|cherry ?pickers?|boom lifts?|high level|double[- ]height|atrium)\b/i,pre:["Confirm the MEWP route and floor loading with the principal contractor; IPAF operator and rescue plan in place."],hz:["h14"],plant:[3],permits:["MEWP Permit"]},
+ {label:"Access Tower",re:/\b(towers?|scaffold\w*)\b/i,hz:["h13"],plant:[2]},
+ {label:"Drilling Masonry",re:/\b(core ?drill\w*|concrete|soffits?|masonry|block ?work|brick ?work)\b/i,hz:["h10","h20"],plant:[4,6]},
+ {label:"Ceiling Works",re:/\b(ceilings?|ceiling voids?|tiles?)\b/i,hz:["h19"],permits:["Ceiling Void Access Permit"]},
+ {label:"Hot Works",re:/\b(solder\w*|hot works)\b/i,permits:["Hot Works Permit"],plant:[13]},
  {label:"Deliveries",re:/\b(deliver(y|ies)|loading bay|goods lift)\b/i,pre:["Book deliveries through the principal contractor's logistics plan at least 48 hours ahead."],hz:["h9"]},
- {label:"Training / handover",re:/\b(training|o&m|operation and maintenance|user guides?)\b/i,hand:["Provide end-user training and issue O&M documentation and user guides."]}
+ {label:"Training / Handover",re:/\b(training|o&m|operation and maintenance|user guides?)\b/i,hand:["Provide end-user training and issue O&M documentation and user guides."]}
 ];
 const BASE_HAZ=["h0","h1","h2","h3","h4","h6"];
 function qtyNear(text,idx){const back=text.slice(Math.max(0,idx-28),idx);const m=back.match(/(\d{1,3})\s*(?:x|no\.?|nr\.?|off|×)\s*[^\d\n]{0,18}$/i)||back.match(/(\d{1,3})\s*$/);return m?+m[1]:null;}
@@ -1265,21 +1282,21 @@ function draftFromScope(text){
   const groups=[];
   const pre=["Obtain the AV drawings, specification and this scope of works; review them with the installation team.","Sign in, attend the site induction and confirm permits and working areas with the principal contractor.","Conduct a site walk-around to confirm cable routes, equipment locations and emergency procedures.","Set out and segregate the work area with barriers and signage; complete a Take 5."];
   conds.forEach(c=>(c.pre||[]).forEach(s=>pre.push(s)));
-  groups.push({h:"Preparation and planning",steps:pre});
-  const strip=items.flatMap(i=>i.strip||[]); if(strip.length) groups.push({h:"Strip out",steps:strip});
+  groups.push({h:"Preparation and Planning",steps:pre});
+  const strip=items.flatMap(i=>i.strip||[]); if(strip.length) groups.push({h:"Strip Out",steps:strip});
   const first=items.flatMap(i=>i.first||[]);
   if(items.length&&!has("cabling")) first.unshift("Confirm first-fix containment, back boxes and pattresses are complete and in the right positions.");
-  if(first.length) groups.push({h:"First fix",steps:first});
-  const second=items.flatMap(i=>i.second||[]); if(second.length) groups.push({h:"Second fix – installation",steps:second.concat(["Install equipment in line with the manufacturer's instructions and fix securely to avoid damage to the building structure."])});
+  if(first.length) groups.push({h:"First Fix",steps:first});
+  const second=items.flatMap(i=>i.second||[]); if(second.length) groups.push({h:"Second Fix – Installation",steps:second.concat(["Install equipment in line with the manufacturer's instructions and fix securely to avoid damage to the building structure."])});
   const comm=items.flatMap(i=>i.comm||[]);
-  groups.push({h:"Commissioning and testing",steps:["Visually inspect all cables and equipment for damage.","Power up via the installed outlets and test all equipment for functionality.",...comm,"Test all audio and video signal routing, including divisible functions and presentation."]});
+  groups.push({h:"Commissioning and Testing",steps:["Visually inspect all cables and equipment for damage.","Power up via the installed outlets and test all equipment for functionality.",...comm,"Test all audio and video signal routing, including divisible functions and presentation."]});
   const hand=["Label all cabling and equipment to the system schematics.","Take photos during the install and on completion.","Clean the area and remove all tools, equipment and waste from site.","Demonstrate the system to the client and complete handover.",...conds.flatMap(c=>c.hand||[])];
-  groups.push({h:"Completion and handover",steps:hand});
+  groups.push({h:"Completion and Handover",steps:hand});
   const uniq=a=>[...new Set(a)];
   return {items,conds,groups:groups.map(g=>({h:g.h,steps:uniq(g.steps)})),
     hazards:uniq([...BASE_HAZ,...items.flatMap(i=>i.hz||[]),...conds.flatMap(c=>c.hz||[])]),
     plant:uniq([0,1,5,14,...items.flatMap(i=>i.plant||[]),...conds.flatMap(c=>c.plant||[])]).map(i=>PLANT[i]),
-    permits:uniq(["Principal contractor permit to work",...items.flatMap(i=>i.permits||[]),...conds.flatMap(c=>c.permits||[])])};
+    permits:uniq(["Principal Contractor Permit to Work",...items.flatMap(i=>i.permits||[]),...conds.flatMap(c=>c.permits||[])])};
 }
 async function extractText(file){
   const name=file.name.toLowerCase();
@@ -1316,15 +1333,15 @@ function openDraft(){
   const newHaz=r.hazards.map(id=>HAZ.find(h=>h.libId===id)).filter(h=>h&&!haveHaz.has(h.hazard));
   const newPlant=r.plant.filter(p=>!d.plant.includes(p)), newPerm=r.permits.filter(p=>!d.permits.includes(p));
   let k=0;
-  layer(`<h2>Draft from scope of works</h2>
+  layer(`<h2>Draft from Scope of Works</h2>
   <p class="meta" style="margin:0 0 10px">Found in the scope: ${r.items.length?r.items.map(i=>`<span class="pill st-Approved" style="margin:2px">${esc(i.label)}${i.qty?" ×"+i.qty:""}</span>`).join(""):"no specific AV systems – a general sequence is shown"}${r.conds.length?" "+r.conds.map(c=>`<span class="pill st-In" style="margin:2px">${esc(c.label)}</span>`).join(""):""}</p>
   <p class="meta" style="margin:0 0 12px">Untick anything that doesn't apply. Everything stays editable after adding.</p>
   <div id="draftSteps">${r.groups.map((g,gi)=>`<div class="sub-h">${esc(g.h)}</div>${g.steps.map((s,si)=>`<label class="check" style="margin-bottom:6px;align-items:flex-start"><input type="checkbox" checked data-g="${gi}" data-s="${si}" style="margin-top:2px"><span>${esc(s)}</span></label>`).join("")}`).join("")}</div>
-  ${newHaz.length?`<div class="sub-h">Hazards to add to 4.0</div><div class="checks" id="draftHaz">${newHaz.map(h=>`<label class="check"><input type="checkbox" checked value="${h.libId}">${esc(h.hazard)}</label>`).join("")}</div>`:""}
-  ${newPlant.length?`<div class="sub-h">Plant and equipment (3.2)</div><div class="checks" id="draftPlant">${newPlant.map(p=>`<label class="check"><input type="checkbox" checked value="${esc(p)}">${esc(p)}</label>`).join("")}</div>`:""}
+  ${newHaz.length?`<div class="sub-h">Hazards to Add to 4.0</div><div class="checks" id="draftHaz">${newHaz.map(h=>`<label class="check"><input type="checkbox" checked value="${h.libId}">${esc(h.hazard)}</label>`).join("")}</div>`:""}
+  ${newPlant.length?`<div class="sub-h">Plant and Equipment (3.2)</div><div class="checks" id="draftPlant">${newPlant.map(p=>`<label class="check"><input type="checkbox" checked value="${esc(p)}">${esc(p)}</label>`).join("")}</div>`:""}
   ${newPerm.length?`<div class="sub-h">Permits (5.0)</div><div class="checks" id="draftPerm">${newPerm.map(p=>`<label class="check"><input type="checkbox" checked value="${esc(p)}">${esc(p)}</label>`).join("")}</div>`:""}
   <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px"><button type="button" class="btn" onclick="closeLayer()">Cancel</button>
-  ${d.sequence.length?`<button type="button" class="btn" onclick="applyDraft(false)">Add To Current Sequence</button>`:""}<button type="button" class="btn primary" onclick="applyDraft(true)">${d.sequence.length?"Replace Sequence":"Use This Sequence"}</button></div>`);
+  ${d.sequence.length?`<button type="button" class="btn" onclick="applyDraft(false)">Add to Current Sequence</button>`:""}<button type="button" class="btn primary" onclick="applyDraft(true)">${d.sequence.length?"Replace Sequence":"Use This Sequence"}</button></div>`);
 }
 function applyDraft(replace){
   const d=cur(),r=S.draft; const seq=[];
@@ -1344,7 +1361,7 @@ function applyDraft(replace){
    Photos are resized on the device, attached to the RAMS item,
    and shown in the preview and PDF with their captions.
    ═══════════════════════════════════════════════════ */
-const IMG_SECTIONS={locations:"2.2 Exact location(s)",scope:"2.5 Scope of works"};
+const IMG_SECTIONS={locations:"2.2 Exact Location(s)",scope:"2.5 Scope of Works"};
 const imgCache={};
 function compressImage(file,max=1600,q=0.82){
   return new Promise((res,rej)=>{const u=URL.createObjectURL(file);const im=new Image();
@@ -1386,11 +1403,11 @@ async function paintImages(){
 }
 function imageEditor(d,section){
   const list=d.images[section]||[];
-  return `<div class="sub-h">Photos and plans</div>
+  return `<div class="sub-h">Photos and Plans</div>
   ${list.length?`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:10px">${list.map((im,i)=>`<div style="border:1px solid var(--wsav-border);border-radius:8px;overflow:hidden;background:var(--wsav-dark2)">
     <img data-srv="${esc(im.srv)}" alt="${esc(im.caption||"Image")}" style="width:100%;height:120px;object-fit:cover;display:block;background:#0a2a2a">
-    <div style="display:flex;gap:4px;padding:6px"><input type="text" data-imgcap="${section}|${i}" value="${esc(im.caption)}" placeholder="Caption" style="padding:6px 8px;font-size:12px"><button type="button" class="icon" aria-label="Remove image" onclick="removeImage('${section}',${i})">${ICON.del}</button></div></div>`).join("")}</div>`:""}
-  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn sm" style="cursor:pointer">+ Add Photos Or Plans<input type="file" accept="image/*" multiple hidden onchange="uploadImages('${section}',this.files);this.value=''"></label>
+    <div style="display:flex;gap:4px;padding:6px"><input type="text" data-imgcap="${section}|${i}" value="${esc(im.caption)}" placeholder="Caption" style="padding:6px 8px;font-size:12px"><button type="button" class="icon" aria-label="Remove Image" onclick="removeImage('${section}',${i})">${ICON.del}</button></div></div>`).join("")}</div>`:""}
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn sm" style="cursor:pointer">+ Add Photos or Plans<input type="file" accept="image/*" multiple hidden onchange="uploadImages('${section}',this.files);this.value=''"></label>
   <span class="meta" id="imgStatus-${section}">${list.length?"":"JPEG or PNG, including phone photos. Images are resized and saved with the RAMS."}</span></div>`;
 }
 function imagesHTML(d,section){
@@ -1414,19 +1431,19 @@ function counts(d,k){return {method:d.sequence.filter(s=>s.type!=="h").length,re
 /* What still needs doing, and which tab it lives on */
 function readinessItems(d){
   const r=[];const add=(tab,label)=>r.push({tab,label});
-  if(!d.title) add("project","project name");
-  if(!d.site.trim()) add("project","site address");
-  if(!d.startDate) add("project","start date");
-  if(!d.pm||!d.pmPhone) add("project","workspace contact and number");
-  if(isPC(d)&&!d.mainContractor) add("project","principal contractor company");
-  if(isPC(d)&&!(d.pc.siteManager&&d.pc.siteManagerMobile)) add("project","principal contractor site manager and mobile");
-  if(!d.sequence.length) add("method","sequence of works");
-  if(!d.team.length&&!d.personnel.trim()) add("resources","personnel");
-  if(!d.supName) add("resources","supervisor");
-  if(!d.hazards.length) add("risk","hazards");
-  if(d.hazards.some(h=>h.rl*h.rs>=15)) add("risk","residual high risks reduced");
-  if(!d.emergency.hospital.trim()||!d.emergency.hospitalConfirmed) add("emergency","confirmed nearest A&E");
-  if(!d.emergency.firstAidName) add("emergency","first aider");
+  if(!d.title) add("project","Project Name");
+  if(!d.site.trim()) add("project","Site Address");
+  if(!d.startDate) add("project","Start Date");
+  if(!d.pm||!d.pmPhone) add("project","Workspace Contact and Number");
+  if(isPC(d)&&!d.mainContractor) add("project","Principal Contractor Company");
+  if(isPC(d)&&!(d.pc.siteManager&&d.pc.siteManagerMobile)) add("project","Principal Contractor Site Manager and Mobile");
+  if(!d.sequence.length) add("method","Sequence of Works");
+  if(!d.team.length&&!d.personnel.trim()) add("resources","Personnel");
+  if(!d.supName) add("resources","Supervisor");
+  if(!d.hazards.length) add("risk","Hazards");
+  if(d.hazards.some(h=>h.rl*h.rs>=15)) add("risk","Residual High Risks Reduced");
+  if(!d.emergency.hospital.trim()||!d.emergency.hospitalConfirmed) add("emergency","Confirmed Nearest A&E");
+  if(!d.emergency.firstAidName) add("emergency","First Aider");
   return r;
 }
 function readiness(d){return readinessItems(d).map(i=>i.label);}
@@ -1445,7 +1462,7 @@ function navFooter(k){
 /* Standard G020 wording, collapsed so it doesn't get in the way */
 function std(k,label,rows=4){
   const v=getPath(k)||""; const first=v.split("\n").find(x=>x.trim())||"Empty";
-  return `<details class="std"><summary><span class="std-l">${label}</span><span class="std-p">${esc(first.length>90?first.slice(0,90)+"…":first)}</span><span class="std-e">Standard wording · edit</span></summary>
+  return `<details class="std"><summary><span class="std-l">${label}</span><span class="std-p">${esc(first.length>90?first.slice(0,90)+"…":first)}</span><span class="std-e">Standard Wording · Edit</span></summary>
   <textarea data-k="${k}" rows="${rows}" aria-label="${esc(label)}">${esc(v)}</textarea></details>`;
 }
 function viewEdit(){
@@ -1453,8 +1470,8 @@ function viewEdit(){
   const locked=isLocked(d)&&S.tab!=="signoff";
   return `<div class="bar">
     <button type="button" class="btn ghost" onclick="go('list')">← Back</button>
-    <div class="grow" style="min-width:240px"><input class="titlein" data-k="title" value="${esc(d.title)}" placeholder="Project name" aria-label="Project name">
-      <div class="meta">${esc(d.ref||"No reference")} · Rev ${esc(d.revision)} · ${p?`Project ${esc(p.num)} on dashboard`:"Not linked to dashboard"} · <span id="savedState">${d.spId?"Saved":"Not saved yet"}</span></div></div>
+    <div class="grow" style="min-width:240px"><input class="titlein" data-k="title" value="${esc(d.title)}" placeholder="Project Name" aria-label="Project Name">
+      <div class="meta">${esc(d.ref||"No Reference")} · Rev ${esc(d.revision)} · ${p?`Project ${esc(p.num)} on dashboard`:"Not linked to dashboard"} · <span id="savedState">${d.spId?"Saved":"Not saved yet"}</span></div></div>
     <span class="pill st-${d.status.split(" ")[0]}">${esc(d.status)}</span>
     <button type="button" class="btn primary" onclick="go('preview','${d.id}')">Preview & PDF</button></div>
     <div id="conflict"></div>
@@ -1470,45 +1487,45 @@ const yn=(k,label,opts)=>`<div class="qrow"><span>${label}</span><select data-k=
 
 function tProject(d){
   const p=d.projectSpId&&S.projects.get(d.projectSpId);
-  return `<div class="panel"><div class="bar" style="margin-bottom:0"><div class="grow"><h2>Dashboard project</h2><p class="meta" style="margin-top:4px">${p?`Linked to ${esc(p.num)} – ${esc(p.name)} (${esc(p.status)}). “${DASHBOARD_RAMS_TASK}” is ticked there when everyone has signed.`:"Not linked. Link it so the dashboard updates automatically."}</p></div>
+  return `<div class="panel"><div class="bar" style="margin-bottom:0"><div class="grow"><h2>Dashboard Project</h2><p class="meta" style="margin-top:4px">${p?`Linked to ${esc(p.num)} – ${esc(p.name)} (${esc(p.status)}). “${DASHBOARD_RAMS_TASK}” is ticked there when everyone has signed.`:"Not linked. Link it so the dashboard updates automatically."}</p></div>
   ${p?`<button type="button" class="btn sm" onclick="applyProject(cur(),S.projects.get(cur().projectSpId));touch();rerender();toast('Refreshed from dashboard')">Refresh</button>`:""}<button type="button" class="btn primary sm" onclick="pickProjectForDoc()">${p?"Change":"Link Project"}</button></div></div>
-  <div class="panel">${sec("1.0–1.3","Project details")}
-  <div class="grid g2">${fld("title","1.0 Project name")}${fld("jobNo","1.0 Project no.")}</div>
-  <div class="grid" style="margin-top:14px">${fld("site","1.1 Site address (include the postcode – it's used to find the nearest A&E)","textarea",'rows="2" style="min-height:44px"')}</div>
-  <div class="grid g2" style="margin-top:14px">${fld("client","Client")}<label class="f"><span>RAMS type</span><select onchange="setRamsType(this.value)">${Object.entries(RAMS_TYPES).map(([k,n])=>`<option value="${k}" ${d.ramsType===k?"selected":""}>${n}</option>`).join("")}</select></label></div>
-  <div class="grid g2" style="margin-top:14px">${fld("pm","1.3 Workspace contact (Project Manager)")}${fld("pmPhone","1.3 Contact number")}</div>
-  <details class="std" style="margin-top:14px"><summary><span class="std-l">Document details</span><span class="std-p">${esc([d.activity,"Rev "+d.revision,d.ref,fmtDate(d.issueDate)].filter(Boolean).join(" · "))}</span><span class="std-e">Edit</span></summary>
-  <div class="grid g3" style="margin-top:10px">${fld("activity","1.2 Title")}${fld("revision","1.2 Rev no.")}${fld("ref","RAMS reference")}</div>
-  <div class="grid g3" style="margin-top:14px"><label class="f"><span>1.1 Company</span><input type="text" value="Workspace Audio Visual" disabled></label>${fld("issueDate","1.3 Date of issue","date")}</div></details></div>
+  <div class="panel">${sec("1.0–1.3","Project Details")}
+  <div class="grid g2">${fld("title","1.0 Project Name")}${fld("jobNo","1.0 Project no.")}</div>
+  <div class="grid" style="margin-top:14px">${fld("site","1.1 Site Address (include the postcode – it's used to find the nearest A&E)","textarea",'rows="2" style="min-height:44px"')}</div>
+  <div class="grid g2" style="margin-top:14px">${fld("client","Client")}<label class="f"><span>RAMS Type</span><select onchange="setRamsType(this.value)">${Object.entries(RAMS_TYPES).map(([k,n])=>`<option value="${k}" ${d.ramsType===k?"selected":""}>${n}</option>`).join("")}</select></label></div>
+  <div class="grid g2" style="margin-top:14px">${fld("pm","1.3 Workspace Contact (Project Manager)")}${fld("pmPhone","1.3 Contact Number")}</div>
+  <details class="std" style="margin-top:14px"><summary><span class="std-l">Document Details</span><span class="std-p">${esc([d.activity,"Rev "+d.revision,d.ref,fmtDate(d.issueDate)].filter(Boolean).join(" · "))}</span><span class="std-e">Edit</span></summary>
+  <div class="grid g3" style="margin-top:10px">${fld("activity","1.2 Title")}${fld("revision","1.2 Rev no.")}${fld("ref","RAMS Reference")}</div>
+  <div class="grid g3" style="margin-top:14px"><label class="f"><span>1.1 Company</span><input type="text" value="Workspace Audio Visual" disabled></label>${fld("issueDate","1.3 Date of Issue","date")}</div></details></div>
   ${isPC(d)?`<div class="panel">${sec("PC","Principal Contractor","Principal contractor sites need these details. They're added to the RAMS as their own section.")}
-  <div class="grid g3">${fld("mainContractor","Principal contractor company")}${fld("pc.siteManager","Site manager")}${fld("pc.siteManagerMobile","Site manager mobile")}</div>
-  <div class="grid g3" style="margin-top:14px">${fld("pc.hsContact","H&S contact (name and number)")}${fld("pc.cppRef","Construction phase plan reference")}${fld("pc.f10","F10 notification reference")}</div>
-  <div class="grid g2" style="margin-top:14px">${fld("pc.induction","Site induction (when, where, how long)","textarea",'rows="2"')}${fld("pc.permitSystem","Principal contractor permit-to-work system","textarea",'rows="2"')}</div>
-  <div class="grid g2" style="margin-top:14px">${fld("pc.logistics","Deliveries, parking and logistics","textarea",'rows="2"')}${fld("pc.welfare","Welfare facilities provided","textarea",'rows="2"')}</div>
-  <div class="sub-h">RAMS submission</div>
-  <div class="grid g3">${fld("pc.submittedOn","Submitted to principal contractor","date")}${fld("pc.acceptedBy","Accepted by")}${fld("pc.acceptedOn","Date accepted","date")}</div>
-  <div style="margin-top:14px">${fld("pc.comments","Principal contractor comments","textarea",'rows="2"')}</div></div>`:""}
+  <div class="grid g3">${fld("mainContractor","Principal Contractor Company")}${fld("pc.siteManager","Site Manager")}${fld("pc.siteManagerMobile","Site Manager Mobile")}</div>
+  <div class="grid g3" style="margin-top:14px">${fld("pc.hsContact","H&S Contact (name and number)")}${fld("pc.cppRef","Construction Phase Plan Reference")}${fld("pc.f10","F10 Notification Reference")}</div>
+  <div class="grid g2" style="margin-top:14px">${fld("pc.induction","Site Induction (when, where, how long)","textarea",'rows="2"')}${fld("pc.permitSystem","Principal Contractor Permit-to-Work System","textarea",'rows="2"')}</div>
+  <div class="grid g2" style="margin-top:14px">${fld("pc.logistics","Deliveries, Parking and Logistics","textarea",'rows="2"')}${fld("pc.welfare","Welfare Facilities Provided","textarea",'rows="2"')}</div>
+  <div class="sub-h">RAMS Submission</div>
+  <div class="grid g3">${fld("pc.submittedOn","Submitted to Principal Contractor","date")}${fld("pc.acceptedBy","Accepted By")}${fld("pc.acceptedOn","Date Accepted","date")}</div>
+  <div style="margin-top:14px">${fld("pc.comments","Principal Contractor Comments","textarea",'rows="2"')}</div></div>`:""}
   <div class="panel">${sec("2.0–2.3","Programme")}
-  <div class="grid g4">${fld("startDate","2.0 Start date","date")}${fld("startTime","2.0 Start time")}${fld("duration","2.1 Expected duration")}${fld("preparedBy","2.3 Prepared by")}</div>
+  <div class="grid g4">${fld("startDate","2.0 Start Date","date")}${fld("startTime","2.0 Start Time")}${fld("duration","2.1 Expected Duration")}${fld("preparedBy","2.3 Prepared By")}</div>
   ${d.startDate?`<p class="hint" style="margin-top:10px">RAMS due ${fmtDate(workingDaysBefore(d.startDate,RAMS_LEAD_WORKING_DAYS))} (${RAMS_LEAD_WORKING_DAYS} working days before start).</p>`:""}
-  <div class="grid" style="margin-top:14px">${fld("locations","2.2 Exact location(s) on site","textarea",'rows="2" placeholder="e.g. Level 3 boardroom and meeting rooms 3.01–3.04"')}</div>${imageEditor(d,"locations")}</div>`;}
+  <div class="grid" style="margin-top:14px">${fld("locations","2.2 Exact Location(s) on Site","textarea",'rows="2" placeholder="e.g. Level 3 boardroom and meeting rooms 3.01–3.04"')}</div>${imageEditor(d,"locations")}</div>`;}
 
-function tMethod(d){return `<div class="panel">${sec("2.4","Pre-start site briefing (toolbox talk)","Standard G020 briefing. Only change it if this site needs something different.")}${std("briefing","2.4 Briefing",14)}</div>
-  <div class="panel">${sec("2.5","Scope and sequence of works")}
-  <div class="stepno"><b>1</b>Add the scope of works</div>
+function tMethod(d){return `<div class="panel">${sec("2.4","Pre-Start Site Briefing (Toolbox Talk)","Standard G020 briefing. Only change it if this site needs something different.")}${std("briefing","2.4 Briefing",14)}</div>
+  <div class="panel">${sec("2.5","Scope and Sequence of Works")}
+  <div class="stepno"><b>1</b>Add the Scope of Works</div>
   <p class="hint">Upload the scope (PDF, Word .docx or text), or paste it in. Add photos or drawings of the work areas too.</p>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><label class="btn primary sm" style="cursor:pointer">Upload Scope Of Works<input type="file" accept=".pdf,.docx,.doc,.txt,.md" hidden onchange="uploadScope(this.files[0])"></label>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><label class="btn primary sm" style="cursor:pointer">Upload Scope of Works<input type="file" accept=".pdf,.docx,.doc,.txt,.md" hidden onchange="uploadScope(this.files[0])"></label>
   <span class="meta" id="scopeStatus">${d.scopeFile?`Uploaded: <a href="${esc(d.scopeFile.url)}" target="_blank" rel="noopener">${esc(d.scopeFile.name)}</a>`:""}</span></div>
-  <div style="margin-top:10px">${fld("scopeSource","Scope of works text","textarea",'rows="4" placeholder="…or paste the scope of works here"')}</div>
+  <div style="margin-top:10px">${fld("scopeSource","Scope of Works Text","textarea",'rows="4" placeholder="…or paste the scope of works here"')}</div>
   ${imageEditor(d,"scope")}
-  <div class="stepno" style="margin-top:20px"><b>2</b>Draft the sequence</div>
+  <div class="stepno" style="margin-top:20px"><b>2</b>Draft the Sequence</div>
   <p class="hint">The builder picks out the AV systems and site conditions and suggests the steps, hazards, plant and permits. You choose what to keep.</p>
-  <button type="button" class="btn primary sm" onclick="openDraft()">Draft From Scope Of Works</button>
-  <div class="stepno" style="margin-top:20px"><b>3</b>Check the scope summary and sequence</div>
-  ${fld("scope","Scope summary (shown on the RAMS)","textarea",'rows="3"')}
-  <div class="bar" style="margin:16px 0 4px"><div class="grow"><h3>Sequence of works</h3></div><button type="button" class="btn sm" onclick="addStep('h')">+ Heading</button><button type="button" class="btn sm" onclick="addStep('s')">+ Step</button></div>
+  <button type="button" class="btn primary sm" onclick="openDraft()">Draft from Scope of Works</button>
+  <div class="stepno" style="margin-top:20px"><b>3</b>Check the Scope Summary and Sequence</div>
+  ${fld("scope","Scope Summary (shown on the RAMS)","textarea",'rows="3"')}
+  <div class="bar" style="margin:16px 0 4px"><div class="grow"><h3>Sequence of Works</h3></div><button type="button" class="btn sm" onclick="addStep('h')">+ Heading</button><button type="button" class="btn sm" onclick="addStep('s')">+ Step</button></div>
   ${d.sequence.length?`<ol class="steps">${d.sequence.map((s,i)=>`<li class="${s.type==="h"?"head":""}">${s.type==="h"?`<input type="text" data-list="sequence" data-i="${i}" data-f="text" value="${esc(s.text)}" aria-label="Heading">`:`<textarea data-list="sequence" data-i="${i}" data-f="text" rows="1" aria-label="Step">${esc(s.text)}</textarea>`}
-  <div class="rowbtns"><button type="button" class="icon" aria-label="Move up" onclick="mv('sequence',${i},-1)">${ICON.up}</button><button type="button" class="icon" aria-label="Move down" onclick="mv('sequence',${i},1)">${ICON.down}</button><button type="button" class="icon" aria-label="Remove" onclick="rm('sequence',${i})">${ICON.del}</button></div></li>`).join("")}</ol>`
+  <div class="rowbtns"><button type="button" class="icon" aria-label="Move Up" onclick="mv('sequence',${i},-1)">${ICON.up}</button><button type="button" class="icon" aria-label="Move Down" onclick="mv('sequence',${i},1)">${ICON.down}</button><button type="button" class="icon" aria-label="Remove" onclick="rm('sequence',${i})">${ICON.del}</button></div></li>`).join("")}</ol>`
   :`<p class="meta">No steps yet. Draft them from the scope above, or <a href="#" onclick="cur().sequence=G020_STEPS.map(([type,text])=>({id:uid(),type,text}));touch();rerender();return false">load the standard G020 installation method</a>.</p>`}</div>`;}
 
 function tResources(d){
@@ -1518,56 +1535,56 @@ function tResources(d){
   const gone=d.team.filter(t=>!S.people.has(t.pid));
   const card=(id,name,sub,on,warn="")=>`<label class="check" style="align-items:flex-start"><input type="checkbox" data-team="${id}" ${on?"checked":""} style="margin-top:3px"><span><strong>${esc(name)}</strong><br><span class="meta">${esc(sub)}</span>${warn}</span></label>`;
   const teamOpts=(cur)=>`<option value="">${d.team.length?"Choose from the people ticked above…":"Tick people above first, or type below"}</option>`+d.team.map(t=>`<option value="${t.pid}" ${cur===t.name?"selected":""}>${esc(t.name)} (${esc(t.role)})</option>`).join("");
-  return `<div class="panel">${sec("3.0","Who's going to site","Tick everyone attending. Their mobiles and vehicle regs are copied into the RAMS, and anyone with an email can be asked to sign.")}
+  return `<div class="panel">${sec("3.0","Who's Going to Site","Tick everyone attending. Their mobiles and vehicle regs are copied into the RAMS, and anyone with an email can be asked to sign.")}
   ${Object.keys(groups).sort((a,b)=>ROLES.indexOf(a)-ROLES.indexOf(b)).map(r=>`<div class="sub-h">${esc(r)}</div><div class="checks">${groups[r].map(p=>card(p.spId,p.name,[p.mobile,p.reg].filter(Boolean).join(" · "),inTeam.has(p.spId),cardBadge(p.cardList,d.startDate))).join("")}</div>`).join("")||`<p class="meta">The People list is empty.</p>`}
-  ${gone.length?`<div class="sub-h">No longer in People</div><div class="checks">${gone.map(t=>card(t.pid,t.name,[t.role,t.mobile].filter(Boolean).join(" · "),true)).join("")}</div>`:""}
+  ${gone.length?`<div class="sub-h">No Longer in People</div><div class="checks">${gone.map(t=>card(t.pid,t.name,[t.role,t.mobile].filter(Boolean).join(" · "),true)).join("")}</div>`:""}
   <div style="margin:14px 0"><button type="button" class="btn sm" onclick="S.addToDoc=true;editPerson()">+ Add New Person</button> <span class="meta" style="margin-left:8px">${d.team.length} selected</span></div>
-  ${fld("personnel","Anyone else (subcontractors, numbers or job titles)","textarea",'rows="2"')}</div>
-  <div class="panel">${sec("3.1","Supervisor and AV systems engineer")}
-  <div class="grid g2"><label class="f"><span>Supervisor</span><select onchange="pickRole('sup',this.value)">${teamOpts(d.supName)}</select></label><label class="f"><span>AV systems engineer</span><select onchange="pickRole('eng',this.value)">${teamOpts(d.engName)}</select></label></div>
-  <div class="grid g4" style="margin-top:12px">${fld("supName","Supervisor name")}${fld("supMobile","Supervisor mobile")}${fld("engName","Engineer name")}${fld("engMobile","Engineer mobile")}</div></div>
-  <div class="panel">${sec("3.2","Plant, equipment and tools","Items marked * need certification checked before work starts. PAT items need a current PAT test.")}${checks("plant",PLANT)}<div style="margin-top:12px">${fld("plantNotes","Notes (sizes, weights etc.)","textarea",'rows="2"')}</div></div>
-  <div class="panel">${sec("3.3–3.4","Materials and technical information")}
-  <div class="grid g2">${fld("materials","3.3 Materials (mark any needing COSHH with “COSHH”)","textarea",'rows="3"')}${fld("technical","3.4 Technical information (drawings, structural reports, specs)","textarea",'rows="3"')}</div></div>
-  <div class="panel">${sec("3.5–3.6","Waste and housekeeping")}${std("waste","3.5 Waste removal",7)}${std("housekeeping","3.6 Housekeeping",2)}</div>`;}
+  ${fld("personnel","Anyone Else (subcontractors, numbers or job titles)","textarea",'rows="2"')}</div>
+  <div class="panel">${sec("3.1","Supervisor and AV Systems Engineer")}
+  <div class="grid g2"><label class="f"><span>Supervisor</span><select onchange="pickRole('sup',this.value)">${teamOpts(d.supName)}</select></label><label class="f"><span>AV Systems Engineer</span><select onchange="pickRole('eng',this.value)">${teamOpts(d.engName)}</select></label></div>
+  <div class="grid g4" style="margin-top:12px">${fld("supName","Supervisor Name")}${fld("supMobile","Supervisor Mobile")}${fld("engName","Engineer Name")}${fld("engMobile","Engineer Mobile")}</div></div>
+  <div class="panel">${sec("3.2","Plant, Equipment and Tools","Items marked * need certification checked before work starts. PAT items need a current PAT test.")}${checks("plant",PLANT)}<div style="margin-top:12px">${fld("plantNotes","Notes (sizes, weights etc.)","textarea",'rows="2"')}</div></div>
+  <div class="panel">${sec("3.3–3.4","Materials and Technical Information")}
+  <div class="grid g2">${fld("materials","3.3 Materials (mark any needing COSHH with “COSHH”)","textarea",'rows="3"')}${fld("technical","3.4 Technical Information (drawings, structural reports, specs)","textarea",'rows="3"')}</div></div>
+  <div class="panel">${sec("3.5–3.6","Waste and Housekeeping")}${std("waste","3.5 Waste Removal",7)}${std("housekeeping","3.6 Housekeeping",2)}</div>`;}
 function matrix(d){
   const cells={}; d.hazards.forEach(h=>{const k=h.rl+"-"+h.rs;cells[k]=(cells[k]||0)+1;});
   let g=""; for(let l=5;l>=1;l--){g+=`<div class="ax">${l}</div>`;for(let s=1;s<=5;s++){const n=cells[l+"-"+s];g+=`<div class="c ${lvl(l*s)}" title="Likelihood ${l} × severity ${s} = ${l*s}">${n?`<b>${n}</b>`:""}</div>`;}}
   g+=`<div></div>`+[1,2,3,4,5].map(s=>`<div class="ax">${s}</div>`).join("");
   const init=d.hazards.map(h=>h.l*h.s),res=d.hazards.map(h=>h.rl*h.rs),hi=res.filter(x=>x>=15).length;
-  return `<div class="panel"><div class="matrixwrap"><div><div class="matrix" aria-label="Residual risk matrix">${g}</div><div class="meta" style="margin-top:6px;padding-left:25px">Severity across, likelihood up</div></div>
-  <div><h2>Residual risk profile</h2><p class="hint">Scores map to the G020 ratings: low 1–4, medium 5–12, high 15–25. Anything still high must be reduced before the RAMS can be signed.</p>
-  <div class="stats"><div><strong>${d.hazards.length}</strong>Hazards</div><div><strong>${init.length?Math.max(...init):"–"}</strong>Highest before</div><div><strong>${res.length?Math.max(...res):"–"}</strong>Highest after</div><div><strong style="color:${hi?"#ff5555":"var(--wsav-gold)"}">${hi}</strong>Still high</div></div></div></div></div>`;
+  return `<div class="panel"><div class="matrixwrap"><div><div class="matrix" aria-label="Residual Risk Matrix">${g}</div><div class="meta" style="margin-top:6px;padding-left:25px">Severity across, likelihood up</div></div>
+  <div><h2>Residual Risk Profile</h2><p class="hint">Scores map to the G020 ratings: low 1–4, medium 5–12, high 15–25. Anything still high must be reduced before the RAMS can be signed.</p>
+  <div class="stats"><div><strong>${d.hazards.length}</strong>Hazards</div><div><strong>${init.length?Math.max(...init):"–"}</strong>Highest Before</div><div><strong>${res.length?Math.max(...res):"–"}</strong>Highest After</div><div><strong style="color:${hi?"#ff5555":"var(--wsav-gold)"}">${hi}</strong>Still High</div></div></div></div></div>`;
 }
 const opts=(arr,v)=>arr.map((n,i)=>i?`<option value="${i}" ${+v===i?"selected":""}>${i} – ${n}</option>`:"").join("");
-function tRisk(d){return matrix(d)+`<div class="panel">${fld("raPeople","People affected / at risk of being harmed","textarea",'rows="2" style="min-height:44px"')}</div>
-  <div class="bar"><div class="grow"><h2><span class="secno">4.0</span>Hazards</h2></div><button type="button" class="btn sm primary" onclick="openHazLib()">Add From Library</button><button type="button" class="btn sm" onclick="addHaz()">+ Blank Hazard</button></div>
+function tRisk(d){return matrix(d)+`<div class="panel">${fld("raPeople","People Affected / At Risk of Being Harmed","textarea",'rows="2" style="min-height:44px"')}</div>
+  <div class="bar"><div class="grow"><h2><span class="secno">4.0</span>Hazards</h2></div><button type="button" class="btn sm primary" onclick="openHazLib()">Add from Library</button><button type="button" class="btn sm" onclick="addHaz()">+ Blank Hazard</button></div>
   ${d.hazards.map((h,i)=>{const a=h.l*h.s,b=h.rl*h.rs;return `<div class="hz">
    <div class="hz-head"><span class="secno">${i+1}</span><input type="text" data-list="hazards" data-i="${i}" data-f="hazard" value="${esc(h.hazard)}" placeholder="Hazard" aria-label="Hazard">
-   <div class="rowbtns"><button type="button" class="icon" aria-label="Move up" onclick="mv('hazards',${i},-1)">${ICON.up}</button><button type="button" class="icon" aria-label="Move down" onclick="mv('hazards',${i},1)">${ICON.down}</button><button type="button" class="icon" aria-label="Remove hazard" onclick="rm('hazards',${i})">${ICON.del}</button></div></div>
+   <div class="rowbtns"><button type="button" class="icon" aria-label="Move Up" onclick="mv('hazards',${i},-1)">${ICON.up}</button><button type="button" class="icon" aria-label="Move Down" onclick="mv('hazards',${i},1)">${ICON.down}</button><button type="button" class="icon" aria-label="Remove Hazard" onclick="rm('hazards',${i})">${ICON.del}</button></div></div>
    <div class="hz-body">
-    <label class="f"><span>Possible effects / harm</span><textarea data-list="hazards" data-i="${i}" data-f="risk" rows="2">${esc(h.risk)}</textarea></label>
-    <label class="f"><span>Who might be harmed</span><textarea data-list="hazards" data-i="${i}" data-f="who" rows="2">${esc(h.who)}</textarea></label>
+    <label class="f"><span>Possible Effects / Harm</span><textarea data-list="hazards" data-i="${i}" data-f="risk" rows="2">${esc(h.risk)}</textarea></label>
+    <label class="f"><span>Who Might Be Harmed</span><textarea data-list="hazards" data-i="${i}" data-f="who" rows="2">${esc(h.who)}</textarea></label>
     <div class="score"><label class="f"><span>Likelihood</span><select data-list="hazards" data-i="${i}" data-f="l">${opts(LIKE,h.l)}</select></label><label class="f"><span>Severity</span><select data-list="hazards" data-i="${i}" data-f="s">${opts(SEV,h.s)}</select></label><span class="chip lv-${lvl(a)}">${LVNAME[lvl(a)]} ${a}</span></div>
-    <div class="score"><label class="f"><span>Post-control likelihood</span><select data-list="hazards" data-i="${i}" data-f="rl">${opts(LIKE,h.rl)}</select></label><label class="f"><span>Post-control severity</span><select data-list="hazards" data-i="${i}" data-f="rs">${opts(SEV,h.rs)}</select></label><span class="chip lv-${lvl(b)}">${LVNAME[lvl(b)]} ${b}</span></div>
-    <label class="f" style="grid-column:1/-1"><span>Required controls</span><textarea data-list="hazards" data-i="${i}" data-f="controls" rows="4">${esc(h.controls)}</textarea></label>
+    <div class="score"><label class="f"><span>Post-Control Likelihood</span><select data-list="hazards" data-i="${i}" data-f="rl">${opts(LIKE,h.rl)}</select></label><label class="f"><span>Post-Control Severity</span><select data-list="hazards" data-i="${i}" data-f="rs">${opts(SEV,h.rs)}</select></label><span class="chip lv-${lvl(b)}">${LVNAME[lvl(b)]} ${b}</span></div>
+    <label class="f" style="grid-column:1/-1"><span>Required Controls</span><textarea data-list="hazards" data-i="${i}" data-f="controls" rows="4">${esc(h.controls)}</textarea></label>
    </div></div>`}).join("")||`<div class="empty"><p>Add the WSAV standard hazards and any AV-specific ones from the library.</p><button type="button" class="btn primary" onclick="openHazLib()">Open Hazard Library</button></div>`}`;}
 
 function tCoshh(d){return `<div class="panel">${sec("4.1","COSHH","Substances used on this job. Data sheets are required for every material listed in 3.3. (COSHH Regulations 2002, as amended)")}
-  <div style="display:flex;gap:8px;margin-bottom:12px"><button type="button" class="btn sm primary" onclick="openCoshhLib()">Add From Library</button><button type="button" class="btn sm" onclick="addCoshh()">+ Blank</button></div>
-  ${d.coshh.map((c,i)=>`<div class="hz"><div class="hz-head"><input type="text" data-list="coshh" data-i="${i}" data-f="substance" value="${esc(c.substance)}" placeholder="Substance / product" aria-label="Substance"><button type="button" class="icon" aria-label="Remove" onclick="rm('coshh',${i})">${ICON.del}</button></div>
-  <div class="hz-body">${[["use","Use / process"],["hazards","Hazards"],["route","Route of exposure"],["controls","Control measures"],["ppe","PPE"],["firstAid","First aid"]].map(([f,n])=>`<label class="f"><span>${n}</span><textarea data-list="coshh" data-i="${i}" data-f="${f}" rows="2">${esc(c[f])}</textarea></label>`).join("")}</div></div>`).join("")||`<p class="meta">No substances listed yet.</p>`}</div>
-  <div class="panel">${sec("4.2","Manual handling","(Manual Handling Operations Regulations 1992)")}${fld("mhActivities","What needs lifting or moving by hand?","textarea",'rows="2"')}
+  <div style="display:flex;gap:8px;margin-bottom:12px"><button type="button" class="btn sm primary" onclick="openCoshhLib()">Add from Library</button><button type="button" class="btn sm" onclick="addCoshh()">+ Blank</button></div>
+  ${d.coshh.map((c,i)=>`<div class="hz"><div class="hz-head"><input type="text" data-list="coshh" data-i="${i}" data-f="substance" value="${esc(c.substance)}" placeholder="Substance / Product" aria-label="Substance"><button type="button" class="icon" aria-label="Remove" onclick="rm('coshh',${i})">${ICON.del}</button></div>
+  <div class="hz-body">${[["use","Use / Process"],["hazards","Hazards"],["route","Route of Exposure"],["controls","Control Measures"],["ppe","PPE"],["firstAid","First Aid"]].map(([f,n])=>`<label class="f"><span>${n}</span><textarea data-list="coshh" data-i="${i}" data-f="${f}" rows="2">${esc(c[f])}</textarea></label>`).join("")}</div></div>`).join("")||`<p class="meta">No substances listed yet.</p>`}</div>
+  <div class="panel">${sec("4.2","Manual Handling","(Manual Handling Operations Regulations 1992)")}${fld("mhActivities","What needs lifting or moving by hand?","textarea",'rows="2"')}
   ${yn("mhAvoid","Can manual handling be avoided?",["No","Yes"])}${yn("mhTrained","Are the operatives trained in manual handling?",["Yes","No"])}${yn("mhRA","Are the manual handling risk assessments attached?",["Yes","No"])}</div>
-  <div class="panel">${sec("4.3","Noise, dust and vibration","(Control of Noise at Work Regulations 2005; Control of Vibration at Work Regulations 2005)")}${fld("noise","What will create noise, dust or vibration?","textarea",'rows="2"')}${yn("noiseRA","Are risk assessments attached?",["Yes","No","N/A"])}</div>
-  <div class="panel">${sec("4.4","Access and egress","How you get to site and the work area: roads, restrictions, unloading, parking, keeping people and vehicles apart. Vehicles from 3.0 are added automatically.")}${fld("access","Access and egress","textarea",'rows="4"')}</div>`;}
+  <div class="panel">${sec("4.3","Noise, Dust and Vibration","(Control of Noise at Work Regulations 2005; Control of Vibration at Work Regulations 2005)")}${fld("noise","What will create noise, dust or vibration?","textarea",'rows="2"')}${yn("noiseRA","Are risk assessments attached?",["Yes","No","N/A"])}</div>
+  <div class="panel">${sec("4.4","Access and Egress","How you get to site and the work area: roads, restrictions, unloading, parking, keeping people and vehicles apart. Vehicles from 3.0 are added automatically.")}${fld("access","Access and Egress","textarea",'rows="4"')}</div>`;}
 const checks=(key,list)=>{const d=cur();const extra=d[key].filter(x=>!list.includes(x));
   return `<div class="checks">${[...list,...extra].map(x=>`<label class="check"><input type="checkbox" data-set="${key}" value="${esc(x)}" ${d[key].includes(x)?"checked":""}>${esc(x)}</label>`).join("")}</div>
   <div style="display:flex;gap:8px;margin-top:10px;max-width:440px"><input type="text" placeholder="Add another…" id="add-${key}" onkeydown="if(event.key==='Enter')addCustom('${key}')"><button type="button" class="btn sm" onclick="addCustom('${key}')">Add</button></div>`;};
-function tPpe(){return `<div class="panel">${sec("5.0–5.3","Permits and security")}${checks("permits",permitList(cur()))}
-  <div class="grid g2" style="margin-top:14px">${fld("permitType","5.1 Permit type")}${fld("permitIssuedBy","5.2 Issued by")}</div><div class="grid" style="margin-top:14px">${fld("security","5.3 Security arrangements","textarea",'rows="2"')}</div></div>
-  <div class="panel">${sec("5.4","Training and competence")}${checks("training",TRAINING)}<div style="margin-top:12px">${std("trainingText","5.4 Training wording",3)}</div></div>
-  <div class="panel">${sec("6.0–6.1","PPE","(Personal Protective Equipment at Work Regulations 1992)")}<div class="sub-h">6.0 Mandatory site PPE</div>${checks("ppe",PPE)}<div style="margin-top:12px">${std("taskPPE","6.1 Task-specific PPE",2)}</div></div>`;}
+function tPpe(){return `<div class="panel">${sec("5.0–5.3","Permits and Security")}${checks("permits",permitList(cur()))}
+  <div class="grid g2" style="margin-top:14px">${fld("permitType","5.1 Permit Type")}${fld("permitIssuedBy","5.2 Issued By")}</div><div class="grid" style="margin-top:14px">${fld("security","5.3 Security Arrangements","textarea",'rows="2"')}</div></div>
+  <div class="panel">${sec("5.4","Training and Competence")}${checks("training",TRAINING)}<div style="margin-top:12px">${std("trainingText","5.4 Training Wording",3)}</div></div>
+  <div class="panel">${sec("6.0–6.1","PPE","(Personal Protective Equipment at Work Regulations 1992)")}<div class="sub-h">6.0 Mandatory Site PPE</div>${checks("ppe",PPE)}<div style="margin-top:12px">${std("taskPPE","6.1 Task-Specific PPE",2)}</div></div>`;}
 function tEmergency(d){
   const hc=d.emergency.hospitalConfirmed;
   const faOpts=`<option value="">${d.team.length?"Choose from the people on this RAMS…":"Add people on the People & Plant tab first"}</option>`+d.team.map(t=>`<option value="${t.pid}" ${d.emergency.firstAidName===t.name?"selected":""}>${esc(t.name)} (${esc(t.role)})${/first aid/i.test((t.cardList||[]).map(c=>c.type).join(" ")+" "+(t.cards||""))?" – first aid card":""}</option>`).join("");
@@ -1576,53 +1593,53 @@ function tEmergency(d){
   <div id="hospOut"></div>
   ${fld("emergency.hospital","Hospital (name, address, phone, directions)","textarea",'rows="4"')}
   <div style="display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap">${hc?`<span class="ok" style="font-size:13px">✓ Confirmed by ${esc(hc.by)} on ${fmtDate(hc.at)}</span><button type="button" class="btn sm" onclick="cur().emergency.hospitalConfirmed=null;touch();rerender()">Unconfirm</button>`:`<button type="button" class="btn gold sm" onclick="confirmHospital()">I've Checked This – Confirm</button><span class="meta">Required before you can issue the RAMS.</span>`}</div>
-  <div class="grid" style="margin-top:14px">${fld("emergency.rescue","Other rescue arrangements (MEWP, harness, confined space) – leave blank if none","textarea",'rows="2"')}</div></div>
-  <div class="panel">${sec("7.2","First aider","(Health and Safety (First-Aid) Regulations 1981)")}
-  <label class="f"><span>First aider</span><select onchange="pickFirstAider(this.value)">${faOpts}</select></label>
+  <div class="grid" style="margin-top:14px">${fld("emergency.rescue","Other Rescue Arrangements (MEWP, harness, confined space) – leave blank if none","textarea",'rows="2"')}</div></div>
+  <div class="panel">${sec("7.2","First Aider","(Health and Safety (First-Aid) Regulations 1981)")}
+  <label class="f"><span>First Aider</span><select onchange="pickFirstAider(this.value)">${faOpts}</select></label>
   <div class="grid g2" style="margin-top:12px">${fld("emergency.firstAidName","Name")}${fld("emergency.firstAidMobile","Mobile")}</div></div>
-  <div class="panel">${sec("7.0, 8.0–8.3","Emergency and site arrangements","Standard G020 wording. Open any of these to change them for this site.")}
-  ${std("emergency.arrangements","7.0 Emergency arrangements",2)}${std("emergency.evacuation","7.1 Evacuation",3)}
+  <div class="panel">${sec("7.0, 8.0–8.3","Emergency and Site Arrangements","Standard G020 wording. Open any of these to change them for this site.")}
+  ${std("emergency.arrangements","7.0 Emergency Arrangements",2)}${std("emergency.evacuation","7.1 Evacuation",3)}
   <div class="qrow" style="margin:6px 0"><span>8.0 Will the works affect pedestrian or traffic routes?</span><select data-k="pedestrian">${["N/A","No","Yes"].map(o=>`<option ${d.pedestrian===o?"selected":""}>${o}</option>`).join("")}</select></div>
-  ${std("pedDetails","8.1 Pedestrian / traffic details",2)}${std("fire","8.2 Fire safety",2)}${std("lighting","8.3 Task lighting",3)}</div>`;}
+  ${std("pedDetails","8.1 Pedestrian / Traffic Details",2)}${std("fire","8.2 Fire Safety",2)}${std("lighting","8.3 Task Lighting",3)}</div>`;}
 function pickFirstAider(pid){const d=cur();const t=d.team.find(x=>String(x.pid)===String(pid));if(!t)return;d.emergency.firstAidName=t.name;d.emergency.firstAidMobile=t.mobile||"";touch();rerender();}
 function tSignoff(d){
   const items=readinessItems(d), miss=items.length;
   const ready=canSign(d);
   const candidates=d.team.filter(t=>t.email&&!d.requests.some(r=>r.email===t.email));
   const step=(n,title,state,body)=>`<div class="panel signstep ${state}"><div class="stepno"><b>${state==="done"?"✓":n}</b>${title}</div>${body}</div>`;
-  return `${d.status==="Superseded"?`<div class="banner red"><span class="grow">This RAMS has been superseded and can't be signed.</span><button type="button" class="btn sm" onclick="setStatus('Draft')">Reopen As Draft</button></div>`:""}
-  ${step(1,"Check everything's filled in",miss?"todo":"done",miss?`<p class="hint">Still to do – click one to go to it:</p><div class="misswrap">${missingLinks(d)}</div>`:`<p class="ok" style="font-size:13px">All the essentials are complete.</p>`)}
-  ${(()=>{const w=teamCardWarnings(d);return w.length?`<div class="banner"><span class="grow"><strong>Card check:</strong> ${w.map(x=>`${esc(x.name)} – ${esc(x.text)}`).join("; ")}. Confirm renewals before they attend site.</span></div>`:"";})()}
-  ${step(2,"Issue it for signature",isIssued(d)?"done":miss?"wait":"todo",
+  return `${d.status==="Superseded"?`<div class="banner red"><span class="grow">This RAMS has been superseded and can't be signed.</span><button type="button" class="btn sm" onclick="setStatus('Draft')">Reopen as Draft</button></div>`:""}
+  ${step(1,"Check Everything's Filled In",miss?"todo":"done",miss?`<p class="hint">Still to do – click one to go to it:</p><div class="misswrap">${missingLinks(d)}</div>`:`<p class="ok" style="font-size:13px">All the essentials are complete.</p>`)}
+  ${(()=>{const w=teamCardWarnings(d);return w.length?`<div class="banner"><span class="grow"><strong>Card Check:</strong> ${w.map(x=>`${esc(x.name)} – ${esc(x.text)}`).join("; ")}. Confirm renewals before they attend site.</span></div>`:"";})()}
+  ${step(2,"Issue It for Signature",isIssued(d)?"done":miss?"wait":"todo",
     isIssued(d)?`<p class="meta">Issued by ${esc(d.issued.by)} on ${fmtDT(d.issued.at)}. ${isLocked(d)?"It's been signed, so it's locked.":"You can still change it until someone signs."}</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">${isLocked(d)?`<button type="button" class="btn sm" onclick="newRevision()">Start Rev ${esc(nextRev(d.revision))}</button>`:`<button type="button" class="btn sm" onclick="unissue()">Back To Draft</button>`}</div>`
-    :`<p class="hint">Issuing locks in this revision as the one people sign, and saves the PDF to SharePoint.</p><button type="button" class="btn primary" ${miss||d.status==="Superseded"?"disabled":""} onclick="issueRams()">Issue Rev ${esc(d.revision)} For Signature</button>`)}
-  ${step(3,"Ask people to sign",!ready?"wait":d.requests.length?"done":"todo",
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">${isLocked(d)?`<button type="button" class="btn sm" onclick="newRevision()">Start Rev ${esc(nextRev(d.revision))}</button>`:`<button type="button" class="btn sm" onclick="unissue()">Back to Draft</button>`}</div>`
+    :`<p class="hint">Issuing locks in this revision as the one people sign, and saves the PDF to SharePoint.</p><button type="button" class="btn primary" ${miss||d.status==="Superseded"?"disabled":""} onclick="issueRams()">Issue Rev ${esc(d.revision)} for Signature</button>`)}
+  ${step(3,"Ask People to Sign",!ready?"wait":d.requests.length?"done":"todo",
     !ready?`<p class="meta">Available once the RAMS is issued.</p>`:`
-    <div style="display:flex;gap:8px;flex-wrap:wrap">${candidates.length?`<button type="button" class="btn primary sm" onclick="requestTeam()">Ask The Team (${candidates.length})</button>`:""}
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${candidates.length?`<button type="button" class="btn primary sm" onclick="requestTeam()">Ask the Team (${candidates.length})</button>`:""}
     <input type="email" id="reqEmail" placeholder="or add someone by email…" style="max-width:280px" onkeydown="if(event.key==='Enter')addRequest(this.value)"><button type="button" class="btn sm" onclick="addRequest($('#reqEmail').value)">Add</button>
-    ${d.requests.length?`<button type="button" class="btn sm" onclick="openEmail()">Email Them The Link</button>`:""}</div>
+    ${d.requests.length?`<button type="button" class="btn sm" onclick="openEmail()">Email Them the Link</button>`:""}</div>
     ${d.team.some(t=>!t.email)?`<p class="meta" style="margin-top:8px">${d.team.filter(t=>!t.email).map(t=>esc(t.name)).join(", ")} ${d.team.filter(t=>!t.email).length===1?"has":"have"} no email in People – they can sign on site in step 4.</p>`:""}
     <div class="people" id="sigStatus" style="margin-top:12px"><p class="meta">${d.requests.length?"Loading…":"No one asked yet."}</p></div>
     ${d.requests.length?`<button type="button" class="btn ghost sm" style="margin-top:6px" onclick="paintSigStatus(true)">Refresh</button>`:""}`)}
-  ${step(4,"Sign on site",!ready?"wait":"todo",
+  ${step(4,"Sign on Site",!ready?"wait":"todo",
     !ready?`<p class="meta">Available once the RAMS is issued.</p>`:`<p class="hint">At the toolbox talk: sign yourself, or hand your device to engineers and subcontractors to sign in front of you.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" onclick="go('sign','${d.id}')">Sign It Myself</button><button type="button" class="btn gold" onclick="go('witness','${d.id}')">Sign For Someone Else</button></div>
-    <details class="std" style="margin-top:12px"><summary><span class="std-l">Paper register</span><span class="std-p">${d.signoff.length?d.signoff.length+" names":"For anyone signing a printed copy"}</span><span class="std-e">Open</span></summary>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" onclick="go('sign','${d.id}')">Sign It Myself</button><button type="button" class="btn gold" onclick="go('witness','${d.id}')">Sign for Someone Else</button></div>
+    <details class="std" style="margin-top:12px"><summary><span class="std-l">Paper Register</span><span class="std-p">${d.signoff.length?d.signoff.length+" names":"For anyone signing a printed copy"}</span><span class="std-e">Open</span></summary>
     ${d.signoff.length?`<div class="tablewrap" style="margin-top:8px"><table class="docs"><thead><tr><th>Name</th><th>Company</th><th>Date</th><th></th></tr></thead><tbody>${d.signoff.map((s,i)=>`<tr>
     <td><input type="text" data-list="signoff" data-i="${i}" data-f="name" value="${esc(s.name)}" aria-label="Name"></td><td><input type="text" data-list="signoff" data-i="${i}" data-f="company" value="${esc(s.company)}" aria-label="Company"></td>
     <td><input type="date" data-list="signoff" data-i="${i}" data-f="date" value="${esc(s.date)}" aria-label="Date"></td><td><button type="button" class="icon" aria-label="Remove" onclick="rm('signoff',${i})">${ICON.del}</button></td></tr>`).join("")}</tbody></table></div>`:""}
-    <button type="button" class="btn sm" style="margin-top:8px" onclick="cur().signoff.push({id:uid(),name:'',company:'Workspace AV',date:today()});touch();rerender()">+ Name On Register</button></details>`)}
+    <button type="button" class="btn sm" style="margin-top:8px" onclick="cur().signoff.push({id:uid(),name:'',company:'Workspace AV',date:today()});touch();rerender()">+ Name on Register</button></details>`)}
   <div class="panel"><h2>PDF</h2><div style="height:8px"></div>
   ${d.pdf?`<p class="meta">Latest PDF: <a href="${esc(d.pdf.url)}" target="_blank" rel="noopener">${esc(d.pdf.name)}</a> · updated ${fmtDT(d.pdf.at)}. The QR code on the cover opens this file.</p>`:`<p class="meta">The PDF is saved to SharePoint when you issue the RAMS, and updated when everyone has signed.</p>`}
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm" onclick="go('preview','${d.id}')">Preview</button><button type="button" class="btn sm" onclick="exportPDF(true)">Update PDF In SharePoint</button>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"><button type="button" class="btn sm" onclick="go('preview','${d.id}')">Preview</button><button type="button" class="btn sm" onclick="exportPDF(true)">Update PDF in SharePoint</button>
   ${d.status!=="Superseded"?`<button type="button" class="btn ghost danger sm" onclick="setStatus('Superseded')">Mark Superseded</button>`:""}</div></div>
-  <div class="panel">${sec("9.0–10.3","Communication, monitoring and review","Standard G020 wording, prefilled. Open any of these to change them.")}
-  ${std("communicated","9.0 Communicated to and how",2)}
-  <div class="grid g3" style="margin:8px 0 10px">${fld("monOff","10.0 Monitoring – offsite","textarea",'rows="2"')}${fld("monOn","10.0 Monitoring – onsite","textarea",'rows="2"')}${fld("monWork","10.0 Monitoring – workface","textarea",'rows="2"')}</div>
-  ${std("review","10.1 Review schedule",2)}
-  <div class="grid g2" style="margin:8px 0">${fld("amendAuth","10.2 Amendments authorised by")}</div>${std("amendComm","10.3 Amendments communicated to",2)}
-  ${d.amendments.length?`<div class="sub-h">Amendment log</div><div class="tablewrap"><table class="docs"><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Change</th><th></th></tr></thead><tbody>${d.amendments.map((a,i)=>`<tr><td style="width:50px">${i+1}</td>
+  <div class="panel">${sec("9.0–10.3","Communication, Monitoring and Review","Standard G020 wording, prefilled. Open any of these to change them.")}
+  ${std("communicated","9.0 Communicated To and How",2)}
+  <div class="grid g3" style="margin:8px 0 10px">${fld("monOff","10.0 Monitoring – Offsite","textarea",'rows="2"')}${fld("monOn","10.0 Monitoring – Onsite","textarea",'rows="2"')}${fld("monWork","10.0 Monitoring – Workface","textarea",'rows="2"')}</div>
+  ${std("review","10.1 Review Schedule",2)}
+  <div class="grid g2" style="margin:8px 0">${fld("amendAuth","10.2 Amendments Authorised By")}</div>${std("amendComm","10.3 Amendments Communicated To",2)}
+  ${d.amendments.length?`<div class="sub-h">Amendment Log</div><div class="tablewrap"><table class="docs"><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Change</th><th></th></tr></thead><tbody>${d.amendments.map((a,i)=>`<tr><td style="width:50px">${i+1}</td>
   <td style="width:160px"><input type="date" data-list="amendments" data-i="${i}" data-f="date" value="${esc(a.date)}"></td><td style="width:200px"><input type="text" data-list="amendments" data-i="${i}" data-f="name" value="${esc(a.name)}"></td>
   <td><input type="text" data-list="amendments" data-i="${i}" data-f="desc" value="${esc(a.desc)}"></td><td><button type="button" class="icon" aria-label="Remove" onclick="rm('amendments',${i})">${ICON.del}</button></td></tr>`).join("")}</tbody></table></div>`:""}
   <button type="button" class="btn ghost sm" style="margin-top:8px" onclick="cur().amendments.push({id:uid(),date:today(),name:meName(),desc:''});touch();rerender()">+ Log Amendment</button></div>`;}
@@ -1637,7 +1654,7 @@ function unissue(){const d=cur(); if(isLocked(d)) return; d.issued=null; d.statu
 function nextRev(r){r=String(r||"01");return /^\d+$/.test(r)?String(+r+1).padStart(r.length,"0"):(r.length===1?String.fromCharCode(r.charCodeAt(0)+1):r+"1");}
 function newRevision(){
   const d=cur(); const nx=nextRev(d.revision);
-  confirmBox(`Start revision ${esc(nx)}?`,`Rev ${esc(d.revision)} and its signatures are kept. You can then edit the RAMS, and everyone requested will need to sign Rev ${esc(nx)}.`,"Start revision",()=>{
+  confirmBox(`Start revision ${esc(nx)}?`,`Rev ${esc(d.revision)} and its signatures are kept. You can then edit the RAMS, and everyone requested will need to sign Rev ${esc(nx)}.`,"Start Revision",()=>{
     d.amendments.push({id:uid(),date:today(),name:meName(),desc:`Revision ${nx} issued`}); d.revision=nx; d.issueDate=today(); d.signedRev=null; d.issued=null; d.status="Draft"; S.tab="project"; touch(); rerender(); toast(`Revision ${nx} started`);
   });
 }
@@ -1659,7 +1676,7 @@ async function paintSigStatus(reload){
   box.innerHTML=uniq.map(r=>{const mine=all.filter(s=>r.sid?s.id===r.sid:s.email===r.email);const ok=mine.find(s=>s.rev===d.revision&&s.verified);const old=mine.find(s=>s.rev!==d.revision);const bad=mine.find(s=>!s.verified);
     return `<div class="person"><div class="grow"><div class="nm">${esc(r.name)}</div><div class="meta">${esc([r.email,ok&&ok.company,ok&&ok.card].filter(Boolean).join(" · "))} · ${ok?`${ok.witnessed?"Signed in person":"Signed"} Rev ${esc(ok.rev)} on ${fmtDT(ok.signedAt)}${ok.witnessed?`, witnessed by ${esc(ok.witness)}`:""}`:old?`Signed Rev ${esc(old.rev)} – needs to sign Rev ${esc(d.revision)}`:"Waiting for signature"}${bad?` · <span style="color:#ff8a80">unverified signature ignored</span>`:""}</div></div>
     ${ok&&ok.sig?`<img class="sigimg" alt="Signature" src="${esc(ok.sig)}">`:""}<span class="pill ${ok?"st-Approved":"st-Awaiting"}">${ok?"Signed":"Awaiting"}</span>
-    ${d.requests.some(x=>x.email===r.email)&&!ok?`<button type="button" class="icon" aria-label="Remove request" onclick="removeRequest('${esc(r.email)}')">${ICON.del}</button>`:""}</div>`}).join("");
+    ${d.requests.some(x=>x.email===r.email)&&!ok?`<button type="button" class="icon" aria-label="Remove Request" onclick="removeRequest('${esc(r.email)}')">${ICON.del}</button>`:""}</div>`}).join("");
   onSigsChanged(d);
 }
 function signLink(d){return window.location.href.split('?')[0].split('#')[0]+"?rams="+d.spId;}
@@ -1685,11 +1702,11 @@ Thanks,
 ${meName()}`;
   S.email={to:to.join("; "),subject,body};
   const mailto=`mailto:${to.join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  layer(`<h2>Email engineers</h2><p class="meta" style="margin:0 0 12px">${pending.length?`${pending.length} ${pending.length===1?"person hasn't":"people haven't"} signed Rev ${esc(d.revision)} yet.`:"Everyone requested has signed."}</p>
+  layer(`<h2>Email Engineers</h2><p class="meta" style="margin:0 0 12px">${pending.length?`${pending.length} ${pending.length===1?"person hasn't":"people haven't"} signed Rev ${esc(d.revision)} yet.`:"Everyone requested has signed."}</p>
   <label class="f"><span>To</span><input type="text" readonly value="${esc(S.email.to)}"></label>
   <label class="f" style="margin-top:10px"><span>Subject</span><input type="text" readonly value="${esc(subject)}"></label>
   <label class="f" style="margin-top:10px"><span>Message</span><textarea readonly rows="13">${esc(body)}</textarea></label>
-  <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:14px"><button type="button" class="btn" onclick="closeLayer()">Close</button><button type="button" class="btn" onclick="copyText(S.email.to+'\\n'+S.email.subject+'\\n\\n'+S.email.body)">Copy</button><a class="btn primary" href="${esc(mailto)}">Open In Outlook</a></div>`);
+  <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:14px"><button type="button" class="btn" onclick="closeLayer()">Close</button><button type="button" class="btn" onclick="copyText(S.email.to+'\\n'+S.email.subject+'\\n\\n'+S.email.body)">Copy</button><a class="btn primary" href="${esc(mailto)}">Open in Outlook</a></div>`);
 }
 async function copyText(t){try{await navigator.clipboard.writeText(t);toast("Copied");}catch(e){toast("Select the text and copy it manually");}}
 
@@ -1731,9 +1748,9 @@ function hazList(inDoc){
   <div style="display:flex;gap:8px;align-items:center"><span class="chip lv-${lvl(h.l*h.s)}" style="height:26px">${h.l*h.s}</span><span class="chip lv-${lvl(h.rl*h.rs)}" style="height:26px">${h.rl*h.rs}</span>
   ${inDoc?(have.has(h.hazard)?`<button type="button" class="btn sm" disabled>Added</button>`:`<button type="button" class="btn primary sm" onclick="cur().hazards.push(fromLib(HAZ.find(x=>x.libId==='${h.libId}')));touch();openHazLib()">Add</button>`):""}</div></div>`).join("")}`;
 }
-function openHazLib(){layer(`<h2>Hazard library</h2><p class="meta" style="margin:0 0 12px">WSAV standard hazards from G020, plus AV-specific ones. Adjust scores and controls for the site.</p>${hazList(true)}<div style="text-align:right;margin-top:12px"><button type="button" class="btn" onclick="closeLayer();rerender()">Done</button></div>`);}
+function openHazLib(){layer(`<h2>Hazard Library</h2><p class="meta" style="margin:0 0 12px">WSAV standard hazards from G020, plus AV-specific ones. Adjust scores and controls for the site.</p>${hazList(true)}<div style="text-align:right;margin-top:12px"><button type="button" class="btn" onclick="closeLayer();rerender()">Done</button></div>`);}
 function openCoshhLib(){const have=new Set(cur().coshh.map(c=>c.substance));
-  layer(`<h2>COSHH library</h2>${COSHH.map((c,i)=>`<div class="lib-item"><div><h3>${esc(c.substance)}</h3><p>${esc(c.hazards)}</p></div>${have.has(c.substance)?`<button type="button" class="btn sm" disabled>Added</button>`:`<button type="button" class="btn primary sm" onclick="cur().coshh.push({id:uid(),...COSHH[${i}]});touch();openCoshhLib()">Add</button>`}</div>`).join("")}<div style="text-align:right;margin-top:12px"><button type="button" class="btn" onclick="closeLayer();rerender()">Done</button></div>`);}
+  layer(`<h2>COSHH Library</h2>${COSHH.map((c,i)=>`<div class="lib-item"><div><h3>${esc(c.substance)}</h3><p>${esc(c.hazards)}</p></div>${have.has(c.substance)?`<button type="button" class="btn sm" disabled>Added</button>`:`<button type="button" class="btn primary sm" onclick="cur().coshh.push({id:uid(),...COSHH[${i}]});touch();openCoshhLib()">Add</button>`}</div>`).join("")}<div style="text-align:right;margin-top:12px"><button type="button" class="btn" onclick="closeLayer();rerender()">Done</button></div>`);}
 function viewLibrary(){return `<div class="bar"><h1 class="grow">Library</h1></div>
   <div class="panel"><h2>Templates</h2>${TEMPLATES.map(t=>`<div class="lib-item"><div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p></div><button type="button" class="btn primary sm" onclick="openNew()">New RAMS</button></div>`).join("")}</div>
   <div class="panel"><h2>Hazards</h2><p class="hint">${HAZ.length} hazards. Add them from the risk tab of any RAMS.</p>${hazList(false)}</div>
@@ -1750,7 +1767,7 @@ function viewSetup(){
     return `<div class="setup-row"><div><strong>${esc(name)}</strong> <span class="meta">${def.tpl===101?"document library":"list"}${SINGLE_LIST?" · one list for RAMS, signatures, people and hospitals; files are attachments":""}${def.fields.length?" · "+def.fields.map(f=>f[0]).join(", "):""}</span></div>
     <span class="pill ${!m?"st-Approved":"st-Awaiting"}">${!m?"Ready":missingList?"Missing":"Missing "+m.length+" column"+(m.length>1?"s":"")}</span></div>`;}).join("")}
   <div class="setup-row"><div><strong>${esc(LISTS.projects)}</strong> <span class="meta">existing · optional extra columns: Client, SiteAddress, MainContractor, StartDate</span></div><span class="pill ${["Client","SiteAddress","MainContractor","StartDate"].every(f=>S.projFields.has(f))?"st-Approved":"st-Draft"}">${["Client","SiteAddress","MainContractor","StartDate"].filter(f=>S.projFields.has(f)).length}/4 optional</span></div>
-  <div style="margin-top:16px;display:flex;gap:8px">${S.missing.length?`<button type="button" class="btn primary" id="setupBtn" onclick="doSetup()">Create Missing Lists And Columns</button>`:`<button type="button" class="btn primary" onclick="syncAll(false).then(()=>go('list'))">Open RAMS</button>`}</div>
+  <div style="margin-top:16px;display:flex;gap:8px">${S.missing.length?`<button type="button" class="btn primary" id="setupBtn" onclick="doSetup()">Create Missing Lists and Columns</button>`:`<button type="button" class="btn primary" onclick="syncAll(false).then(()=>go('list'))">Open RAMS</button>`}</div>
   <pre id="setupLog" class="meta" style="margin-top:14px;white-space:pre-wrap"></pre></div>`;
 }
 async function recheck(){try{await checkSchema();}catch(e){banner(e.message,true);}render();}
@@ -1825,8 +1842,8 @@ async function paintQRs(){
   cs.forEach(c=>{const q=qrcode(0,"M");q.addData(c.dataset.qr);q.make();const n=q.getModuleCount();const ctx=c.getContext("2d");const sz=c.width;const cell=sz/n;
     ctx.fillStyle="#fff";ctx.fillRect(0,0,sz,sz);ctx.fillStyle="#013334";for(let r=0;r<n;r++)for(let k=0;k<n;k++)if(q.isDark(r,k))ctx.fillRect(Math.floor(k*cell),Math.floor(r*cell),Math.ceil(cell),Math.ceil(cell));});
 }
-function viewPreview(){const d=cur();return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('edit','${d.id}')">← Back To Editing</button><div class="grow"></div>
-  <button type="button" class="btn" onclick="window.print()">Print</button><button type="button" class="btn" onclick="exportPDF(false)">Download PDF</button><button type="button" class="btn primary" onclick="exportPDF(true)">Save PDF To SharePoint</button></div>
+function viewPreview(){const d=cur();return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('edit','${d.id}')">← Back to Editing</button><div class="grow"></div>
+  <button type="button" class="btn" onclick="window.print()">Print</button><button type="button" class="btn" onclick="exportPDF(false)">Download PDF</button><button type="button" class="btn primary" onclick="exportPDF(true)">Save PDF to SharePoint</button></div>
   ${d.status==="Draft"?`<div class="banner noprint"><span class="grow">${readiness(d).length?"Still to complete: "+readiness(d).map(esc).join(", ")+".":"Not issued for signature yet."}</span></div>`:""}
   <div id="docwrap">${docHTML(d)}</div>`;}
 
@@ -1937,11 +1954,11 @@ function viewScan(){
   <p class="meta" style="margin-top:6px">${esc((d.site||"").replace(/\n/g,", "))}${d.startDate?" · starts "+fmtDate(d.startDate):""}</p>
   <p class="meta" style="margin-top:4px">${d.status==="Draft"?"Not issued for signature yet.":d.issued?`Issued by ${esc(d.issued.by)} on ${fmtDate(d.issued.at)}.`:""} ${signedCount?`${signedCount} signature${signedCount===1?"":"s"} on Rev ${esc(d.revision)}.`:""}</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
-   ${canSign(d)&&!mine?`<button type="button" class="btn primary" onclick="go('sign','${d.id}')">${requested?"Read And Sign – You've Been Asked To Sign":"Read And Sign"}</button>`:""}
+   ${canSign(d)&&!mine?`<button type="button" class="btn primary" onclick="go('sign','${d.id}')">${requested?"Read and Sign – You've Been Asked to Sign":"Read and Sign"}</button>`:""}
    ${mine?`<span class="ok" style="align-self:center;font-size:13px">✓ You've signed Rev ${esc(d.revision)}</span>`:""}
    ${pdfOk?`<a class="btn" href="${esc(d.pdf.url)}" target="_blank" rel="noopener">Open PDF (Rev ${esc(d.revision)})</a>`:`<button type="button" class="btn" onclick="go('preview','${d.id}')">View RAMS</button>`}
-   ${canSign(d)?`<button type="button" class="btn gold" onclick="go('witness','${d.id}')">Sign For Someone Else</button>`:""}
-   <button type="button" class="btn ghost" onclick="S.scanRev='';go('edit','${d.id}','project')">Open In Builder</button>
+   ${canSign(d)?`<button type="button" class="btn gold" onclick="go('witness','${d.id}')">Sign for Someone Else</button>`:""}
+   <button type="button" class="btn ghost" onclick="S.scanRev='';go('edit','${d.id}','project')">Open in Builder</button>
   </div></div>`;
 }
 
@@ -1951,17 +1968,17 @@ function viewScan(){
 function viewSign(){
   const d=cur(); const me=meEmail(); const mine=(S.sigs[d.id]||[]).find(s=>s.email===me&&s.rev===d.revision&&s.verified);
   const requested=d.requests.some(r=>r.email===me);
-  return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('list')">← Back</button><h1 class="grow">Read And Sign</h1></div>
+  return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('list')">← Back</button><h1 class="grow">Read and Sign</h1></div>
   ${S.scanRev?scanBanner(d):""}
   ${!canSign(d)?`<div class="banner red noprint"><span class="grow">This RAMS hasn't been issued for signature yet.</span></div>`:""}
   <div id="docwrap">${docHTML(d)}</div>
   <div class="signbox noprint">
   ${!mine&&queuedFor(d).some(x=>x.body.SignerEmail===me)?`<h2 style="color:#D4A017">Signature saved on this device</h2><p class="meta" style="margin-top:6px">There's no signal right now. Keep this page open and it uploads automatically when the connection comes back.</p>`:
-  mine?`<h2 class="ok">You signed Rev ${esc(d.revision)}</h2><p class="meta" style="margin:6px 0 10px">Signed ${fmtDT(mine.signedAt)} as ${esc(mine.name)}.</p><img class="sigimg" style="height:60px" alt="Your signature" src="${esc(mine.sig)}">`:
+  mine?`<h2 class="ok">You signed Rev ${esc(d.revision)}</h2><p class="meta" style="margin:6px 0 10px">Signed ${fmtDT(mine.signedAt)} as ${esc(mine.name)}.</p><img class="sigimg" style="height:60px" alt="Your Signature" src="${esc(mine.sig)}">`:
   !canSign(d)?`<p class="meta">Signing opens once the project manager issues the RAMS.</p>`:
   `<h2>Sign Rev ${esc(d.revision)}</h2><p class="meta" style="margin:6px 0 14px">By signing I confirm I have read and been briefed on this RAMS, understand it and will work to it. I will stop work and report to my supervisor if conditions on site differ.${requested?"":" (You weren't on the request list, but your signature will still be recorded.)"}</p>
-  <div class="grid g2"><label class="f"><span>Full name (printed)</span><input type="text" id="sgName" value="${esc(meName())}"></label><label class="f"><span>Company</span><input type="text" id="sgCo" value="Workspace AV"></label></div>
-  <div class="sub-h">Signature</div><canvas class="sigpad" id="pad" aria-label="Signature pad"></canvas>
+  <div class="grid g2"><label class="f"><span>Full Name (printed)</span><input type="text" id="sgName" value="${esc(meName())}"></label><label class="f"><span>Company</span><input type="text" id="sgCo" value="Workspace AV"></label></div>
+  <div class="sub-h">Signature</div><canvas class="sigpad" id="pad" aria-label="Signature Pad"></canvas>
   <div style="display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap">
   <label class="check" style="flex:1;min-width:240px"><input type="checkbox" id="sgAck">I have read and understood this RAMS</label>
   <div style="display:flex;gap:8px"><button type="button" class="btn" onclick="clearPad()">Clear</button><button type="button" class="btn primary" id="sgBtn" onclick="submitSig()">Sign RAMS</button></div></div>
@@ -2006,24 +2023,24 @@ function viewWitness(){
   const d=cur();
   const ppl=[...S.people.values()].sort((a,b)=>a.name.localeCompare(b.name));
   const teamFirst=[...d.team.map(t=>S.people.get(t.pid)||{spId:t.pid,name:t.name,company:t.company,email:t.email||"",cards:t.cards||""}),...ppl.filter(p=>!d.team.some(t=>t.pid===p.spId))];
-  return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('edit','${d.id}','signoff')">← Back</button><h1 class="grow">Sign For Someone Else</h1></div>
+  return `<div class="bar noprint"><button type="button" class="btn ghost" onclick="go('edit','${d.id}','signoff')">← Back</button><h1 class="grow">Sign for Someone Else</h1></div>
   ${!canSign(d)?`<div class="banner red"><span class="grow">This RAMS hasn't been issued for signature yet${readiness(d).length?". Missing: "+readiness(d).map(esc).join(", "):""}.</span></div>`:
   !witnessReady()?`<div class="banner red"><span class="grow">SharePoint needs two new columns first. Open SharePoint Setup and click Create Missing Lists And Columns.</span><button type="button" class="btn sm" onclick="go('setup')">SharePoint Setup</button></div>`:`
   <div class="panel"><h2>${esc(d.title||"Untitled")} · Rev ${esc(d.revision)}</h2>
   <p class="hint">Use this at the toolbox talk for subcontractors and anyone without a Workspace AV account. Brief them on the RAMS first, then hand them the device to sign. You stay signed in, and each signature is recorded as witnessed by ${esc(meName())}.</p>
   <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn sm" onclick="go('preview','${d.id}')">Open Full RAMS</button></div></div>
   <div class="signbox" style="margin-top:0">
-  <div class="grid g2"><label class="f"><span>Who's signing</span><select id="wPick" onchange="witnessPick(this.value)"><option value="">External person – enter details</option>${teamFirst.map(p=>`<option value="${p.spId}">${esc(p.name)}${p.company?" – "+esc(p.company):""}${d.team.some(t=>t.pid===p.spId)?" (on this RAMS)":""}</option>`).join("")}</select></label>
-  <label class="f"><span>Full name (printed)</span><input type="text" id="wName"></label>
+  <div class="grid g2"><label class="f"><span>Who's Signing</span><select id="wPick" onchange="witnessPick(this.value)"><option value="">External Person – Enter Details</option>${teamFirst.map(p=>`<option value="${p.spId}">${esc(p.name)}${p.company?" – "+esc(p.company):""}${d.team.some(t=>t.pid===p.spId)?" (on this RAMS)":""}</option>`).join("")}</select></label>
+  <label class="f"><span>Full Name (printed)</span><input type="text" id="wName"></label>
   <label class="f"><span>Company</span><input type="text" id="wCo" placeholder="e.g. ABC Electrical Ltd"></label>
-  <label class="f"><span>CSCS / ECS card number</span><input type="text" id="wCard" placeholder="Card number"></label></div>
+  <label class="f"><span>CSCS / ECS Card Number</span><input type="text" id="wCard" placeholder="Card Number"></label></div>
   <input type="hidden" id="wEmail">
-  <div class="sub-h">Signature</div><canvas class="sigpad" id="pad" aria-label="Signature pad"></canvas>
+  <div class="sub-h">Signature</div><canvas class="sigpad" id="pad" aria-label="Signature Pad"></canvas>
   <label class="check" style="margin-top:12px"><input type="checkbox" id="wAck">I have been briefed on this RAMS (Rev ${esc(d.revision)}), understand it and will work to it. I will stop work and report if conditions on site differ.</label>
   <label class="check" style="margin-top:8px"><input type="checkbox" id="wCardOk">I've checked their card is genuine and in date (for CSCS-scheme cards, scan it with the CSCS Smart Check app).</label>
   <div id="wCardWarn"></div>
   <label class="check" style="margin-top:8px"><input type="checkbox" id="wWit">I (${esc(meName())}) briefed this person and watched them sign.</label>
-  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;flex-wrap:wrap"><button type="button" class="btn" onclick="clearPad()">Clear</button><button type="button" class="btn primary" id="wBtn" onclick="submitWitnessed()">Save Signature And Next Person</button></div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;flex-wrap:wrap"><button type="button" class="btn" onclick="clearPad()">Clear</button><button type="button" class="btn primary" id="wBtn" onclick="submitWitnessed()">Save Signature and Next Person</button></div>
   </div>`}
   <div class="panel" style="margin-top:16px"><h2>Signed Rev ${esc(d.revision)}</h2><div style="height:10px"></div><div class="people" id="wList"><p class="meta">Loading…</p></div></div>`;
 }
@@ -2046,7 +2063,7 @@ async function submitWitnessed(){
     else { await loadSigs(d); toast(`${name} signed`); }
     v_reset(); const l=$("#wList"); if(l) l.innerHTML=witnessList(d); if(res==="sent") onSigsChanged(d);
   }catch(e){banner("Couldn't save the signature: "+e.message,true);}
-  btn.disabled=false; btn.textContent="Save Signature And Next Person";
+  btn.disabled=false; btn.textContent="Save Signature and Next Person";
 }
 function v_reset(){["wName","wCo","wCard","wEmail"].forEach(id=>{const e=$("#"+id);if(e)e.value="";});const p=$("#wPick");if(p)p.value="";const cw=$("#wCardWarn");if(cw)cw.innerHTML="";["wAck","wWit","wCardOk"].forEach(id=>{const e=$("#"+id);if(e)e.checked=false;});clearPad();window.scrollTo(0,0);}
 
@@ -2079,7 +2096,7 @@ async function afterSignIn(){
 }
 async function init(){
   render();
-  if(!/^[0-9a-f-]{36}$/i.test(AZURE_CLIENT_ID)){ setSync("error","Not configured"); $("#signin-screen").classList.remove("hidden"); const er=$("#signin-error"); er.textContent="This copy isn't configured yet. Paste the RAMS Builder app's client ID and tenant ID into AZURE_CLIENT_ID and AZURE_TENANT_ID at the top of the script."; er.classList.add("visible"); $("#signin-btn").disabled=true; return; }
+  if(!/^[0-9a-f-]{36}$/i.test(AZURE_CLIENT_ID)){ setSync("error","Not Configured"); $("#signin-screen").classList.remove("hidden"); const er=$("#signin-error"); er.textContent="This copy isn't configured yet. Paste the RAMS Builder app's client ID and tenant ID into AZURE_CLIENT_ID and AZURE_TENANT_ID at the top of the script."; er.classList.add("visible"); $("#signin-btn").disabled=true; return; }
   let ok=false; try{ok=await initMSAL();}catch(e){console.warn("MSAL init failed:",e);}
   if(ok) await afterSignIn();
   else { setSync("error","Not Signed In"); $("#signin-screen").classList.remove("hidden"); }
@@ -2089,7 +2106,7 @@ $("#signin-btn").onclick=async function(){
   try{ if(!msalInstance) await initMSAL(); await signInWithMicrosoft(); $("#signin-screen").classList.add("hidden"); await afterSignIn(); }
   catch(e){
     err.textContent=e.errorCode==="popup_window_error"?"Popup was blocked — please allow popups for this page and try again.":e.errorCode==="user_cancelled"?"Sign-in was cancelled.":`Sign-in failed: ${e.message}`;
-    err.classList.add("visible"); this.disabled=false; this.textContent="Sign In With Microsoft";
+    err.classList.add("visible"); this.disabled=false; this.textContent="Sign In with Microsoft";
   }
 };
 init();
