@@ -635,9 +635,29 @@ async function runSetup(log){
 /* ═══════════════════════════════════════════════════
    DATA LOAD / SAVE
    ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   RAMS TYPE — Standard, or Principal Contractor site (needs more information)
+   ═══════════════════════════════════════════════════ */
+const RAMS_TYPES={standard:"Standard",pc:"Principal Contractor Site"};
+const isPC=d=>d&&d.ramsType==="pc";
+function myMobile(){try{const p=[...S.people.values()].find(x=>x.email&&x.email===meEmail());return p?p.mobile:"";}catch(e){return "";}}
+/* Standard RAMS never mention a principal contractor: the client takes that role in the wording */
+const PCW_RE=/principal contractor('s)?/gi;
+function stdWord(t){return String(t).replace(PCW_RE,(m,poss)=>(m[0]==="P"?"Client":"client")+(poss||""));}
+function adaptText(d,t){return isPC(d)||typeof t!=="string"?t:stdWord(t);}
+function adaptDoc(d){
+  if(isPC(d)) return d;
+  const keep={mainContractor:d.mainContractor};
+  const o=JSON.parse(JSON.stringify(d,(k,v)=>typeof v==="string"&&k!=="sig"&&!/^data:/.test(v)?stdWord(v):v));
+  Object.assign(d,o,keep); return d;
+}
+const permitList=d=>PERMITS.map(p=>adaptText(d,p));
+function setRamsType(t){const d=cur();if(!d||d.ramsType===t)return;d.ramsType=t;if(t==="standard")adaptDoc(d);touch();rerender();toast(t==="pc"?"Principal Contractor site – complete the extra section":"Standard RAMS");}
+const NA=v=>{const t=String(v??"").trim();return t?t:"N/A";};
 function blank(){
-  return {id:uid(),spId:null,title:"",activity:"AV equipment install",ref:"",revision:"01",status:"Draft",jobNo:"",projectSpId:null,client:"",site:"",mainContractor:"",pm:"",
-    issueDate:today(),contract:"",startDate:"",startTime:"08:00",duration:"",locations:"",preparedBy:meName(),
+  return {id:uid(),spId:null,title:"",activity:"AV equipment install",ref:"",revision:"01",status:"Draft",jobNo:"",projectSpId:null,client:"",site:"",mainContractor:"",pm:meName(),pmPhone:myMobile(),ramsType:"standard",
+    pc:{siteManager:"",siteManagerMobile:"",hsContact:"",cppRef:"",f10:"",induction:"",permitSystem:"",logistics:"",welfare:"",submittedOn:"",acceptedBy:"",acceptedOn:"",comments:""},
+    issueDate:today(),startDate:"",startTime:"08:00",duration:"",locations:"",preparedBy:meName(),
     briefing:DEF.briefing,scope:DEF.scope,sequence:[],
     team:[],personnel:"",supName:"",supMobile:"",engName:"",engMobile:"",plant:[],plantNotes:"",materials:"",technical:"",waste:DEF.waste,housekeeping:DEF.housekeeping,
     raPeople:DEF.raPeople,hazards:[],coshh:[],mhActivities:"Moving AV equipment, displays, racks and tools to and around the work area.",mhAvoid:"No",mhTrained:"Yes",mhRA:"Yes",noise:"Drilling into walls and ceilings for fixings and containment.",noiseRA:"Yes",access:"",
@@ -649,7 +669,7 @@ function blank(){
     createdAt:Date.now(),updatedAt:Date.now()};
 }
 function normalize(d){
-  const b=blank();const o={...b,...d};if(["In review","Ready","Approved"].includes(o.status))o.status="Draft";if(o.status==="Signed")o.status="Complete";delete o.approval;o.images={locations:[],scope:[],...(d.images||{})};o.emergency={...b.emergency,...(d.emergency||{})};
+  const b=blank();const o={...b,...d};o.pc={...b.pc,...(d.pc||{})};if(!d.ramsType)o.ramsType=d.mainContractor?"pc":"standard";if(d.pm===undefined)o.pm="";if(d.pmPhone===undefined)o.pmPhone="";if(["In review","Ready","Approved"].includes(o.status))o.status="Draft";if(o.status==="Signed")o.status="Complete";delete o.approval;o.images={locations:[],scope:[],...(d.images||{})};o.emergency={...b.emergency,...(d.emergency||{})};
   ["team","sequence","hazards","coshh","plant","permits","training","ppe","signoff","requests","amendments"].forEach(k=>{if(!Array.isArray(o[k]))o[k]=b[k];});
   o.sequence=o.sequence.map(s=>({id:s.id||uid(),type:s.type||"s",text:s.text||""}));
   return o;
@@ -889,7 +909,7 @@ function viewList(){
   !docs.length?`<div class="empty"><p>Nothing matches “${esc(S.filter)}”.</p></div>`:
   `<div class="tablewrap"><table class="docs"><thead><tr><th>Project</th><th>Job</th><th>Start</th><th>Signatures</th><th>Residual</th><th>Status</th><th></th></tr></thead><tbody>${docs.map(d=>{
     const mx=Math.max(0,...d.hazards.map(h=>h.rl*h.rs));const l=mx?lvl(mx):"";
-    return `<tr class="click" onclick="go('edit','${d.id}','project')"><td><div class="t">${esc(d.title||"Untitled")}</div><div class="r">${esc(d.ref||"No reference")} · Rev ${esc(d.revision)}${d.lastBy?" · "+esc(d.lastBy):""}</div></td>
+    return `<tr class="click" onclick="go('edit','${d.id}','project')"><td><div class="t">${esc(d.title||"Untitled")}</div><div class="r">${esc(d.ref||"No reference")} · Rev ${esc(d.revision)}${isPC(d)?" · Principal Contractor":""}${d.lastBy?" · "+esc(d.lastBy):""}</div></td>
     <td>${esc(d.jobNo)}</td><td>${fmtDate(d.startDate)}</td>
     <td class="r">${d.requests.length?d.requests.length+" requested":"–"}${d.dashTask&&d.dashTask.rev===d.revision?' · <span class="ok">complete</span>':""}</td>
     <td>${mx?`<span class="chip lv-${l}" style="height:24px">${LVNAME[l]} ${mx}</span>`:'<span class="r">–</span>'}</td>
@@ -904,6 +924,7 @@ function applyProject(d,p){
   if(prev){ ["client","site","mainContractor","locations","access","security"].forEach(k=>{if(!d[k])d[k]=prev[k];}); if(!d.emergency.hospital&&prev.emergency.hospital){d.emergency.hospital=prev.emergency.hospital;d.emergency.hospitalConfirmed=prev.emergency.hospitalConfirmed;} }
   if(!d.ref&&d.jobNo) d.ref=`${d.jobNo}-RAMS-${String([...S.docs.values()].filter(x=>x.projectSpId===p.spId).length+1).padStart(2,"0")}`;
   if(!d.pm) d.pm=meName();
+  if(!d.pmPhone) d.pmPhone=myMobile();
   if(!d.monOff) d.monOff=`${meName()} (Project Manager)`;
 }
 async function createDoc(d){
@@ -919,14 +940,15 @@ function newDoc(tpl){
     d.training=[TRAINING[0],TRAINING[3],TRAINING[4],TRAINING[8]];
     d.activity=tpl===0?"AV equipment install":t.name;
   }
+  d.ramsType=S.newType||"standard";
   applyProject(d,S.projects.get(+S.newProj)); S.newProj="";
-  createDoc(d);
+  adaptDoc(d); createDoc(d);
 }
 function copyFromProject(){
   const pid=+S.newProj; if(!pid){toast("Choose a project first");return;}
   const prev=[...S.docs.values()].filter(x=>x.projectSpId===pid).sort((a,b)=>b.updatedAt-a.updatedAt)[0];
   if(!prev){toast("No previous RAMS for that project");return;}
-  const d=normalize(JSON.parse(JSON.stringify(prev))); d.id=uid(); d.spId=null; d.revision="01"; d.status="Draft"; d.ref=""; d.requests=[]; d.signoff=[]; d.signedRev=null; d.issued=null; d.dashTask=null; d.amendments=[]; d.createdAt=d.updatedAt=Date.now();
+  const d=normalize(JSON.parse(JSON.stringify(prev))); d.id=uid(); if(S.newType) d.ramsType=S.newType; d.spId=null; d.revision="01"; d.status="Draft"; d.ref=""; d.requests=[]; d.signoff=[]; d.signedRev=null; d.issued=null; d.dashTask=null; d.amendments=[]; d.createdAt=d.updatedAt=Date.now();
   applyProject(d,S.projects.get(pid)); S.newProj=""; createDoc(d);
 }
 function dupDoc(id){const o=S.docs.get(id);const d=normalize(JSON.parse(JSON.stringify(o)));d.id=uid();d.spId=null;d.title=(o.title||"Untitled")+" (copy)";d.status="Draft";d.requests=[];d.signoff=[];d.signedRev=null;d.issued=null;d.dashTask=null;d.createdAt=d.updatedAt=Date.now();S.docs.set(d.id,d);persist(d).then(render);toast("Duplicated");}
@@ -997,12 +1019,14 @@ function pickerRows(selected){
 }
 function paintPicker(){const el=$("#ppList");if(el)el.innerHTML=pickerRows(S.newProj);const b=$("#ppUse");if(b)b.disabled=!S.newProj;}
 function openNew(projectSpId){
-  S.newProj=projectSpId!=null?String(projectSpId):""; S.pp={q:"",all:false};
+  S.newProj=projectSpId!=null?String(projectSpId):""; S.pp={q:"",all:false}; S.newType=S.newType||"standard";
   if(projectSpId!=null){const p=S.projects.get(+projectSpId); if(p&&(p.archived||!ACTIVE_STATUSES.includes(p.status))) S.pp.all=true;}
   layer(`<h2>New RAMS</h2>
   <div class="stepno" style="margin-top:14px"><b>1</b>Which project?</div>
   ${projectPicker(S.newProj)}
-  <div class="stepno" style="margin-top:16px"><b>2</b>Start from</div>
+  <div class="stepno" style="margin-top:16px"><b>2</b>RAMS type</div>
+  <div class="checks" id="typePick">${Object.entries(RAMS_TYPES).map(([k,n])=>`<label class="check" style="align-items:flex-start"><input type="radio" name="ramsType" value="${k}" ${S.newType===k?"checked":""} onchange="S.newType=this.value" style="margin-top:3px"><span><strong>${n}</strong><br><span class="meta">${k==="pc"?"For sites run by a principal contractor. Adds their contacts, site rules and RAMS acceptance.":"For our own works. No principal contractor wording."}</span></span></label>`).join("")}</div>
+  <div class="stepno" style="margin-top:16px"><b>3</b>Start from</div>
   ${TEMPLATES.map((t,i)=>`<div class="lib-item"><div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p></div><button type="button" class="btn ${i?"":"primary"} sm" onclick="newDoc(${i})">Use</button></div>`).join("")}
   <div class="lib-item"><div><h3>Copy the last RAMS for this project</h3><p>Starts a fresh Rev 01 with the same content.</p></div><button type="button" class="btn sm" onclick="copyFromProject()">Copy</button></div>
   <div class="lib-item"><div><h3>Blank G020</h3><p>Standard wording only – no sequence or hazards.</p></div><button type="button" class="btn sm" onclick="newDoc()">Use</button></div>
@@ -1311,7 +1335,7 @@ function applyDraft(replace){
   document.querySelectorAll("#draftPlant input:checked").forEach(i=>{if(!d.plant.includes(i.value))d.plant.push(i.value);});
   document.querySelectorAll("#draftPerm input:checked").forEach(i=>{if(!d.permits.includes(i.value))d.permits.push(i.value);});
   if(r.items.length&&(d.scope===DEF.scope||!d.scope.trim())) d.scope=`This method statement covers the AV installation described in the scope of works${d.scopeFile?" ("+d.scopeFile.name+")":""}, including: ${r.items.map(i=>i.label.toLowerCase()+(i.qty?" (×"+i.qty+")":"")).join(", ")}.`;
-  contentEdited(d); touch(); closeLayer(); rerender(); toast("Sequence drafted – review each step");
+  adaptDoc(d); contentEdited(d); touch(); closeLayer(); rerender(); toast("Sequence drafted – review each step");
 }
 
 
@@ -1393,6 +1417,9 @@ function readinessItems(d){
   if(!d.title) add("project","project name");
   if(!d.site.trim()) add("project","site address");
   if(!d.startDate) add("project","start date");
+  if(!d.pm||!d.pmPhone) add("project","workspace contact and number");
+  if(isPC(d)&&!d.mainContractor) add("project","principal contractor company");
+  if(isPC(d)&&!(d.pc.siteManager&&d.pc.siteManagerMobile)) add("project","principal contractor site manager and mobile");
   if(!d.sequence.length) add("method","sequence of works");
   if(!d.team.length&&!d.personnel.trim()) add("resources","personnel");
   if(!d.supName) add("resources","supervisor");
@@ -1448,10 +1475,19 @@ function tProject(d){
   <div class="panel">${sec("1.0–1.3","Project details")}
   <div class="grid g2">${fld("title","1.0 Project name")}${fld("jobNo","1.0 Project no.")}</div>
   <div class="grid" style="margin-top:14px">${fld("site","1.1 Site address (include the postcode – it's used to find the nearest A&E)","textarea",'rows="2" style="min-height:44px"')}</div>
-  <div class="grid g2" style="margin-top:14px">${fld("client","Client")}${fld("mainContractor","Principal contractor")}</div>
-  <details class="std" style="margin-top:14px"><summary><span class="std-l">Document details</span><span class="std-p">${esc([d.activity,"Rev "+d.revision,d.ref,fmtDate(d.issueDate),d.contract].filter(Boolean).join(" · "))}</span><span class="std-e">Edit</span></summary>
+  <div class="grid g2" style="margin-top:14px">${fld("client","Client")}<label class="f"><span>RAMS type</span><select onchange="setRamsType(this.value)">${Object.entries(RAMS_TYPES).map(([k,n])=>`<option value="${k}" ${d.ramsType===k?"selected":""}>${n}</option>`).join("")}</select></label></div>
+  <div class="grid g2" style="margin-top:14px">${fld("pm","1.3 Workspace contact (Project Manager)")}${fld("pmPhone","1.3 Contact number")}</div>
+  <details class="std" style="margin-top:14px"><summary><span class="std-l">Document details</span><span class="std-p">${esc([d.activity,"Rev "+d.revision,d.ref,fmtDate(d.issueDate)].filter(Boolean).join(" · "))}</span><span class="std-e">Edit</span></summary>
   <div class="grid g3" style="margin-top:10px">${fld("activity","1.2 Title")}${fld("revision","1.2 Rev no.")}${fld("ref","RAMS reference")}</div>
-  <div class="grid g3" style="margin-top:14px"><label class="f"><span>1.1 Company</span><input type="text" value="Workspace Audio Visual" disabled></label>${fld("issueDate","1.3 Date of issue","date")}${fld("contract","1.3 Workspace contract / PO")}</div></details></div>
+  <div class="grid g3" style="margin-top:14px"><label class="f"><span>1.1 Company</span><input type="text" value="Workspace Audio Visual" disabled></label>${fld("issueDate","1.3 Date of issue","date")}</div></details></div>
+  ${isPC(d)?`<div class="panel">${sec("PC","Principal Contractor","Principal contractor sites need these details. They're added to the RAMS as their own section.")}
+  <div class="grid g3">${fld("mainContractor","Principal contractor company")}${fld("pc.siteManager","Site manager")}${fld("pc.siteManagerMobile","Site manager mobile")}</div>
+  <div class="grid g3" style="margin-top:14px">${fld("pc.hsContact","H&S contact (name and number)")}${fld("pc.cppRef","Construction phase plan reference")}${fld("pc.f10","F10 notification reference")}</div>
+  <div class="grid g2" style="margin-top:14px">${fld("pc.induction","Site induction (when, where, how long)","textarea",'rows="2"')}${fld("pc.permitSystem","Principal contractor permit-to-work system","textarea",'rows="2"')}</div>
+  <div class="grid g2" style="margin-top:14px">${fld("pc.logistics","Deliveries, parking and logistics","textarea",'rows="2"')}${fld("pc.welfare","Welfare facilities provided","textarea",'rows="2"')}</div>
+  <div class="sub-h">RAMS submission</div>
+  <div class="grid g3">${fld("pc.submittedOn","Submitted to principal contractor","date")}${fld("pc.acceptedBy","Accepted by")}${fld("pc.acceptedOn","Date accepted","date")}</div>
+  <div style="margin-top:14px">${fld("pc.comments","Principal contractor comments","textarea",'rows="2"')}</div></div>`:""}
   <div class="panel">${sec("2.0–2.3","Programme")}
   <div class="grid g4">${fld("startDate","2.0 Start date","date")}${fld("startTime","2.0 Start time")}${fld("duration","2.1 Expected duration")}${fld("preparedBy","2.3 Prepared by")}</div>
   ${d.startDate?`<p class="hint" style="margin-top:10px">RAMS due ${fmtDate(workingDaysBefore(d.startDate,RAMS_LEAD_WORKING_DAYS))} (${RAMS_LEAD_WORKING_DAYS} working days before start).</p>`:""}
@@ -1528,7 +1564,7 @@ function tCoshh(d){return `<div class="panel">${sec("4.1","COSHH","Substances us
 const checks=(key,list)=>{const d=cur();const extra=d[key].filter(x=>!list.includes(x));
   return `<div class="checks">${[...list,...extra].map(x=>`<label class="check"><input type="checkbox" data-set="${key}" value="${esc(x)}" ${d[key].includes(x)?"checked":""}>${esc(x)}</label>`).join("")}</div>
   <div style="display:flex;gap:8px;margin-top:10px;max-width:440px"><input type="text" placeholder="Add another…" id="add-${key}" onkeydown="if(event.key==='Enter')addCustom('${key}')"><button type="button" class="btn sm" onclick="addCustom('${key}')">Add</button></div>`;};
-function tPpe(){return `<div class="panel">${sec("5.0–5.3","Permits and security")}${checks("permits",PERMITS)}
+function tPpe(){return `<div class="panel">${sec("5.0–5.3","Permits and security")}${checks("permits",permitList(cur()))}
   <div class="grid g2" style="margin-top:14px">${fld("permitType","5.1 Permit type")}${fld("permitIssuedBy","5.2 Issued by")}</div><div class="grid" style="margin-top:14px">${fld("security","5.3 Security arrangements","textarea",'rows="2"')}</div></div>
   <div class="panel">${sec("5.4","Training and competence")}${checks("training",TRAINING)}<div style="margin-top:12px">${std("trainingText","5.4 Training wording",3)}</div></div>
   <div class="panel">${sec("6.0–6.1","PPE","(Personal Protective Equipment at Work Regulations 1992)")}<div class="sub-h">6.0 Mandatory site PPE</div>${checks("ppe",PPE)}<div style="margin-top:12px">${std("taskPPE","6.1 Task-specific PPE",2)}</div></div>`;}
@@ -1678,7 +1714,7 @@ function addStep(type){cur().sequence.push({id:uid(),type,text:""});touch();rere
 function addHaz(){cur().hazards.push({id:uid(),hazard:"",risk:"",who:"",l:3,s:3,controls:"",rl:2,rs:3});touch();rerender();}
 function addCoshh(){cur().coshh.push({id:uid(),substance:"",use:"",hazards:"",route:"",controls:"",ppe:"",firstAid:""});touch();rerender();}
 function addCustom(k){const i=$("#add-"+k);const v=i.value.trim();if(!v)return;const d=cur();if(!d[k].includes(v))d[k].push(v);touch();rerender();}
-function fromLib(h){return {id:uid(),hazard:h.hazard,risk:h.risk,who:h.who,l:h.l,s:h.s,controls:h.controls,rl:h.rl,rs:h.rs};}
+function fromLib(h){const d=S.view==="edit"?cur():null;const a=t=>d?adaptText(d,t):t;return {id:uid(),hazard:a(h.hazard),risk:a(h.risk),who:a(h.who),l:h.l,s:h.s,controls:a(h.controls),rl:h.rl,rs:h.rs};}
 function showConflict(){const c=$("#conflict");if(c)c.innerHTML=`<div class="banner"><span class="grow">${esc(S.pendingRemote?.lastBy||"Someone")} saved changes to this RAMS.</span><button type="button" class="btn sm" onclick="takeRemote()">Load Their Version</button><button type="button" class="btn sm ghost" onclick="this.closest('.banner').remove()">Keep Mine</button></div>`;}
 function takeRemote(){if(S.pendingRemote){S.docs.set(S.pendingRemote.id,S.pendingRemote);S.pendingRemote=null;}render();}
 
@@ -1733,8 +1769,8 @@ function model(d){
   const J=a=>a.length?a.join(", "):"";
   return {ms:[
     ["1.0","Project Name",d.title],["","Project No.",d.jobNo],["1.1","Company","Workspace Audio Visual"],["","Site",d.site],
-    ["1.2","Title",d.activity],["","Rev No.",d.revision],["1.3","Date of Issue",fmtDate(d.issueDate)],["","Workspace Contract",d.contract],
-    ["","Client",d.client],["","Principal Contractor",d.mainContractor],
+    ["1.2","Title",d.activity],["","Rev No.",d.revision],["1.3","Date of Issue",fmtDate(d.issueDate)],["","Workspace Contact",[d.pm&&d.pm+" (Project Manager)",d.pmPhone].filter(Boolean).join(" · ")],
+    ["","Client",d.client],...(isPC(d)?[["","Principal Contractor",d.mainContractor]]:[]),
     ["2.0","Proposed Start Date",fmtDate(d.startDate)],["","Proposed Start Time",d.startTime],["2.1","Expected Duration",d.duration],["2.2","Exact Location(s)",d.locations],
     ["2.3","Document Prepared By",d.preparedBy],["","Issued for Signature",isIssued(d)?`${d.issued.by}, ${fmtDT(d.issued.at)}`:"Not yet issued"],
     ["2.4","Pre-Start Site Briefing (Toolbox Talk)",d.briefing],["2.5","Scope / Sequence of Works",{scope:d.scope,steps}],
@@ -1755,15 +1791,21 @@ function model(d){
     ["9.0","Communicated To / How",d.communicated+" See briefing register."],
     ["10.0","Persons Responsible for Monitoring",[d.monOff&&"Offsite: "+d.monOff,d.monOn&&"Onsite: "+d.monOn,d.monWork&&"Workface: "+d.monWork].filter(Boolean).join("\n")],
     ["10.1","Review Date / Schedule",d.review],["10.2","Amendments Authorised By",d.amendAuth],["10.3","Amendments Communicated To",d.amendComm]
-  ],sigs,paper:d.signoff,amendments:d.amendments};
+  ].map(([no,lb,v])=>[no,lb,(v&&typeof v==="object")?((String(v.scope||"").trim()||v.steps.length)?{scope:adaptText(d,v.scope||""),steps:v.steps.map(s=>s.h?{h:adaptText(d,s.h)}:{n:s.n,t:adaptText(d,s.t)})}:"N/A"):NA(adaptText(d,v))]),
+  pc:isPC(d)?[["Principal Contractor",d.mainContractor],["Site Manager",[d.pc.siteManager,d.pc.siteManagerMobile].filter(Boolean).join(" · ")],["H&S Contact",d.pc.hsContact],
+    ["Construction Phase Plan Ref.",d.pc.cppRef],["F10 Notification Ref.",d.pc.f10],["Site Induction",d.pc.induction],["Permit-to-Work System",d.pc.permitSystem],
+    ["Deliveries, Parking and Logistics",d.pc.logistics],["Welfare Facilities",d.pc.welfare],["RAMS Submitted",fmtDate(d.pc.submittedOn)],
+    ["Accepted By / Date",[d.pc.acceptedBy,fmtDate(d.pc.acceptedOn)].filter(Boolean).join(" · ")],["Principal Contractor Comments",d.pc.comments]].map(([a,b])=>[a,NA(b)]):null,
+  sigs,paper:d.signoff,amendments:d.amendments};
 }
 function docHTML(d){
   const m=model(d);
   const rows=m.ms.map(([no,lb,v])=>{let val;if(v&&typeof v==="object"){val=`${esc(v.scope)}${v.steps.length?`<div style="margin-top:8px">${v.steps.map(s=>s.h?`<h3>${esc(s.h)}</h3>`:`<div>${s.n}. ${esc(s.t)}</div>`).join("")}</div>`:""}`;}else val=esc(v||"");if(no==="2.2")val+=imagesHTML(d,"locations");if(no==="2.5")val+=imagesHTML(d,"scope");return `<tr><td class="no">${no}</td><td class="lb">${esc(lb)}</td><td>${val}</td></tr>`;}).join("");
-  return `<div class="doc"><div class="cover" style="position:relative">${showQR(d)?`<div style="position:absolute;right:32px;top:28px;text-align:center"><canvas class="qr" data-qr="${esc(qrTarget(d))}" width="92" height="92" style="background:#fff;border-radius:4px;padding:4px"></canvas><div style="font-size:10px;color:#DDB357;margin-top:4px;max-width:110px">Scan to check this is current and sign</div></div>`:""}<img src="${LOGO}" alt="Workspace Audio Visual"><div class="kind">Risk Assessment and Method Statement · IMS L1 G020</div><h1>${esc(d.title||"Untitled")}</h1>
+  return `<div class="doc"><div class="cover" style="position:relative">${showQR(d)?`<div style="position:absolute;right:32px;top:28px;text-align:center"><canvas class="qr" data-qr="${esc(qrTarget(d))}" width="92" height="92" style="background:#fff;border-radius:4px;padding:4px"></canvas><div style="font-size:10px;color:#DDB357;margin-top:4px;max-width:110px">Scan to check this is current and sign</div></div>`:""}<img src="${LOGO}" alt="Workspace Audio Visual"><div class="kind">Risk Assessment and Method Statement · IMS L1 G020${isPC(d)?" · Principal Contractor Site":""}</div><h1>${esc(d.title||"Untitled")}</h1>
   <div style="color:#cfe0de;font-size:13px">${esc([d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join(" · "))}</div></div>
   <section><h2>Method Statement</h2><table class="g020">${rows}</table></section>
-  <section><h2>Risk Assessment</h2><table class="kv"><tr><td>Project</td><td>${esc(d.title)}</td></tr><tr><td>Activity</td><td>${esc(d.activity)}</td></tr><tr><td>Completed By / Date</td><td>${esc(d.preparedBy)} ${fmtDate(d.issueDate)}</td></tr><tr><td>Project No.</td><td>${esc(d.jobNo)}</td></tr><tr><td>People Affected</td><td>${esc(d.raPeople)}</td></tr></table>
+  ${m.pc?`<section><h2>Principal Contractor Information</h2><table class="kv">${m.pc.map(([a,b])=>`<tr><td>${esc(a)}</td><td class="pre">${esc(b)}</td></tr>`).join("")}</table></section>`:""}
+  <section><h2>Risk Assessment</h2><table class="kv"><tr><td>Project</td><td>${esc(d.title)}</td></tr><tr><td>Activity</td><td>${esc(d.activity)}</td></tr><tr><td>Completed By / Date</td><td>${esc(NA([d.preparedBy,fmtDate(d.issueDate)].filter(Boolean).join(" ")))}</td></tr><tr><td>Project No.</td><td>${esc(NA(d.jobNo))}</td></tr><tr><td>People Affected</td><td>${esc(NA(adaptText(d,d.raPeople)))}</td></tr></table>
   <p class="muted" style="font-size:12px;margin:10px 0">Rating = likelihood (1–5) × severity (1–5). Low 1–4, medium 5–12, high 15–25.</p>
   <table><thead><tr><th style="width:4%">No</th><th style="width:16%">Hazard</th><th style="width:18%">Possible Effects / Harm</th><th style="width:8%">Pre-Control</th><th>Required Controls</th><th style="width:8%">Post-Control</th></tr></thead><tbody>
   ${d.hazards.map((h,i)=>{const a=h.l*h.s,b=h.rl*h.rs;return `<tr><td>${i+1}</td><td><strong>${esc(h.hazard)}</strong>${h.who?`<div class="muted">${esc(h.who)}</div>`:""}</td><td>${esc(h.risk)}</td><td class="sc ${lvl(a)}">${LVNAME[lvl(a)]}<br>${a}</td><td class="pre">${esc(h.controls)}</td><td class="sc ${lvl(b)}">${LVNAME[lvl(b)]}<br>${b}</td></tr>`}).join("")}</tbody></table></section>
@@ -1818,7 +1860,7 @@ async function buildPdfBlob(d){
   const H=t=>({text:t,style:"th"}); const LB=t=>({text:t,bold:true,color:MG,fillColor:PAPER,fontSize:8});
   const msBody=m.ms.map(([no,lb,v])=>{let cell;
     if(v&&typeof v==="object") cell={stack:[{text:v.scope||"",margin:[0,0,0,6]},...v.steps.map(s=>s.h?{text:s.h,bold:true,color:MG,margin:[0,6,0,2]}:{columns:[{width:16,text:s.n+"."},{width:"*",text:s.t}],columnGap:2,margin:[0,0,0,2]})]};
-    else cell={text:v||" "};
+    else cell={text:v||"N/A"};
     const ims=no==="2.2"?pdfImgs("locations"):no==="2.5"?pdfImgs("scope"):[];
     if(ims.length) cell={stack:[cell,...ims]};
     return [{text:no,bold:true,color:MG,fillColor:PAPER,alignment:"center"},{text:lb.toUpperCase(),bold:true,color:MG,fillColor:"#FBFAF7",fontSize:8},cell];});
@@ -1832,11 +1874,12 @@ async function buildPdfBlob(d){
     header:cp=>cp===1?null:({margin:[36,16,36,0],columns:[{text:`${d.title||""} ${d.jobNo?"("+d.jobNo+")":""}`,fontSize:7.5,color:MG,bold:true},{text:`RAMS ${d.ref||""} · Rev ${d.revision} · ${d.status}`,alignment:"right",fontSize:7.5,color:MG}]}),
     footer:(cp,pc)=>({margin:[36,6,36,0],columns:[{text:"Workspace Audio Visual Ltd · Company No. 13312342 · 167–169 Great Portland Street, London, W1W 5PF",fontSize:6.5,color:"#4d5f5f"},{text:`WSAV IMS L1 G020 · Page ${cp} of ${pc}`,alignment:"right",fontSize:7,color:"#4d5f5f",width:150}]}),
     content:[
-      {table:{widths:["*"],body:[[{fillColor:MG,margin:[18,18,18,18],stack:[{columns:[{image:LOGO,width:140},{width:"*",text:""},showQR(d)?{width:80,stack:[{qr:qrTarget(d),fit:72,foreground:MG,background:"#FFFFFF"},{text:"Scan to check this is current and sign",fontSize:6.5,color:GOLD,alignment:"center",margin:[0,3,0,0]}]}:{width:0,text:""}]},{text:"Risk Assessment and Method Statement",color:GOLD,margin:[0,10,0,2]},{text:d.title||"Untitled",fontSize:20,color:"#FFFFFF"},{text:[d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join("  ·  "),color:"#cfe0de",margin:[0,4,0,0]},
+      {table:{widths:["*"],body:[[{fillColor:MG,margin:[18,18,18,18],stack:[{columns:[{image:LOGO,width:140},{width:"*",text:""},showQR(d)?{width:80,stack:[{qr:qrTarget(d),fit:72,foreground:MG,background:"#FFFFFF"},{text:"Scan to check this is current and sign",fontSize:6.5,color:GOLD,alignment:"center",margin:[0,3,0,0]}]}:{width:0,text:""}]},{text:"Risk Assessment and Method Statement"+(isPC(d)?"  ·  Principal Contractor Site":""),color:GOLD,margin:[0,10,0,2]},{text:d.title||"Untitled",fontSize:20,color:"#FFFFFF"},{text:[d.jobNo,d.ref,"Rev "+d.revision,d.status].filter(Boolean).join("  ·  "),color:"#cfe0de",margin:[0,4,0,0]},
         isIssued(d)?{text:`Issued for signature by ${d.issued.by} · ${fmtDT(d.issued.at)}`,color:"#cfe0de",margin:[0,2,0,0]}:""]}]]},layout:"noBorders"},
       {text:"Method Statement",style:"h2"},{table:{widths:[28,110,"*"],body:msBody},layout:tl},
+      ...(m.pc?[{text:"Principal Contractor Information",style:"h2"},{table:{widths:[150,"*"],body:m.pc.map(([a,b])=>[{text:a.toUpperCase(),bold:true,color:MG,fillColor:"#FBFAF7",fontSize:8},b])},layout:tl}]:[]),
       {text:"Risk Assessment",style:"h2",pageBreak:"before"},
-      {table:{widths:[90,"*",90,"*"],body:[[LB("PROJECT"),d.title||"",LB("PROJECT NO"),d.jobNo||""],[LB("ACTIVITY"),d.activity||"",LB("COMPLETED BY / DATE"),`${d.preparedBy||""} ${fmtDate(d.issueDate)}`],[LB("PEOPLE AFFECTED"),{text:d.raPeople||"",colSpan:3},"",""]]},layout:tl},
+      {table:{widths:[90,"*",90,"*"],body:[[LB("PROJECT"),NA(d.title),LB("PROJECT NO"),NA(d.jobNo)],[LB("ACTIVITY"),NA(d.activity),LB("COMPLETED BY / DATE"),NA([d.preparedBy,fmtDate(d.issueDate)].filter(Boolean).join(" "))],[LB("PEOPLE AFFECTED"),{text:NA(adaptText(d,d.raPeople)),colSpan:3},"",""]]},layout:tl},
       {text:"Rating = likelihood (1–5) × severity (1–5). Low 1–4, medium 5–12, high 15–25.",fontSize:7.5,color:"#4d5f5f",margin:[0,6,0,6]},
       {table:{headerRows:1,widths:[16,80,90,38,"*",38],body:raBody,dontBreakRows:true},layout:tl},
       {text:"Risk assessments must be reviewed regularly.",fontSize:7.5,color:"#4d5f5f",margin:[0,6,0,0]},
