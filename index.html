@@ -359,8 +359,8 @@ const DASHBOARD_RAMS_TASK = 'RAMS Complete';
    ═══════════════════════════════════════════════════ */
 const PPE = ["Safety Boots","Hi-Vis Vest","Safety Gloves","Light Eye Protection","Hard Hat","Hearing Protection","FFP3 Dust Mask","Cut-Resistant Gloves","Knee Pads","Full-Body Harness / Inertia Reel","High-Impact Goggles","Disposable Coveralls"];
 const PERMITS = ["Principal Contractor Permit to Work","Hot Works Permit","Ceiling Void Access Permit","Electrical Isolation / LOTO","MEWP Permit","Out-of-Hours Working","Roof / Riser Access","Raised Access Floor Permit","Builder's Work Request (Fire Compartmentation)"];
-const TRAINING = ["CSCS / ECS Card","IPAF (3a/3b)","PASMA","Asbestos Awareness (Cat A)","Manual Handling","Working at Height","First Aid at Work","SSSTS / SMSTS","Site Induction Completed","Manufacturer Training (Crestron, Q-SYS, etc.)"];
-const PLANT = ["Podium Steps","Stepladders (EN131 Professional)","Mobile Access Tower *","Scissor Lift / MEWP *","110V SDS Drill with Extraction (PAT)","Cordless Drill/Driver","M-Class Dust Extractor (PAT)","Genie / Material Lift *","Display Lifting Trolley","Chain Hoist (LOLER) *","Cable Pulling Rods","Cable Tester","Laptop & Commissioning Tools (PAT)","Soldering Station (PAT)","Hand Tools (Electric & Non-Electric)"];
+const TRAINING = ["CSCS / ECS Card","IPAF (3a/3b)","PASMA","Asbestos Awareness (Cat A)","Manual Handling","Working at Height","First Aid at Work","SSSTS / SMSTS","Site Induction Completed","Manufacturer Training (Crestron, Q-SYS, etc.)","Structured Cabling Installer (e.g. CNet, Excel, Panduit)","Fibre Optic Installation and Testing","Enhanced DBS Check (Schools and Healthcare)"];
+const PLANT = ["Podium Steps","Stepladders (EN131 Professional)","Mobile Access Tower *","Scissor Lift / MEWP *","110V SDS Drill with Extraction (PAT)","Cordless Drill/Driver","M-Class Dust Extractor (PAT)","Genie / Material Lift *","Display Lifting Trolley","Chain Hoist (LOLER) *","Cable Pulling Rods","Cable Tester","Laptop & Commissioning Tools (PAT)","Soldering Station (PAT)","Hand Tools (Electric & Non-Electric)","Cable Drum Stand and Rollers","Cable Certifier (Fluke DSX or Similar)","Termination and Punch-Down Tools","Unistrut and Threaded Rod Cutter","Fibre Splicing and Test Kit"];
 
 const DEF = {
  briefing:`Site induction
@@ -446,7 +446,14 @@ const HAZ = [
  {cat:"Install",hazard:"Noise and Vibration from Power Tools",risk:"Noise-induced hearing loss; HAVS.",who:"Installers, occupants",l:3,s:3,rl:2,rs:2,controls:"Noisy works scheduled with the client. Hearing protection worn during drilling. Low-vibration tools; trigger time monitored against exposure action values."},
  {cat:"Install",hazard:"Working in Occupied Premises",risk:"Injury to client staff and visitors; disruption.",who:"Client staff, visitors",l:3,s:3,rl:1,rs:3,controls:"Work areas agreed and segregated. Disruptive work out of hours. Tools never left unattended. Sign in and out with building security."},
  {cat:"Install",hazard:"Lone and Out-of-Hours Working",risk:"Delayed response to injury or illness.",who:"Installers",l:2,s:4,rl:1,rs:4,controls:"No lone working for high-risk tasks. Check-in schedule with the project manager. Building security aware of presence. Phone charged with signal confirmed."},
- {cat:"Install",hazard:"Commissioning – LED Brightness and Audio Levels",risk:"Eye discomfort; hearing damage from test tones.",who:"Engineers, occupants",l:2,s:3,rl:1,rs:2,controls:"LED brightness limited during commissioning. Audio levels ramped gradually with DSP limiters set before handover. Occupants warned before test tones."}
+ {cat:"Install",hazard:"Commissioning – LED Brightness and Audio Levels",risk:"Eye discomfort; hearing damage from test tones.",who:"Engineers, occupants",l:2,s:3,rl:1,rs:2,controls:"LED brightness limited during commissioning. Audio levels ramped gradually with DSP limiters set before handover. Occupants warned before test tones."},
+ {cat:"Network",hazard:"Cable Pulling",risk:"Musculoskeletal injury, sprains and upper limb disorders from pulling cable; trips over drums and cable; dropped objects from containment.",who:"Operatives",l:4,s:3,rl:2,rs:2,controls:"Pull route planned and briefed to the whole team before starting; pulls done in teams of at least two with a person at each end.\nCable drums set up on a drum stand positioned for a straight pull; rollers or guides used at bends and entry points to cut friction.\nPull on firm, level ground, avoiding twisting; swap roles on long pulls and take regular breaks.\nGloves worn for grip; cable lubricant used where friction is high.\nCable kept clear of walkways and escape routes; drums and loose cable never left in thoroughfares."},
+ {cat:"Network",hazard:"Stored and Stacked Materials",risk:"Materials falling from stacks; trips over stored items; blocked escape routes; damaged materials.",who:"Operatives, other trades, occupants",l:3,s:3,rl:1,rs:3,controls:"Materials stored only in the area agreed with the client or principal contractor, away from walkways, doors and escape routes.\nCable drums chocked or laid flat; boxes stacked low and stable, heaviest at the bottom.\nStorage area barriered and signed where it is open to others.\nDeliveries timed to suit the site and only what's needed for the next few days brought to the work area."},
+ {cat:"Network",hazard:"Containment Installation – Tray, Trunking and Conduit",risk:"Cuts from sharp edges and burrs; strain from overhead fixing; falling materials from height; noise and vibration from cutting.",who:"Operatives, others below",l:3,s:3,rl:1,rs:3,controls:"Route marked out from the drawings and checked against other services before any fixings go in.\nCutting done in a designated, barriered area using the correct cutter or saw; cut ends and burrs filed smooth and galvanised ends treated with cold zinc paint.\nDrop rods cut so they protrude no more than 20 mm below the unistrut.\nTray, trunking and conduit lifted to the access equipment in manageable lengths, never carried up a stepladder.\nFixings sized for the load and the substrate; containment checked for level throughout and catenary wires re-tensioned about 24 hours after installation.\nArea below overhead work barriered and signed as a drop zone."},
+ {cat:"Network",hazard:"Cable Termination – Sharp Tools and Offcuts",risk:"Cuts from blades, strippers and cable ends; eye injury from flying conductor offcuts; repetitive strain.",who:"Operatives",l:3,s:2,rl:1,rs:2,controls:"Correct strippers, punch-down and termination tools used; blades kept sharp and stored covered.\nCut-resistant gloves worn when using blades; safety glasses worn when trimming conductors.\nOffcuts collected as you go and bagged; no loose offcuts left on floors or in voids.\nRegular breaks during long termination runs to reduce repetitive strain."},
+ {cat:"Network",hazard:"Comms Cabinets and Patch Panels",risk:"Strain or crush injuries moving cabinets; cabinet toppling; contact with live equipment or PDUs; disruption to live network services.",who:"Operatives, client staff",l:3,s:4,rl:1,rs:3,controls:"Cabinets moved and lifted by at least two people with doors and side panels removed to reduce weight; wall-mounted cabinets fixed to a confirmed substrate with fixings rated for the loaded weight.\nFloor cabinets levelled and anti-tilt or floor fixings fitted before equipment goes in.\nPDUs connected only to outlets or fused spurs installed and tested by the electrician.\nNo existing network equipment disconnected or moved until a change window has been agreed with the client's IT; existing patching photographed and labelled first.\nCable management kept tidy so fans and vents stay clear."},
+ {cat:"Network",hazard:"Fibre Optic Handling",risk:"Eye injury from glass fragments or laser light from live fibres; skin puncture.",who:"Operatives",l:2,s:3,rl:1,rs:2,controls:"Fibres treated as live; never look into fibre ends or connectors.\nSafety glasses worn when cleaving and splicing.\nFibre offcuts collected on a dark mat and disposed of in a sealed sharps container.\nNo eating or drinking in the work area; hands washed after fibre work."},
+ {cat:"Network",hazard:"Working in Schools and Occupied Education Sites",risk:"Contact with pupils and staff; unsupervised access to children's areas; tools or materials left accessible to children.",who:"Pupils, staff, visitors",l:3,s:4,rl:1,rs:3,controls:"All operatives sign in at reception, wear visible ID and follow the school's safeguarding rules; enhanced DBS checks held where the school requires them.\nWork in occupied classrooms and corridors only at agreed times, ideally outside school hours or in holidays.\nNo operative is left alone with pupils; anything that needs to be raised goes to the site contact.\nTools, ladders and materials never left unattended; work areas barriered and cleared at the end of each session.\nNoisy and dusty work arranged around lessons and exams."}
 ].map((h,i)=>({...h,libId:"h"+i}));
 
 const COSHH = [
@@ -455,13 +462,18 @@ const COSHH = [
  {substance:"Cable Pulling Lubricant",use:"Cable pulls in containment",hazards:"Mild skin and eye irritant",route:"Skin, eyes",controls:"Apply sparingly; wipe up spills.",ppe:"Gloves",firstAid:"Wash skin; rinse eyes."},
  {substance:"Construction Dust (Respirable Crystalline Silica)",use:"Drilling concrete, block and brick",hazards:"Causes silicosis and COPD (WEL 0.1 mg/m³ 8-hr TWA)",route:"Inhalation",controls:"On-tool M-class extraction. Vacuum or wet clean, no dry sweeping.",ppe:"FFP3 mask (face-fit tested), safety glasses",firstAid:"Fresh air; seek medical attention for breathing difficulty."},
  {substance:"Chemical Anchor Resin",use:"Heavy fixings into masonry",hazards:"Skin sensitiser; eye irritant",route:"Skin, eyes",controls:"Follow the SDS; use dispensing gun; dispose of cartridges correctly.",ppe:"Nitrile gloves, safety glasses",firstAid:"Wash skin immediately. Eyes: rinse 15 min and seek advice."},
+ {substance:"Cold Galvanising Paint (Zinc Spray)",use:"Painting cut ends of unistrut, tray and conduit threads",hazards:"Extremely flammable aerosol; vapour may cause drowsiness; harmful to aquatic life",route:"Inhalation, skin, eyes",controls:"Use in a well-ventilated area away from ignition sources and occupied rooms. Short bursts only; keep the can closed and store below 50°C.",ppe:"Nitrile gloves, safety glasses",firstAid:"Inhalation: fresh air. Skin: wash with soap and water. Eyes: rinse for 15 min and seek advice if irritation persists."},
+ {substance:"PVC Solvent Cement",use:"Jointing PVC conduit and fittings",hazards:"Highly flammable; eye and respiratory irritant",route:"Inhalation, skin, eyes",controls:"Ventilated area; no ignition sources; lid back on immediately after use; minimal quantities on site.",ppe:"Nitrile gloves, safety glasses",firstAid:"Inhalation: fresh air. Skin: wash. Eyes: rinse for 15 min and seek medical advice."},
  {substance:"Solder and Flux Fumes",use:"Terminating connectors",hazards:"Rosin flux fumes are respiratory sensitisers",route:"Inhalation, skin",controls:"Lead-free solder. Local fume extraction. Wash hands after use.",ppe:"Safety glasses",firstAid:"Fresh air. Seek advice for wheezing."}
 ];
 
 const TEMPLATES = [
  {name:"WSAV Standard AV Install (G020)",desc:"Your standard G020 method, sequence and 13 standard hazards.",steps:G020_STEPS,hazards:HAZ.filter(h=>h.cat==="WSAV Standard").map(h=>h.libId),coshh:[0,3],ppe:[0,1,2,3],plant:[0,1,5,14]},
  {name:"LED Wall Installation",desc:"Sub-frame, cabinets, processor and commissioning.",steps:[["s","Confirm structural sign-off for the wall and floor loading."],["s","Set out the exclusion zone and check wall flatness against the structural drawings."],["s","Install the sub-frame and brackets to the approved fixing design; torque and verify."],["s","Move LED cabinets to position on trolleys via the planned route."],["s","Hang cabinets from the bottom row upwards using team lifts; access by podium, tower or MEWP."],["s","Install power and data looms; electrician provides and tests the final supply."],["s","Commission and calibrate the processor with brightness limited during testing."],["s","Fit trims, clean down, clear packaging and complete client acceptance."]],hazards:["h0","h1","h2","h5","h6","h10","h13","h14","h15","h17","h23"],coshh:[0,3],ppe:[0,1,2,3,4,5,6],plant:[2,3,4,5,6,7,9]},
- {name:"Service / Maintenance Visit",desc:"PPM and reactive fault finding.",steps:[["s","Sign in with building security and confirm room availability with the client."],["s","Review the fault log and previous service reports."],["s","Inspect equipment, connections and cabling; clean screens and filters."],["s","Update firmware and test all system functions."],["s","Report findings, leave the room tidy and sign out."]],hazards:["h1","h3","h6","h21","h22"],coshh:[0,1],ppe:[0,1,3],plant:[0,5,12]}
+ {name:"Service / Maintenance Visit",desc:"PPM and reactive fault finding.",steps:[["s","Sign in with building security and confirm room availability with the client."],["s","Review the fault log and previous service reports."],["s","Inspect equipment, connections and cabling; clean screens and filters."],["s","Update firmware and test all system functions."],["s","Report findings, leave the room tidy and sign out."]],hazards:["h1","h3","h6","h21","h22"],coshh:[0,1],ppe:[0,1,3],plant:[0,5,12]},
+ {name:"Network / Structured Cabling Installation",desc:"Containment, data cabling, comms cabinets, termination, access points and certification testing.",activity:"Network Cabling Installation",
+  scope:"This method statement covers the installation of structured data cabling and associated works: containment, cable installation, comms cabinet and patch panels, termination, access point installation and certification testing.",
+  steps:[["h","Sign In and Induction"],["s","All operatives attend the site induction on their first visit and complete any site paperwork."],["s","Carry proof of competence (CSCS / ECS card) and, on school or healthcare sites, any DBS evidence the site asks for."],["s","Sign in at the site office or reception on every visit and sign out when leaving."],["s","Confirm working areas, access times, permits and emergency procedures with the client."],["h","Delivery and Storage of Materials"],["s","Agree a storage area away from walkways and escape routes before materials arrive."],["s","Transfer materials from the vehicle to the storage area using trolleys or team lifts."],["s","Stack boxes low and stable, chock or lay cable drums flat, and barrier and sign the storage area where others can reach it."],["h","Survey and Set-Out"],["s","Walk the cable routes with the drawings, confirm outlet, access point and cabinet positions, and check ceiling voids and existing containment."],["s","Check the asbestos register before drilling or opening voids; stop and report any suspect material."],["s","Audit and photograph the existing cabinet, patching and network equipment before anything is changed."],["h","Containment Installation"],["s","Pre-use check all tools and access equipment; set up the podium steps, tower or other access equipment to the manufacturer's instructions."],["s","Barrier and sign the work area and any drop zones below overhead work."],["s","Cut tray, trunking, unistrut and drop rods in a designated area; file cut ends smooth and treat galvanised ends with cold zinc paint."],["s","Fix drop rods, unistrut trapezes and tray to the route on the drawings, with drop rods protruding no more than 20 mm below the unistrut."],["s","Fix trunking and conduit with correctly sized fixings and saddles so it doesn't sag; deburr metal conduit and use the correct solvent for PVC joints."],["s","Keep containment level with 45° or 90° bends as required; check level throughout and re-tension catenary wires about 24 hours after installation."],["s","Return surplus materials to the storage area and dispose of waste to the site waste plan."],["h","Cable Installation"],["s","Set up cable drums on a drum stand for a straight pull and use rollers or guides at bends."],["s","Pull cables in teams of at least two along the agreed routes, keeping segregation from mains power and within the cable's bend radius."],["s","Leave service loops at each end, dress and secure cables in the containment, and close trunking lids once complete."],["s","Label both ends of every cable as it is pulled, to the outlet schedule."],["s","Fire-stop any penetrations through fire compartments, or record them for the principal contractor's fire-stopping contractor."],["h","Comms Cabinet and Patch Panels"],["s","Install or replace the comms cabinet with at least two people; fix wall cabinets to a confirmed substrate and level floor cabinets with anti-tilt fixings."],["s","Connect the PDU only to the fused spur or outlet installed and tested by the electrician."],["s","Agree a change window with the client's IT before disconnecting or moving any live network equipment; relabel and refit existing equipment to the photographed layout."],["s","Fit patch panels and cable management bars in the agreed rack positions and dress the cables to the rear bars."],["h","Termination"],["s","Strip the outer sheath without nicking the pairs, keep the twists to within 13 mm of the termination and terminate to the panel or outlet using the T568B wiring scheme throughout."],["s","Terminate outlets and access point connections in the agreed positions; fit faceplates or surface boxes."],["s","Collect offcuts as you go and wear safety glasses when trimming conductors."],["h","Access Points and Outlets"],["s","Install access points to the agreed locations plan on the ceiling grid, soffit or wall using the manufacturer's bracket."],["s","Remove legacy access points and equipment and place them where the client has agreed for disposal or collection."],["h","Testing, Labelling and Handover"],["s","Test every link with a calibrated cable certifier to the specified category and save the results."],["s","Fit permanent labels to both ends of each cable and to each patch panel port, outlet and access point."],["s","Patch to the agreed schedule and confirm with the client's IT that the links and access points are live."],["s","Clean the area and remove all tools, equipment and waste from site."],["s","Hand over the test results, outlet schedule, as-built drawings and photos to the client."]],hazards:["h0","h1","h2","h3","h4","h5","h6","h8","h9","h10","h11","h18","h19","h21","h24","h25","h26","h27","h28"],coshh:[2,3,5,6],ppe:[0,1,2,3,7],plant:[0,1,4,5,10,14,15,16,17,18],training:[0,4,5,8,10]}
 ];
 
 
@@ -954,8 +966,9 @@ function newDoc(tpl){
     d.sequence=t.steps.map(([type,text])=>({id:uid(),type,text}));
     d.hazards=t.hazards.map(id=>fromLib(HAZ.find(h=>h.libId===id)));
     d.coshh=t.coshh.map(i=>({id:uid(),...COSHH[i]})); d.ppe=[...new Set([...d.ppe,...t.ppe.map(i=>PPE[i])])]; d.plant=t.plant.map(i=>PLANT[i]);
-    d.training=[TRAINING[0],TRAINING[3],TRAINING[4],TRAINING[8]];
-    d.activity=tpl===0?"AV Equipment Install":t.name;
+    d.training=(t.training||[0,3,4,8]).map(i=>TRAINING[i]);
+    d.activity=t.activity||(tpl===0?"AV Equipment Install":t.name);
+    if(t.scope) d.scope=t.scope;
   }
   d.ramsType=S.newType||"standard";
   applyProject(d,S.projects.get(+S.newProj)); S.newProj="";
@@ -1214,89 +1227,338 @@ async function confirmHospital(){
    sequence plus suggested hazards, plant and permits. All rules
    are below so they can be extended without touching the UI.
    ═══════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════
+   SCOPE OF WORKS → DRAFTED SEQUENCE
+   Each system has steps for each stage. The type of visit decides which stages appear,
+   so a service visit or survey doesn't get install steps.
+   Hazard ids: h0–h23 in the hazard library.
+   Plant ids: index into PLANT.
+   ═══════════════════════════════════════════════════ */
+const VISIT_TYPES=[
+ {key:"install",label:"Installation",summary:"AV installation",activity:"AV Equipment Install"},
+ {key:"strip",label:"Strip Out Only",summary:"strip-out and decommissioning of AV equipment",activity:"AV Strip Out and Decommission",
+  re:/\b(strip[- ]?out|decommission\w*|de-?install\w*)\b/i},
+ {key:"reloc",label:"Relocation",summary:"relocation of existing AV equipment",activity:"AV Equipment Relocation",
+  re:/\b(relocat\w*|office move|decant|move (the |all )?(existing )?(av |audio visual )?(equipment|systems?|kit))\b/i},
+ {key:"service",label:"Service / Maintenance",summary:"AV service and maintenance visit",activity:"AV Service and Maintenance Visit",
+  re:/\b(ppm|preventative maintenance|planned maintenance|service visits?|maintenance visits?|health ?checks?|reactive (call|visit)\w*|call[- ]?outs?|fault[- ]?find\w*|repairs?)\b/i},
+ {key:"comm",label:"Commissioning / Programming Only",summary:"commissioning and programming of AV systems",activity:"AV Commissioning and Programming",
+  re:/\b(commissioning (only|visit)|programming (only|visit|changes?|updates?)|re-?programm\w*|software updates?|firmware updates?|config(uration)? (changes?|updates?))\b/i},
+ {key:"survey",label:"Site Survey",summary:"AV site survey",activity:"AV Site Survey",
+  re:/\b(site surveys?|survey visits?|pre-?install(ation)? surveys?|surveying)\b/i}
+];
 const SCOPE_ITEMS=[
- {key:"strip",label:"Strip Out / Decommission",re:/\b(strip[- ]?out|decommission\w*|remove (the )?existing|de-?install\w*|removal of existing)\b/i,
-  strip:["Confirm with the client which existing equipment is to be removed, retained or returned.","Isolate and disconnect existing AV equipment; remove, pack and label for return or WEEE disposal."],hz:["h1","h6","h11"]},
- {key:"cabling",label:"Cabling and Containment",re:/\b(cabl(e|es|ing)|cat ?6a?|cat ?5e|fibre|hdmi|hdbaset|dante|containment|trunking|cable basket|conduit|tie ?lines?)\b/i,
-  first:["Confirm containment routes for AV cabling with the principal contractor; do not use other trades' containment without agreement.","Pull AV cabling along the agreed routes, keeping segregation from mains, and label both ends to the system schematics."],
-  comm:["Test and certify data and AV tie lines and record the results."],hz:["h19","h2"],plant:[10,11]},
- {key:"floor",label:"Floor Boxes / Raised Floor",re:/\b(floor ?box(es)?|raised (access )?floor|\braf\b|floor grommets?)\b/i,
-  first:["Lift raised floor tiles only within the permitted area; barrier open voids at all times and reinstate tiles at the end of each shift.","Install floor boxes and route cabling to the furniture positions."],hz:["h2"],permits:["Raised Access Floor Permit"]},
- {key:"rack",label:"Equipment Rack",re:/\b(racks?|comms room|comms cabinet|equipment cabinet|ups|pdus?)\b/i,
-  second:["Build and dress the equipment rack; connect PDUs only to outlets installed and tested by the electrician."],hz:["h1","h6"]},
- {key:"led",label:"LED Wall",re:/\b(led wall|dv-?led|direct[- ]view|led video wall|led cabinets?|led tiles?)\b/i,
-  first:["Confirm structural sign-off for the LED wall fixings and floor loading before starting."],
-  second:["Install the LED sub-frame to the approved fixing design; torque and verify all fixings.","Hang LED cabinets from the bottom row upwards using team lifts or lift assists.","Connect LED power and data looms; the electrician provides and tests the final supply."],
-  comm:["Commission and calibrate the LED processor with brightness limited during testing."],hz:["h13","h15","h17","h23"],plant:[2,9]},
- {key:"display",label:"Displays",re:/\b(displays?|monitors?|tvs?|lcds?|\d{2,3}\s?(?:"|”|-?inch|in\b))/i,
-  second:["Confirm wall substrate and pattress positions against the elevation drawings before marking out brackets.","Fix display brackets to the confirmed substrate using fixings rated for the load.","Hang displays with a two-person lift (team lift for 75\" and above); fit safety locks and check level."],
+ {key:"strip",label:"Strip Out / Decommission",re:/\b(strip[- ]?out|decommission\w*|remov(e|al of|ing) (the )?existing|de-?install\w*|replac(e|ing) (the )?existing)\b/i,
+  strip:["Photograph the existing installation and confirm with the client which equipment is to be removed, retained, reused or returned.",
+   "Power down and isolate existing AV equipment; disconnect only at plugs or isolators installed by the electrician.",
+   "Remove equipment from the top down, with a two-person lift for displays and heavy items; pack, label and record each item.",
+   "Make safe any redundant cabling: cut back, terminate and label at the agreed point, or remove where the scope requires.",
+   "Separate equipment for return, reuse or WEEE disposal and keep the waste transfer notes."],
+  hz:["h1","h5","h6","h11"],plant:[8]},
+ {key:"cabling",label:"Cabling and Containment",re:/\b(cabl(e|es|ing)|cat ?6a?|cat ?5e|hdmi|hdbaset|usb extenders?|containment|trunking|cable baskets?|conduits?|tie ?lines?)\b/i,
+  first:["Confirm containment routes for AV cabling with the principal contractor; do not use other trades' containment without agreement.",
+   "Install AV back boxes, floor or wall plates and any AV-specific containment to the drawings.",
+   "Pull AV cabling along the agreed routes, keeping segregation from mains (cross at 90° where unavoidable), and label both ends to the schematics."],
+  comm:["Test and certify data and AV tie lines and record the results."],
+  hand:["Issue cable test results and as-built schematics."],
+  survey:["Check containment routes, ceiling void depths and spare capacity for AV cabling."],
+  hz:["h19","h2","h18"],plant:[10,11]},
+ {key:"fibre",label:"Fibre",re:/\b(fibre|fiber|optical fibre|om[34]|os2|single[- ]mode|multi[- ]mode|sfps?)\b/i,
+  first:["Install fibre in the agreed containment, keeping to the minimum bend radius, and cap all ends."],
+  comm:["Terminate or splice the fibre, clean and inspect each connector, and test (insertion loss or OTDR); record the results."],
+  hand:["Issue the fibre test results."],
+  hz:["h11"]},
+ {key:"floor",label:"Floor Boxes / Raised Floor",re:/\b(floor ?box(es)?|raised (access )?floors?|floor grommets?|floor voids?)\b/i,
+  first:["Lift raised floor tiles only within the permitted area; barrier open voids at all times and reinstate tiles at the end of each shift.","Install floor boxes and route cabling to the furniture positions."],
+  hz:["h2"],permits:["Raised Access Floor Permit"]},
+ {key:"furn",label:"AV Furniture and Table Boxes",re:/\b(table ?box(es)?|cable cubb(y|ies)|av furniture|credenzas?|lecterns?|podiums? \(lectern\)|plinths?|cable spines?|furniture)\b/i,
+  second:["Coordinate with the furniture installer; fit table boxes, cable spines and cable management to the furniture drawings.",
+   "Position credenzas, lecterns or plinths and secure them where specified to stop them toppling."],
+  hz:["h1","h11"]},
+ {key:"rack",label:"Equipment Rack",re:/\b(racks?|comms cabinets?|equipment cabinets?|av cabinets?|pdus?)\b/i,
+  second:["Position and level the rack, and fix it to the floor or wall where specified (anti-tilt kit fitted).",
+   "Build and dress the rack to the rack elevation drawing; connect PDUs only to outlets installed and tested by the electrician."],
+  hz:["h1","h6"],plant:[8]},
+ {key:"ups",label:"UPS and Batteries",re:/\b(UPS|uninterruptible|battery back-?up)\b/,
+  second:["Install UPS units with a two-person lift; fit or connect batteries only once the unit is in its final position."],
+  comm:["Test the UPS changeover and record the run time."],
+  hz:["h1","h6"]},
+ {key:"led",label:"LED Wall",re:/\b(led walls?|dv-?led|direct[- ]view|led video walls?|led cabinets?|led tiles?|led screens?|led displays?)\b/i,
+  first:["Confirm structural sign-off for the LED wall fixings and the floor loading before starting.",
+   "Check the wall and floor are flat and plumb, and set out the sub-frame with a laser level."],
+  second:["Install the LED sub-frame to the approved fixing design; torque and verify all fixings.",
+   "Hang LED cabinets from the bottom row upwards using team lifts or lift assists, keeping cabinet faces protected.",
+   "Connect LED power and data looms; the electrician provides and tests the final supply."],
+  comm:["Configure and map the LED processor, calibrate the cabinets and save the configuration, with brightness limited during testing."],
+  survey:["Check the wall structure, floor loading and access route for LED cabinets and the sub-frame."],
+  hz:["h13","h15","h17","h23"],plant:[2,7]},
+ {key:"vwall",label:"LCD Video Wall",re:/\b(video ?walls?|narrow[- ]bezel|ultra[- ]narrow|lcd walls?)\b/i,not:/\bled\b/i,
+  second:["Fix the video wall mounting system to the confirmed substrate, levelled with a laser level.",
+   "Hang the panels from the bottom row up with a two-person lift and adjust each mount to align the bezels."],
+  comm:["Configure the video wall processor or panel daisy-chain and colour-match the panels."],
+  hz:["h15","h16","h18"],plant:[8]},
+ {key:"display",label:"Displays",re:/\b(displays?|monitors?|tvs?|televisions?|lcds?|screens?)\b|\b\d{2,3}\s?(?:"|”|-?inch\b|in\b)/i,not:/\b(led|projection|motori[sz]ed|interactive|touch ?screens?|video ?walls?)\b/i,
+  second:["Confirm the wall substrate and pattress positions against the elevation drawings before marking out brackets.",
+   "Fix display brackets to the confirmed substrate using fixings rated for the load.",
+   "Hang displays with a two-person lift (team lift for 75\" and above); fit the safety locks, check level and dress the cables."],
+  survey:["Check wall construction, pattresses and power and data positions at each display location."],
   hz:["h15","h16","h18"],plant:[8,4]},
- {key:"proj",label:"Projector and Screen",re:/\b(projectors?|projection screens?|motori[sz]ed screens?|electric screens?)\b/i,
-  second:["Fix the projector mount and screen to the soffit or approved structure; fit secondary safety bonds.","Align and focus the projector and set the screen limits."],hz:["h17","h5"]},
- {key:"spk",label:"Ceiling / Wall Speakers",re:/\b(ceiling speakers?|pendant speakers?|loudspeakers?|speakers?|subwoofers?)\b/i,
-  second:["Cut ceiling tile apertures to template; fit tile bridges and a secondary safety bond to each speaker."],hz:["h19","h5"]},
- {key:"mic",label:"Microphones",re:/\b(ceiling mic(rophone)?s?|microphones?|mics?|mxa\d*|tcc ?2|beamforming|ceiling arrays?)\b/i,
-  second:["Install ceiling microphones with the manufacturer's mount kit and a secondary safety bond, positioned to the acoustic layout."],hz:["h19","h5"]},
- {key:"vc",label:"Video Conferencing",re:/\b(teams rooms?|zoom rooms?|video ?conferenc\w*|vc|neat (bar|board|pad)|neat|poly (studio|x\d+|g7500)|logitech|rally (bar|plus)?|meetup|video bars?|codecs?|ptz|cameras?)\b/i,
+ {key:"interactive",label:"Interactive Displays and Mobile Stands",re:/\b(interactive (displays?|whiteboards?|flat panels?|screens?)|surface hubs?|logitech board|neat board|touch ?screens?|ifps?|clevertouch|promethean|mobile stands?|trolley stands?|av trolleys?)\b/i,
+  second:["Assemble mobile stands to the manufacturer's instructions; check the castors lock and the stand is stable before mounting the display.",
+   "Mount the interactive display with a two-person lift and fit any camera or soundbar accessories."],
+  comm:["Calibrate touch, update firmware and test inking and screen sharing."],
+  hz:["h15"],plant:[8]},
+ {key:"proj",label:"Projector and Screen",re:/\b(projectors?|projection screens?|motori[sz]ed screens?|electric screens?|projection)\b/i,
+  second:["Fix the projector mount and screen to the soffit or approved structure; fit secondary safety bonds.",
+   "Never look into the projector lens; keep the beam out of people's eyes during set-up."],
+  comm:["Align and focus the projector, set keystone and screen limits, and check the screen interlock or trigger."],
+  hz:["h17","h5"]},
+ {key:"spk",label:"Ceiling / Wall Speakers",re:/\b(ceiling speakers?|pendant speakers?|wall speakers?|loudspeakers?|speakers?|subwoofers?|soundbars?)\b/i,
+  second:["Cut ceiling tile apertures to the template; fit tile bridges and a secondary safety bond to each speaker."],
+  comm:["Test each speaker for polarity and coverage, zone by zone."],
+  hz:["h19","h5"]},
+ {key:"audio",label:"Audio, BGM and Paging",re:/\b(background music|bgm|sonos|music (system|source|player)s?|audio zones?|100 ?v line|paging|pa systems?|public address|amplifiers?)\b/i,
+  second:["Install amplifiers and music sources in the rack and label each zone output.","Set the 100V line taps or speaker impedance to the design and record them."],
+  comm:["Set the zone levels with the client at normal occupancy and lock maximum volume limits."],
+  hz:["h23"]},
+ {key:"mic",label:"Microphones",re:/\b(ceiling mic(rophone)?s?|microphones?|mics?|mxa\d*|tcc ?2|beamforming|ceiling arrays?|radio mics?|wireless mics?)\b/i,
+  second:["Install ceiling microphones with the manufacturer's mount kit and a secondary safety bond, positioned to the acoustic layout."],
+  comm:["Set microphone coverage zones and echo cancellation, and test pickup from every seat."],
+  hz:["h19","h5"]},
+ {key:"vc",label:"Video Conferencing",re:/\b(teams rooms?|zoom rooms?|google meet|webex|video ?conferenc\w*|vc|neat (bar|board|pad|center)|poly (studio|x\d+|g7500)|logitech (rally|meetup|tap|sight|scribe)|rally (bar|plus)|meetup|video bars?|codecs?|ptz cameras?|conference cameras?|tracking cameras?)\b/i,
+  first:["Confirm with the client's IT that the network ports, PoE and VLAN for each room are live."],
   second:["Mount the video bar or camera at the specified height and centre line, and install the touch controller."],
-  comm:["Provision the room account, sign in the VC device and apply the client's configuration.","Carry out test calls with the office to confirm far-end audio and video quality."],hz:["h23"]},
- {key:"ctl",label:"Control and DSP",re:/\b(crestron|extron|amx|control processors?|cp4|touch ?panels?|tsw-?\d*|q-?sys|biamp|tesira|dsp|amplifiers?|amps?|matrix switch\w*|switchers?)\b/i,
-  second:["Install the control processor, DSP and amplifiers; mount touch panels in the specified positions."],
-  comm:["Load control and DSP programming; set gain structure and limiters before raising system levels."],hz:["h23"]},
- {key:"book",label:"Room Booking Panels",re:/\b(room booking|booking panels?|scheduling panels?|room panels?)\b/i,
-  second:["Install room booking panels outside each room at the agreed height and connect PoE."]},
- {key:"wps",label:"Wireless Presentation",re:/\b(clickshare|airmedia|solstice|wireless present\w*|byod)\b/i,
-  second:["Install the wireless presentation base units and pair the buttons."]},
- {key:"sign",label:"Digital Signage",re:/\b(digital signage|signage|brightsign|media players?)\b/i,
-  second:["Install signage displays and media players, then load test content."],hz:["h15","h16"]},
+  comm:["Sign in the VC device with the room account supplied by the client's IT and apply the agreed configuration.",
+   "Check camera framing and microphone pickup, then make test calls with the office to confirm far-end audio and video quality."],
+  hz:["h23"]},
+ {key:"ctl",label:"Control and DSP",re:/\b(crestron|extron|amx|control processors?|cp4|touch ?panels?|tsw-?\d*|q-?sys|biamp|tesira|dsp|matrix switch\w*|switchers?)\b/i,
+  second:["Install the control processor, DSP and switching; mount touch panels in the specified positions."],
+  comm:["Load the control and DSP programming; set gain structure and limiters before raising system levels.",
+   "Test every touch panel page, preset and the system on/off sequence."],
+  hand:["Back up the control and DSP files and issue them with the O&M."],
+  hz:["h23"],plant:[12]},
+ {key:"net",label:"Network and AVoIP",re:/\b(dante|aes67|avoip|av over ip|nvx|sdvoe|ndi|network switch(es)?|poe switch(es)?|managed switch(es)?|vlans?|ip addressing)\b/i,
+  first:["Agree IP addressing, VLANs and switch ports with the client's IT before connecting anything to their network."],
+  second:["Install and patch the AV network switches in the rack."],
+  comm:["Configure Dante or AVoIP devices, clocking and multicast, and confirm there's no impact on the client's network."],
+  plant:[12]},
+ {key:"divisible",label:"Divisible Rooms",re:/\b(divisible|room combin\w*|partition sensors?|movable walls?|operable walls?|combinable)\b/i,
+  second:["Fit partition sensors to the wall manufacturer's guidance."],
+  comm:["Test combined and separate modes for audio, video and control."]},
+ {key:"book",label:"Room Booking Panels",re:/\b(room booking|booking panels?|scheduling panels?|room panels?|desk booking)\b/i,
+  second:["Install room booking panels outside each room at the agreed height and connect PoE."],
+  comm:["Connect the panels to the client's calendar using the details supplied by the client's IT."]},
+ {key:"wps",label:"Wireless Presentation",re:/\b(clickshare|airmedia|solstice|barco|wireless present\w*|byod|airplay|miracast)\b/i,
+  second:["Install the wireless presentation base units and pair the buttons."],
+  comm:["Test sharing from Windows, macOS and mobile devices."]},
+ {key:"sign",label:"Digital Signage",re:/\b(digital signage|signage|brightsign|media players?|kiosks?)\b/i,
+  second:["Install signage displays and media players."],
+  comm:["Load test content and set the schedule and on/off times."],
+  hz:["h15","h16"]},
+ {key:"stream",label:"Streaming, Recording and Broadcast",re:/\b(stream\w*|broadcast|encoders?|decoders?|epiphan|pearl|recorders?|lecture capture|multiview\w*|webcast\w*|sdi)\b/i,
+  second:["Install encoders, recorders and multiviewers in the rack and route the sources."],
+  comm:["Test recording and streaming end to end with the client's platform."]},
+ {key:"tv",label:"TV Distribution and Satellite",re:/\b(iptv|tv distribution|satellite|aerials?|dish(es)?|freeview|sky (box|q)|set[- ]top box(es)?|rf distribution|coax\w*)\b/i,
+  first:["Agree the route for the satellite or aerial feed with the building manager."],
+  second:["Install the headend or IPTV equipment and the distribution to each outlet."],
+  comm:["Check the signal levels at each outlet and record them."]},
  {key:"loop",label:"Hearing Loop",re:/\b(hearing loops?|induction loops?|assistive listening)\b/i,
-  first:["Lay the induction loop cable to the designer's layout before floor finishes go down."],comm:["Test the hearing loop to BS EN IEC 60118-4 and record the results."]}
+  first:["Lay the induction loop cable to the designer's layout before floor finishes go down."],
+  comm:["Test the hearing loop to BS EN IEC 60118-4 and record the results."]},
+ {key:"conf",label:"Conference and Interpretation",re:/\b(delegate (mic\w*|units?|system)|conference systems?|discussion systems?|interpretation|interpreters?|booths?)\b/i,
+  second:["Install the delegate units, interpretation equipment and receivers to the seating layout."],
+  comm:["Test every delegate position, channel and the interpretation feeds."]},
+ {key:"fire",label:"Fire Alarm Interface",re:/\b(fire alarm (interface|relay|integration)|fire panel|voice alarm|av mute)\b/i,
+  first:["Agree the fire alarm interface point and relay with the fire alarm contractor."],
+  comm:["Test the AV mute on fire alarm activation with the fire alarm contractor and record the result."]},
+ {key:"light",label:"Lighting and Blind Control",re:/\b(lighting control|dali|blinds?|shades|lutron|dynalite)\b/i,
+  comm:["Test lighting scenes and blind control from the AV system with the electrical contractor."]}
 ];
 const SCOPE_CONDS=[
  {label:"Out of Hours",re:/\b(out[- ]of[- ]hours|evenings?|weekends?|nights?|overnight)\b/i,pre:["Confirm out-of-hours access, security arrangements and lone-working check-ins before starting."],hz:["h22"],permits:["Out-of-Hours Working"]},
+ {label:"Lone Working",re:/\b(lone work\w*|working alone|single (engineer|operative))\b/i,pre:["Agree a check-in schedule with the project manager; no high-risk tasks while working alone."],hz:["h22"]},
  {label:"Occupied Building",re:/\b(occupied|live (office|environment|building|site)|staff (present|working)|operational|business as usual)\b/i,pre:["Agree segregated work areas and noisy-work times with the client; protect furniture and finishes."],hz:["h21","h20"]},
- {label:"Work at High Level",re:/\b(mewps?|scissor ?lifts?|cherry ?pickers?|boom lifts?|high level|double[- ]height|atrium)\b/i,pre:["Confirm the MEWP route and floor loading with the principal contractor; IPAF operator and rescue plan in place."],hz:["h14"],plant:[3],permits:["MEWP Permit"]},
+ {label:"Work at High Level",re:/\b(mewps?|scissor ?lifts?|cherry ?pickers?|boom lifts?|high[- ]level|double[- ]height|atrium)\b/i,pre:["Confirm the MEWP route and floor loading with the principal contractor; IPAF operator and rescue plan in place."],hz:["h14"],plant:[3],permits:["MEWP Permit"]},
  {label:"Access Tower",re:/\b(towers?|scaffold\w*)\b/i,hz:["h13"],plant:[2]},
+ {label:"Lifting Operations",re:/\b(chain hoists?|rigging|rigged|flown|truss\w*|lifting plan|loler|hoist\w*)\b/i,pre:["Prepare a lifting plan with a competent person; check the rigging points are rated for the load and the lifting equipment is in date for thorough examination."],hz:["h17"],plant:[9]},
  {label:"Drilling Masonry",re:/\b(core ?drill\w*|concrete|soffits?|masonry|block ?work|brick ?work)\b/i,hz:["h10","h20"],plant:[4,6]},
- {label:"Ceiling Works",re:/\b(ceilings?|ceiling voids?|tiles?)\b/i,hz:["h19"],permits:["Ceiling Void Access Permit"]},
- {label:"Hot Works",re:/\b(solder\w*|hot works)\b/i,permits:["Hot Works Permit"],plant:[13]},
+ {label:"Ceiling Works",re:/\b(ceilings?|ceiling voids?|ceiling tiles?|suspended ceilings?)\b/i,hz:["h19"],permits:["Ceiling Void Access Permit"]},
+ {label:"Risers and Plant Rooms",re:/\b(risers?|plant rooms?|comms rooms?|server rooms?|data cent(re|er)s?)\b/i,pre:["Arrange access to risers, plant or comms rooms with the building manager and follow each room's access rules."],permits:["Roof / Riser Access"]},
+ {label:"External / Rooftop",re:/\b(roofs?|rooftops?|external (walls?|works|signage|displays?|speakers?)|outdoors?|exterior|satellite dish(es)?|aerials?)\b/i,pre:["Check the weather forecast; stop work in high winds, rain, ice or lightning. Work only within edge protection or with the building's harness system."],hz:["h4"],permits:["Roof / Riser Access"]},
+ {label:"Asbestos Risk",re:/\b(asbestos|pre-?2000|refurb\w*|older building)\b/i,pre:["Check the asbestos register before drilling or entering voids; stop and report any suspect material."],hz:["h8"]},
+ {label:"Listed Building",re:/\b(listed building|grade (i|ii|1|2)\*?\s?listed|heritage|conservation area)\b/i,pre:["Agree fixing methods and positions with the client; no fixings into historic fabric without approval, and protect all finishes."]},
+ {label:"Client Network",re:/\b(client('s)? (network|it)|corporate network|it department|it team|it provider|managed service provider)\b/i,pre:["Agree a change window with the client's IT; don't connect to their network until the ports are confirmed."]},
+ {label:"Hot Works",re:/\b(solder\w*|hot works|heat gun|heat shrink)\b/i,permits:["Hot Works Permit"],plant:[13]},
  {label:"Deliveries",re:/\b(deliver(y|ies)|loading bay|goods lift)\b/i,pre:["Book deliveries through the principal contractor's logistics plan at least 48 hours ahead."],hz:["h9"]},
- {label:"Training / Handover",re:/\b(training|o&m|operation and maintenance|user guides?)\b/i,hand:["Provide end-user training and issue O&M documentation and user guides."]}
+ {label:"Training / Handover",re:/\b(training|o&m|operation and maintenance|user guides?)\b/i,hand:["Provide end-user training and issue the O&M documentation and user guides."]}
 ];
-const BASE_HAZ=["h0","h1","h2","h3","h4","h6"];
+/* Base hazards and plant for each type of visit */
+const VISIT_BASE={
+ install:{hz:["h0","h1","h2","h3","h4","h6"],plant:[0,1,5,14]},
+ strip:{hz:["h0","h1","h2","h3","h4","h6","h11"],plant:[0,1,5,14,8]},
+ reloc:{hz:["h0","h1","h2","h4","h9","h11"],plant:[0,1,5,14,8]},
+ service:{hz:["h0","h1","h2","h4","h6","h23"],plant:[1,5,12,14]},
+ comm:{hz:["h0","h2","h4","h23"],plant:[1,12,14]},
+ survey:{hz:["h0","h2","h4"],plant:[1]}
+};
+/* What to check on a service visit, per system */
+const SVC={display:"Check display brackets, safety locks and picture quality.",vwall:"Check video wall alignment, panel colour matching and the processor.",
+ led:"Check the LED wall for dead pixels or cabinets and the processor's health status.",interactive:"Check touch response and the mobile stand castors and fixings.",
+ proj:"Check projector lamp or laser hours, filters, focus and the screen.",spk:"Check speaker coverage and listen for damaged drivers.",
+ audio:"Check zone levels and music sources.",mic:"Check microphone pickup and echo cancellation.",
+ vc:"Make a test call in each room and check the camera, microphones and room account sign-in.",ctl:"Test touch panel functions and check the control processor and DSP logs for errors.",
+ net:"Check AV network switch health and Dante or AVoIP device status.",book:"Check the booking panels are syncing with the calendar.",
+ wps:"Test wireless sharing and check the buttons pair.",sign:"Check signage playback and schedules.",stream:"Make a test recording or stream.",
+ tv:"Check TV signal at the outlets.",loop:"Test the hearing loop field strength.",ups:"Check UPS battery health and alarms.",
+ conf:"Test delegate units and interpretation channels.",fire:"Test the AV mute on fire alarm activation with the fire alarm contractor."};
+const AV_KEYS=["led","vwall","display","interactive","proj","spk","audio","mic","vc","ctl","wps","sign","stream","conf"];
 function qtyNear(text,idx){const back=text.slice(Math.max(0,idx-28),idx);const m=back.match(/(\d{1,3})\s*(?:x|no\.?|nr\.?|off|×)\s*[^\d\n]{0,18}$/i)||back.match(/(\d{1,3})\s*$/);return m?+m[1]:null;}
-function draftFromScope(text){
+function detectScope(text){
   const t=" "+text.replace(/\s+/g," ")+" ";
-  const items=[],conds=[];
-  // Judge each mention by its own sentence, so "remove the existing projector" doesn't draft projector install steps
   const sentences=text.split(/(?<=[.;!?])\s+|\n+/).map(x=>x.trim()).filter(Boolean);
-  const REMOVAL=/\b(remov(e|al|ing)|strip[- ]?out|decommission\w*|de-?install\w*|dispos(e|al)|return(ed)? to (the )?client)\b/i;
+  // Judge each mention by its own sentence, so "remove the existing projector" doesn't draft projector install steps
+  const REMOVAL=/\b(remov\w*|strip[- ]?out|decommission\w*|de-?install\w*|dispos\w*|weee|return\w*\b.{0,40}\bto (the )?client)\b/i;
+  const items={},conds=[];
   SCOPE_ITEMS.forEach(it=>{
-    if(it.key==="strip"){const m=t.match(it.re);if(m)items.push({...it,qty:null,hit:m[0]});return;}
-    const install=sentences.filter(x=>it.re.test(x)&&!REMOVAL.test(x));
-    if(!install.length) return;
-    const sx=" "+install[0]+" ";const m=sx.match(it.re);items.push({...it,qty:m?qtyNear(sx,m.index):null,hit:m?m[0]:""});
+    if(it.key==="strip"){const m=t.match(it.re);if(m)items[it.key]={qty:null};return;}
+    const hits=sentences.filter(x=>it.re.test(x)&&!(it.not&&it.not.test(x)));
+    const install=hits.filter(x=>!REMOVAL.test(x)||/\b(new|install\w*|replace\w* with)\b/i.test(x));
+    const use=install.length?install:[];
+    if(!use.length) return;
+    const sx=" "+use[0]+" ";const m=sx.match(it.re);items[it.key]={qty:m?qtyNear(sx,m.index):null};
   });
-  SCOPE_CONDS.forEach(c=>{const m=t.match(c.re);if(m)conds.push({...c,hit:m[0]});});
+  SCOPE_CONDS.forEach(c=>{if(c.re.test(t))conds.push(c.label);});
+  // Type of visit: the most specific one mentioned; anything that installs new systems stays an installation
+  const avNew=Object.keys(items).some(k=>k!=="strip");
+  const has=k=>VISIT_TYPES.find(v=>v.key===k).re.test(t);
+  let visit="install";
+  if(has("survey")&&!/\binstall\w*\b/i.test(t)) visit="survey";
+  else if(has("service")&&!/\b(new|supply and install|install(ation)? of)\b/i.test(t)) visit="service";
+  else if(has("comm")&&!/\b(supply and install|install(ation)? of)\b/i.test(t)) visit="comm";
+  else if(has("reloc")) visit="reloc";
+  else if(items.strip&&!avNew) visit="strip";
+  return {visit,items,conds};
+}
+function draftFromScope(text,pick){
+  const det=detectScope(text);
+  const visit=pick?pick.visit:det.visit;
+  const itemKeys=pick?pick.items:Object.keys(det.items);
+  const condLabels=pick?pick.conds:det.conds;
+  const items=SCOPE_ITEMS.filter(i=>itemKeys.includes(i.key)).map(i=>({...i,qty:(det.items[i.key]||{}).qty||null,found:!!det.items[i.key]}));
+  const conds=SCOPE_CONDS.filter(c=>condLabels.includes(c.label)).map(c=>({...c,found:det.conds.includes(c.label)}));
   const has=k=>items.some(i=>i.key===k);
-  const groups=[];
-  const pre=["Obtain the AV drawings, specification and this scope of works; review them with the installation team.","Sign in, attend the site induction and confirm permits and working areas with the principal contractor.","Conduct a site walk-around to confirm cable routes, equipment locations and emergency procedures.","Set out and segregate the work area with barriers and signage; complete a Take 5."];
-  conds.forEach(c=>(c.pre||[]).forEach(s=>pre.push(s)));
-  groups.push({h:"Preparation and Planning",steps:pre});
-  const strip=items.flatMap(i=>i.strip||[]); if(strip.length) groups.push({h:"Strip Out",steps:strip});
-  const first=items.flatMap(i=>i.first||[]);
-  if(items.length&&!has("cabling")) first.unshift("Confirm first-fix containment, back boxes and pattresses are complete and in the right positions.");
-  if(first.length) groups.push({h:"First Fix",steps:first});
-  const second=items.flatMap(i=>i.second||[]); if(second.length) groups.push({h:"Second Fix – Installation",steps:second.concat(["Install equipment in line with the manufacturer's instructions and fix securely to avoid damage to the building structure."])});
-  const comm=items.flatMap(i=>i.comm||[]);
-  groups.push({h:"Commissioning and Testing",steps:["Visually inspect all cables and equipment for damage.","Power up via the installed outlets and test all equipment for functionality.",...comm,"Test all audio and video signal routing, including divisible functions and presentation."]});
-  const hand=["Label all cabling and equipment to the system schematics.","Take photos during the install and on completion.","Clean the area and remove all tools, equipment and waste from site.","Demonstrate the system to the client and complete handover.",...conds.flatMap(c=>c.hand||[])];
-  groups.push({h:"Completion and Handover",steps:hand});
+  const av=items.some(i=>AV_KEYS.includes(i.key));
+  const all=f=>items.flatMap(i=>i[f]||[]);
+  const groups=[];const G=(h,steps)=>{if(steps.length)groups.push({h,steps});};
+  const condPre=conds.flatMap(c=>c.pre||[]), condHand=conds.flatMap(c=>c.hand||[]);
+  const signIn="Sign in, attend the site induction and confirm permits and working areas with the principal contractor.";
+  const segregate="Set out and segregate the work area with barriers and signage; complete a Take 5.";
+  const commBase=["Visually inspect all cables and equipment for damage before powering up.","Power up via the installed outlets and check each device starts correctly."];
+  const commAV=av?["Test all audio and video signal routing end to end against the schematics."]:[];
+  const fw=items.some(i=>["ctl","vc","net","led","interactive","sign","book","wps","stream"].includes(i.key))?["Update firmware to the agreed versions and back up all configuration files."]:[];
+  const handover=["Label all cabling and equipment to the system schematics.","Take photos during the install and on completion.",
+    "Record any snags and agree a date with the client to close them out.","Clean the area and remove all tools, equipment and waste from site.",
+    ...all("hand"),"Demonstrate the system to the client and complete the handover.",...condHand];
+  if(visit==="install"){
+    G("Preparation and Planning",["Obtain the AV drawings, specification and this scope of works; review them with the installation team.",signIn,
+      "Conduct a site walk-around to confirm cable routes, equipment locations and emergency procedures.",segregate,...condPre]);
+    G("Strip Out",all("strip"));
+    const first=all("first"); const fixed=items.some(i=>i.second&&!["furn","rack","ups","net","stream","conf"].includes(i.key));
+    if(fixed&&!has("cabling")) first.unshift("Confirm first-fix containment, back boxes and pattresses are complete and in the right positions.");
+    G("First Fix",first);
+    const second=all("second"); G("Second Fix – Installation",second.length?second.concat(["Install all equipment in line with the manufacturer's instructions, fixed securely without damaging the building structure."]):[]);
+    G("Commissioning and Testing",items.length?[...commBase,...all("comm"),...commAV,...fw]:[...commBase,"Test all equipment for functionality."]);
+    G("Completion and Handover",handover);
+  }else if(visit==="strip"){
+    G("Preparation and Planning",["Obtain the scope of works and the list of equipment to be removed, retained or returned.",signIn,
+      "Confirm with the client that the systems can be switched off, and agree the times.",segregate,...condPre]);
+    G("Strip Out",all("strip").length?all("strip"):SCOPE_ITEMS[0].strip);
+    G("Completion",["Leave walls, ceilings and floors as agreed; report any damage or holes needing making good.",
+      "Photograph the cleared areas and record what was removed, returned or disposed of.",
+      "Remove all equipment, packaging and waste from site, and issue the waste transfer and WEEE notes.",...condHand]);
+  }else if(visit==="reloc"){
+    G("Preparation and Planning",["Agree the equipment inventory, destination rooms and move dates with the client.",signIn,
+      "Photograph each system and label every device and cable before disconnecting.",segregate,...condPre]);
+    G("Decommission and Pack",["Power down and disconnect equipment at plugs or isolators installed by the electrician.",
+      "Remove equipment from the top down with a two-person lift for displays and heavy items.",
+      "Pack displays in their original boxes or flight cases; pack and label all other items and cables to the inventory."]);
+    G("Transport",["Load the vehicle with team lifts or a tail lift; secure every item and keep displays upright.",
+      "Check off the inventory on loading and unloading at the new site."]);
+    G("Reinstall",[...all("first"),...all("second")].length?[...all("first"),...all("second")]:["Reinstall each system to the agreed layout, fixed securely to the confirmed substrate."]);
+    G("Commissioning and Testing",[...commBase,...all("comm"),...commAV,...fw]);
+    G("Completion and Handover",handover);
+  }else if(visit==="service"){
+    G("Preparation and Planning",["Review the service history, open faults and the rooms to be visited.",
+      "Agree visit times with the client and confirm the rooms will be free.",signIn,...condPre]);
+    G("Inspection and Testing",["Visually inspect equipment, brackets, safety bonds and cabling for damage or wear.",
+      ...(items.length?items.map(i=>SVC[i.key]).filter(Boolean):["Test each room's core functions: display, audio, video calls, sharing and control."]),
+      "Clean displays, cameras, touch panels and filters with suitable products.",
+      "Check firmware versions; update only with the client's approval."]);
+    G("Remedial Works",["Carry out agreed repairs; replace faulty items like for like.",
+      "Isolate the equipment before any repair, and use insulated tools.",
+      "Record anything that needs a follow-up visit or quote."]);
+    G("Completion",["Retest each repaired system with the client.","Remove all waste and replaced parts from site.",
+      "Issue a service report with photos, findings and recommendations.",...condHand]);
+  }else if(visit==="comm"){
+    G("Preparation and Planning",["Obtain the latest schematics, programming files and configuration backups.",
+      "Agree commissioning times with the client; tell users the systems will be unavailable.",signIn,...condPre]);
+    G("Commissioning and Testing",[...commBase,...all("comm"),...commAV,...fw,
+      "Keep levels low until gain structure and limiters are set."]);
+    G("Completion and Handover",["Back up all programming and configuration files.","Record any snags and agree a date with the client to close them out.",
+      "Demonstrate the changes to the client and complete the handover.",...condHand]);
+  }else if(visit==="survey"){
+    G("Preparation and Planning",["Obtain the floor plans, drawings and the client's brief before the visit.",
+      "Arrange access, an escort if needed, and the asbestos register from the building manager.",signIn,...condPre]);
+    G("Survey",["Measure each room and record ceiling heights, ceiling and wall construction, and furniture layouts.",
+      "Check power, data and containment positions, and the routes between rooms and the comms room.",
+      ...all("survey"),
+      "Photograph each area and note access restrictions, delivery routes and parking.",
+      "Use stepladders only to look into ceiling voids; don't lift tiles over occupied desks."]);
+    G("Completion",["Leave each area as found and report any damage seen.",
+      "Issue the survey report with photos, risks (asbestos, access, structure) and recommendations."]);
+  }
   const uniq=a=>[...new Set(a)];
-  return {items,conds,groups:groups.map(g=>({h:g.h,steps:uniq(g.steps)})),
-    hazards:uniq([...BASE_HAZ,...items.flatMap(i=>i.hz||[]),...conds.flatMap(c=>c.hz||[])]),
-    plant:uniq([0,1,5,14,...items.flatMap(i=>i.plant||[]),...conds.flatMap(c=>c.plant||[])]).map(i=>PLANT[i]),
-    permits:uniq(["Principal Contractor Permit to Work",...items.flatMap(i=>i.permits||[]),...conds.flatMap(c=>c.permits||[])])};
+  const base=VISIT_BASE[visit]||VISIT_BASE.install;
+  const work=visit==="install"||visit==="reloc"||visit==="strip";
+  const pickHz=work?[...all("hz"),...conds.flatMap(c=>c.hz||[])]:conds.flatMap(c=>c.hz||[]);
+  const pickPlant=work||visit==="survey"?[...(visit==="survey"?[]:all("plant")),...conds.flatMap(c=>c.plant||[])]:[...items.flatMap(i=>["ctl","net"].includes(i.key)?i.plant||[]:[]),...conds.flatMap(c=>c.plant||[])];
+  return {det,visit,items,conds,groups:groups.map(g=>({h:g.h,steps:uniq(g.steps)})),
+    hazards:uniq([...base.hz,...pickHz]),
+    plant:uniq([...base.plant,...pickPlant]).map(i=>PLANT[i]).filter(Boolean),
+    permits:uniq(["Principal Contractor Permit to Work",...(work?all("permits"):[]),...conds.flatMap(c=>c.permits||[])])};
+}
+function openDraft(){
+  const d=cur(); const src=(d.scopeSource||"").trim()||d.scope;
+  if(!src.trim()){toast("Upload or paste a scope of works first");return;}
+  const r=draftFromScope(src); S.draft=r;
+  const vt=VISIT_TYPES.find(v=>v.key===r.visit);
+  const haveHaz=new Set(d.hazards.map(h=>h.hazard));
+  const newHaz=r.hazards.map(id=>HAZ.find(h=>h.libId===id)).filter(h=>h&&!haveHaz.has(adaptText(d,h.hazard))&&!haveHaz.has(h.hazard));
+  const perms=[...new Set(r.permits.map(x=>adaptText(d,x)))];
+  const newPlant=r.plant.filter(x=>!d.plant.includes(x)), newPerm=perms.filter(x=>!d.permits.includes(x));
+  layer(`<h2>Draft from Scope of Works</h2>
+  <p class="meta" style="margin:0 0 10px">Found in the scope: ${r.visit!=="install"?`<span class="pill st-In" style="margin:2px">${esc(vt.label)}</span>`:""}${r.items.length?r.items.map(i=>`<span class="pill st-Approved" style="margin:2px">${esc(i.label)}${i.qty?" ×"+i.qty:""}</span>`).join(""):"no specific AV systems – a general sequence is shown"}${r.conds.length?" "+r.conds.map(c=>`<span class="pill st-In" style="margin:2px">${esc(c.label)}</span>`).join(""):""}</p>
+  <p class="meta" style="margin:0 0 12px">Untick anything that doesn't apply. Everything stays editable after adding.</p>
+  <div id="draftSteps">${r.groups.map((g,gi)=>`<div class="sub-h">${esc(g.h)}</div>${g.steps.map((s,si)=>`<label class="check" style="margin-bottom:6px;align-items:flex-start"><input type="checkbox" checked data-g="${gi}" data-s="${si}" style="margin-top:2px"><span>${esc(adaptText(d,s))}</span></label>`).join("")}`).join("")}</div>
+  ${newHaz.length?`<div class="sub-h">Hazards to Add to 4.0</div><div class="checks" id="draftHaz">${newHaz.map(h=>`<label class="check"><input type="checkbox" checked value="${h.libId}">${esc(adaptText(d,h.hazard))}</label>`).join("")}</div>`:""}
+  ${newPlant.length?`<div class="sub-h">Plant and Equipment (3.2)</div><div class="checks" id="draftPlant">${newPlant.map(x=>`<label class="check"><input type="checkbox" checked value="${esc(x)}">${esc(x)}</label>`).join("")}</div>`:""}
+  ${newPerm.length?`<div class="sub-h">Permits (5.0)</div><div class="checks" id="draftPerm">${newPerm.map(x=>`<label class="check"><input type="checkbox" checked value="${esc(x)}">${esc(x)}</label>`).join("")}</div>`:""}
+  <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px"><button type="button" class="btn" onclick="closeLayer()">Cancel</button>
+  ${d.sequence.length?`<button type="button" class="btn" onclick="applyDraft(false)">Add to Current Sequence</button>`:""}<button type="button" class="btn primary" onclick="applyDraft(true)">${d.sequence.length?"Replace Sequence":"Use This Sequence"}</button></div>`);
+}
+function applyDraft(replace){
+  const d=cur(),r=S.draft; const seq=[];
+  r.groups.forEach((g,gi)=>{const picked=g.steps.filter((s,si)=>document.querySelector(`#draftSteps input[data-g="${gi}"][data-s="${si}"]`)?.checked);
+    if(picked.length){seq.push({id:uid(),type:"h",text:g.h});picked.forEach(s=>seq.push({id:uid(),type:"s",text:s}));}});
+  d.sequence=replace?seq:d.sequence.concat(seq);
+  document.querySelectorAll("#draftHaz input:checked").forEach(i=>d.hazards.push(fromLib(HAZ.find(h=>h.libId===i.value))));
+  document.querySelectorAll("#draftPlant input:checked").forEach(i=>{if(!d.plant.includes(i.value))d.plant.push(i.value);});
+  document.querySelectorAll("#draftPerm input:checked").forEach(i=>{if(!d.permits.includes(i.value))d.permits.push(i.value);});
+  const vt=VISIT_TYPES.find(v=>v.key===r.visit)||VISIT_TYPES[0];
+  if(!d.activity||VISIT_TYPES.some(v=>v.activity===d.activity)) d.activity=vt.activity;
+  const isDefault=!d.scope.trim()||d.scope===DEF.scope||/^This method statement covers the /.test(d.scope);
+  if(isDefault) d.scope=`This method statement covers the ${vt.summary} described in the scope of works${d.scopeFile?" ("+d.scopeFile.name+")":""}${r.items.length?", including: "+r.items.map(i=>i.label.split(" ").map(w=>/^[A-Z0-9&]{2,}$/.test(w)?w:w.toLowerCase()).join(" ")+(i.qty?" (×"+i.qty+")":"")).join(", "):""}.`;
+  adaptDoc(d); contentEdited(d); touch(); closeLayer(); rerender(); toast("Sequence drafted – review each step");
 }
 async function extractText(file){
   const name=file.name.toLowerCase();
@@ -1324,35 +1586,6 @@ async function uploadScope(file){
   try{ d.scopeFile=await storeFile(d,file.name,file); touch();
   }catch(e){console.warn("Scope upload failed",e);}
   rerender(); openDraft();
-}
-function openDraft(){
-  const d=cur(); const src=(d.scopeSource||"").trim()||d.scope;
-  if(!src.trim()){toast("Upload or paste a scope of works first");return;}
-  const r=draftFromScope(src); S.draft=r;
-  const haveHaz=new Set(d.hazards.map(h=>h.hazard));
-  const newHaz=r.hazards.map(id=>HAZ.find(h=>h.libId===id)).filter(h=>h&&!haveHaz.has(h.hazard));
-  const newPlant=r.plant.filter(p=>!d.plant.includes(p)), newPerm=r.permits.filter(p=>!d.permits.includes(p));
-  let k=0;
-  layer(`<h2>Draft from Scope of Works</h2>
-  <p class="meta" style="margin:0 0 10px">Found in the scope: ${r.items.length?r.items.map(i=>`<span class="pill st-Approved" style="margin:2px">${esc(i.label)}${i.qty?" ×"+i.qty:""}</span>`).join(""):"no specific AV systems – a general sequence is shown"}${r.conds.length?" "+r.conds.map(c=>`<span class="pill st-In" style="margin:2px">${esc(c.label)}</span>`).join(""):""}</p>
-  <p class="meta" style="margin:0 0 12px">Untick anything that doesn't apply. Everything stays editable after adding.</p>
-  <div id="draftSteps">${r.groups.map((g,gi)=>`<div class="sub-h">${esc(g.h)}</div>${g.steps.map((s,si)=>`<label class="check" style="margin-bottom:6px;align-items:flex-start"><input type="checkbox" checked data-g="${gi}" data-s="${si}" style="margin-top:2px"><span>${esc(s)}</span></label>`).join("")}`).join("")}</div>
-  ${newHaz.length?`<div class="sub-h">Hazards to Add to 4.0</div><div class="checks" id="draftHaz">${newHaz.map(h=>`<label class="check"><input type="checkbox" checked value="${h.libId}">${esc(h.hazard)}</label>`).join("")}</div>`:""}
-  ${newPlant.length?`<div class="sub-h">Plant and Equipment (3.2)</div><div class="checks" id="draftPlant">${newPlant.map(p=>`<label class="check"><input type="checkbox" checked value="${esc(p)}">${esc(p)}</label>`).join("")}</div>`:""}
-  ${newPerm.length?`<div class="sub-h">Permits (5.0)</div><div class="checks" id="draftPerm">${newPerm.map(p=>`<label class="check"><input type="checkbox" checked value="${esc(p)}">${esc(p)}</label>`).join("")}</div>`:""}
-  <div style="display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:16px"><button type="button" class="btn" onclick="closeLayer()">Cancel</button>
-  ${d.sequence.length?`<button type="button" class="btn" onclick="applyDraft(false)">Add to Current Sequence</button>`:""}<button type="button" class="btn primary" onclick="applyDraft(true)">${d.sequence.length?"Replace Sequence":"Use This Sequence"}</button></div>`);
-}
-function applyDraft(replace){
-  const d=cur(),r=S.draft; const seq=[];
-  r.groups.forEach((g,gi)=>{const picked=g.steps.filter((s,si)=>document.querySelector(`#draftSteps input[data-g="${gi}"][data-s="${si}"]`)?.checked);
-    if(picked.length){seq.push({id:uid(),type:"h",text:g.h});picked.forEach(s=>seq.push({id:uid(),type:"s",text:s}));}});
-  d.sequence=replace?seq:d.sequence.concat(seq);
-  document.querySelectorAll("#draftHaz input:checked").forEach(i=>d.hazards.push(fromLib(HAZ.find(h=>h.libId===i.value))));
-  document.querySelectorAll("#draftPlant input:checked").forEach(i=>{if(!d.plant.includes(i.value))d.plant.push(i.value);});
-  document.querySelectorAll("#draftPerm input:checked").forEach(i=>{if(!d.permits.includes(i.value))d.permits.push(i.value);});
-  if(r.items.length&&(d.scope===DEF.scope||!d.scope.trim())) d.scope=`This method statement covers the AV installation described in the scope of works${d.scopeFile?" ("+d.scopeFile.name+")":""}, including: ${r.items.map(i=>i.label.toLowerCase()+(i.qty?" (×"+i.qty+")":"")).join(", ")}.`;
-  adaptDoc(d); contentEdited(d); touch(); closeLayer(); rerender(); toast("Sequence drafted – review each step");
 }
 
 
